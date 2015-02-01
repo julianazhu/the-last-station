@@ -1,0 +1,12 @@
+<h1>Edit Character Name</h1>
+
+  <p>Henceforth, you shall be known as:</p>
+  <%= form_for :character, url: character_path, method: :patch do |name| %>
+    <% render 'characterformerrors' %>
+  
+    <p>    <%= name.text_field :characterName %>
+    </p>
+    <p>
+      <%= name.submit %>
+    </p>
+  <% end %>

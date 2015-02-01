@@ -1,0 +1,11 @@
+<h1>The Last Station</h1>
+
+  <p>They call you:</p>
+  <%= form_for :character, url: characters_path do |name| %>
+    <% render 'characterformerrors' %>
+    <p>    <%= name.text_field :characterName %>
+    </p>
+    <p>
+      <%= name.submit "BEGIN!" %>
+    </p>
+  <% end %>

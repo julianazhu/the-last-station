@@ -1,0 +1,9 @@
+ <% if @character.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @character.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

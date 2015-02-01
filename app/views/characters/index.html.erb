@@ -1,0 +1,15 @@
+<h1>Existing Characters</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+ 
+  <% @characters.each do |character| %>
+    <tr>
+      <td><%= character.characterName %></td>
+      <td><%= link_to 'Edit', edit_character_path(character) %></td>
+      <td><%= link_to 'Destroy', character_path(character), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
