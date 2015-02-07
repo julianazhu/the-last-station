@@ -1,0 +1,20 @@
+<h1>Add a New Quality</h1>
+
+  <%= form_for :quality, url: qualities_path do |quality| %>
+    <%= render 'qualityformerrors' %>
+    <p> 
+      <%= quality.label :name %>    
+      <%= quality.text_field :name %>
+    </p>
+    <p>    
+      <%= quality.label :description %>
+      <%= quality.text_area :description %>
+    </p>
+    <p>    
+      <%= quality.label :image_path %>
+      <%= quality.text_area :image_path %>
+    </p>
+    <p>
+      <%= quality.submit %>
+    </p>
+  <% end %>

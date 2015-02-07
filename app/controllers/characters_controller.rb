@@ -1,10 +1,12 @@
 class CharactersController < ApplicationController
+
   def index
     @characters = Character.all
   end
 
   def show
     @character = Character.find(params[:id])
+    @quality = Quality.find(1)
   end
 
   def new
@@ -16,12 +18,16 @@ class CharactersController < ApplicationController
   end
   
   def create
-    @character = Character.new(character_params)
- 
-    if  @character.save
+    if Character.where(character_name: character_params[:character_name]).count > 0
+      @character = Character.where(character_name: character_params[:character_name]).first
       redirect_to @character
     else
-      render 'new'
+    @character = Character.new(character_params) 
+      if  @character.save
+        redirect_to @character
+      else
+        render 'new'
+      end
     end
   end
   
@@ -44,6 +50,6 @@ class CharactersController < ApplicationController
   
   private
   def character_params
-    params.require(:character).permit(:characterName)
+    params.require(:character).permit(:character_name)
   end
 end

@@ -5,7 +5,7 @@ class CreateQualities < ActiveRecord::Migration
       t.text :description
       t.text :imagelink
       t.integer :points
-      t.references :character, index: true
+      t.belongs_to :character, index: true
 
       t.timestamps
     end

@@ -1,0 +1,16 @@
+<p>Enter the story card details</p>
+<%= form_for :story do |story| %>
+  <p>
+    <%= story.label :title %><br>
+    <%= story.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= story.label :body %><br>
+    <%= story.text_area :body %>
+  </p>
+ 
+  <p>
+    <%= story.submit %>
+  </p>
+<% end %>

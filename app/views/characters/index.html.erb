@@ -7,7 +7,7 @@
  
   <% @characters.each do |character| %>
     <tr>
-      <td><%= character.characterName %></td>
+      <td><%= character.character_name %></td>
       <td><%= link_to 'Edit', edit_character_path(character) %></td>
       <td><%= link_to 'Destroy', character_path(character), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>

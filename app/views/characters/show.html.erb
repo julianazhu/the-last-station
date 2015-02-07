@@ -1,1 +1,21 @@
-<p> Welcome, <%= @character.characterName %></p>
+<p> Welcome, <%= @character.character_name %></p>
+
+<p>Let's check out your stats:<p>
+<table>
+  <tr>
+    <td><b>Quality</b></td>
+    <td><b>Description</b></td>
+    <td><b>Points</b></td>
+  <tr>
+  <% qualities = Quality.all %>
+  <% qualities.each do |quality| %>
+    <tr>
+      <td><%= quality.name %></td>
+      <td><%= quality.description %></td>
+      <td><%= quality.points %></td>
+    </tr>
+  <% end %>
+  <% if qualities.size == 0%>
+    <em>You literally have no qualities.</em>
+  <% end %>
+</table>
