@@ -1,0 +1,15 @@
+<h1>Existing Stories</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+ 
+  <% @stories.each do |story| %>
+    <tr>
+      <td><%= story.story_name %></td>
+      <td><%= link_to 'Edit', edit_story_path(story) %></td>
+      <td><%= link_to 'Destroy', story_path(story), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :characters
-  resources :qualities
   resources :stories
+  resources :qualities
   
   root 'characters#new'
   # The priority is based upon order of creation: first created -> highest priority.

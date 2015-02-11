@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207001253) do
+ActiveRecord::Schema.define(version: 20150210061233) do
+
+  create_table "character_stats", force: true do |t|
+    t.integer  "character_id"
+    t.integer  "quality_id"
+    t.integer  "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "characters", force: true do |t|
     t.string   "character_name"
@@ -31,5 +39,13 @@ ActiveRecord::Schema.define(version: 20150207001253) do
   end
 
   add_index "qualities", ["character_id"], name: "index_qualities_on_character_id"
+
+  create_table "stories", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "image_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,16 +1,13 @@
-<p>Enter the story card details</p>
-<%= form_for :story do |story| %>
-  <p>
-    <%= story.label :title %><br>
-    <%= story.text_field :title %>
-  </p>
- 
-  <p>
-    <%= story.label :body %><br>
-    <%= story.text_area :body %>
-  </p>
- 
-  <p>
-    <%= story.submit %>
-  </p>
-<% end %>
+<h1>New Story</h1>
+
+  <p>Story Title</p>
+  <%= form_for :story, url: stories_path do |title| %>
+    <%= render 'storyformerrors' %>
+    <p>    <%= title.text_field :title %>
+    </p>
+    <p>    <%= title.text_area :body %>
+    </p>
+    <p>
+      <%= title.submit "Add to the Deck" %>
+    </p>
+  <% end %>

@@ -5,7 +5,7 @@ class QualitiesController < ApplicationController
 
   def show
     @quality = Quality.find(params[:id])
-    @quality = Quality.find(1)
+    @qualities = [Quality.find(params[:id])]
   end
 
   def new
@@ -21,7 +21,7 @@ class QualitiesController < ApplicationController
       @quality = Quality.where(name: quality_params[:name]).first
       redirect_to @quality
     else
-    @quality = Quality.new(quality_params) 
+    @quality = Quality.new(quality_params)
       if  @quality.save
         redirect_to @quality
       else
@@ -49,6 +49,8 @@ class QualitiesController < ApplicationController
   
   private
   def quality_params
-    params.require(:quality).permit(:name, :description, :image_path)
+    params.require(:quality).permit(:name, 
+                                    :description, 
+                                    :image_path)
   end
 end

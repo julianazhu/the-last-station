@@ -6,7 +6,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    @quality = Quality.find(1)
+    @characterstats = @character.characterstats
+    @characterstats = CharacterStats.all  
   end
 
   def new
@@ -18,6 +19,7 @@ class CharactersController < ApplicationController
   end
   
   def create
+    # Redirect to existing Character if Character already Exists
     if Character.where(character_name: character_params[:character_name]).count > 0
       @character = Character.where(character_name: character_params[:character_name]).first
       redirect_to @character
