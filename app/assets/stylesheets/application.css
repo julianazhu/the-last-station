@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+table { 
+ border-collapse: collapse; 
+ border: 1px solid;
+ max-width: 100%;
+}
+
+table td{
+border:1px solid #000000;
+padding: 5px;
+vertical-align: bottom;
+}
+
+table th{
+border:1px solid #000000;
+padding: 5px;
+}
+
+text_field {
+width: 50px;
+}
+
+text_area {
+height: 100px;
+width:200px;
+}

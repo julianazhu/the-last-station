@@ -1,15 +1,25 @@
 <h1>Existing Stories</h1>
- 
+<p><%= link_to 'Add a Story', new_story_path %></p>
 <table>
   <tr>
+    <th>Key</th>
     <th>Name</th>
+    <th>Text</th>
+    <th>Image</th>
+    <th>Actions</th>
+    <th>Requirements</th>
   </tr>
  
   <% @stories.each do |story| %>
     <tr>
-      <td><%= story.story_name %></td>
-      <td><%= link_to 'Edit', edit_story_path(story) %></td>
-      <td><%= link_to 'Destroy', story_path(story), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+      <td><%= story.id %></td>
+      <td><%= story.title %></td>
+      <td><%= story.body %></td>
+      <td><%= image_tag "#{story.image_path}" %></td>
+      <td><%= link_to 'Edit Story', edit_story_path(story) %>,
+          <%= link_to 'Delete Story', story_path(story), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+      <td><%= link_to 'Add Requirements', new_requirement_path %></td>
+      </tr>
   <% end %>
 </table>

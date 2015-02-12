@@ -1,0 +1,31 @@
+  <%= form_for @requirement do |requirement| %>
+    <%= render 'requirementformerrors' %>
+      <%= requirement.label :story_title %>  
+      <%= requirement.select(:story_id) do %>
+        <% @stories.collect{|q| [q.title, q.id]}.each do |c| -%>
+          <%= content_tag(:option, c.first, value: c.last) %>
+        <% end %>
+      <% end %>
+    <p>
+
+    </p>
+    <p> 
+      <%= requirement.label :quality_name %>    
+      <%= requirement.select(:quality_id) do %>
+        <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
+          <%= content_tag(:option, c.first, value: c.last) %>
+        <% end %>
+      <% end %>
+    </p>
+    <p>    
+      <%= requirement.label :modifier %>
+      <%= select_tag(:modifier, options_for_select([['greater than',1],['less than',2],['equals',3]])) %>
+    </p>
+    <p>    
+      <%= requirement.label :amount %>
+      <%= requirement.text_field :amount %>
+    </p>
+    <p>
+      <%= requirement.submit %>
+    </p>
+  <% end %>

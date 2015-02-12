@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Requirement</th>
+    <th>Modifier</th>
+    <th>Amount</th>
+    <th>Actions</th>
+  </tr>
+  <% @requirements.each do |requirement| %>
+    <tr>
+      <td><%= requirement.id %></td>
+      <td><%= requirement.requirement_quality_name %></td>
+      <td><%= requirement.modifier %></td>
+      <td><%= image_tag "#{requirement.amount}" %></td>
+      <td>
+        <%= link_to 'Edit', edit_requirement_path(requirement) %>,
+        <%= link_to 'Destroy', requirement_path(requirement), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

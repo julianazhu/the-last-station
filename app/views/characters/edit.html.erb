@@ -4,7 +4,7 @@
   <%= form_for :character, url: character_path, method: :patch do |name| %>
     <% render 'characterformerrors' %>
   
-    <p>    <%= name.text_field :character_name %>
+    <p>    <%= name.text_field :name %>
     </p>
     <p>
       <%= name.submit %>

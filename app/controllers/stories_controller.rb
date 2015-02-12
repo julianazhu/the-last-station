@@ -10,10 +10,12 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+#    @requirement = Requirement.new
   end
   
   def edit
     @story = Story.find(params[:id])
+#    @requirement = Requirement.new
   end
   
   def create
@@ -46,4 +48,7 @@ class StoriesController < ApplicationController
   def story_params
     params.require(:story).permit(:title, :body, :image_path)
   end
+#  def requirement_params
+#    params.require(:requirement).permit(:quality, :modifier, :amount)
+#  end
 end

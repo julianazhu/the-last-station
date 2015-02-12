@@ -1,0 +1,15 @@
+  <%= form_for @story do |story| %>
+    <%= render 'storyformerrors' %>
+    <p><%= story.label :title %>
+       <%= story.text_field :title %>
+    </p>
+    <p>    <%= story.label :body %>
+           <%= story.text_area :body %>
+    </p>
+    <p>    <%= story.label :image_path %>
+           <%= story.text_field :image_path %>
+    </p>
+    <p>
+      <%= story.submit %>
+    </p>
+  <% end %>

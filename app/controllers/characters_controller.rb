@@ -6,8 +6,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    @characterstats = @character.characterstats
-    @characterstats = CharacterStats.all  
+    @characterstat = @character.characterstat
+    @characterstats = CharacterStat.all  
   end
 
   def new
@@ -20,8 +20,8 @@ class CharactersController < ApplicationController
   
   def create
     # Redirect to existing Character if Character already Exists
-    if Character.where(character_name: character_params[:character_name]).count > 0
-      @character = Character.where(character_name: character_params[:character_name]).first
+    if Character.where(name: character_params[:name]).count > 0
+      @character = Character.where(name: character_params[:name]).first
       redirect_to @character
     else
     @character = Character.new(character_params) 
@@ -52,6 +52,6 @@ class CharactersController < ApplicationController
   
   private
   def character_params
-    params.require(:character).permit(:character_name)
+    params.require(:character).permit(:name)
   end
 end

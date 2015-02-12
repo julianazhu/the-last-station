@@ -2,14 +2,17 @@
  
 <table>
   <tr>
+    <th>Key</th>  
     <th>Name</th>
+    <th>Actions</th>
   </tr>
  
   <% @characters.each do |character| %>
     <tr>
-      <td><%= character.character_name %></td>
-      <td><%= link_to 'Edit', edit_character_path(character) %></td>
-      <td><%= link_to 'Destroy', character_path(character), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= character.id %></td>
+      <td><%= character.name %></td>
+      <td><%= link_to 'Edit', edit_character_path(character) %>,
+          <%= link_to 'Destroy', character_path(character), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
