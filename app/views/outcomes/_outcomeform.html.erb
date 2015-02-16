@@ -1,0 +1,24 @@
+  <%= form_for @outcome do |outcome| %>
+    <%= render 'outcomeformerrors' %>
+      <%= outcome.label :story_title %>  
+      <%= outcome.select(:story_id) do %>
+        <% @stories.collect{|q| [q.title, q.id]}.each do |c| -%>
+          <% if @outcome.story_id == c.last or c.last == params[:story_id].to_i%>
+            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+          <% else %>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <p>    
+      <%= outcome.label :outcome_title %>
+      <%= outcome.text_field :title %>
+    </p>
+    <p>    
+      <%= outcome.label :outcome_text %>
+      <%= outcome.text_area :body %>
+    </p>
+    <p>
+      <%= outcome.submit %>
+    </p>
+  <% end %>

@@ -1,0 +1,36 @@
+  <%= form_for @effect do |effect| %>
+    <%= render 'effectformerrors' %>
+      <%= effect.label :outcome_title %>  
+      <%= effect.select(:outcome_id) do %>
+        <% @outcomes.collect{|q| [q.title, q.id]}.each do |c| -%>
+          <% if @effect.outcome_id == c.last or c.last == params[:outcome_id].to_i%>
+            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+          <% else %>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <p> 
+      <%= effect.label :quality_name %>    
+      <%= effect.select(:quality_id) do %>
+        <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
+          <% if @effect.quality_id == c.last %>
+            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+          <% else %>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </p>
+    <p>    
+      <%= effect.label :modifier %>
+      <%= effect.select(:modifier, options_for_select([['increase','increase'],['decrease','decrease'],['equals','equals']])) %>
+    </p>
+    <p>    
+      <%= effect.label :amount %>
+      <%= effect.text_field :amount %>
+    </p>
+    <p>
+      <%= effect.submit %>
+    </p>
+  <% end %>

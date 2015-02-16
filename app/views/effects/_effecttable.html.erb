@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Outcome</th>
+    <th>Quality Required</th>
+    <th>Modifier</th>
+    <th>Amount</th>
+    <th>Actions</th>
+  </tr>
+  <% @effects.each do |effect| %>
+    <tr>
+      <td><%= effect.id %></td>
+      <td><%= effect.outcome.title %></td>
+      <td><%= effect.quality.name %></td>
+      <td><%= effect.modifier %></td>
+      <td><%= effect.amount %></td>
+      <td>
+        <%= link_to 'Edit', edit_effect_path(effect) %>,
+        <%= link_to 'Destroy', effect_path(effect), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,5 +1,6 @@
 class Story < ActiveRecord::Base
   has_many :requirements
+  has_many :outcomes
   validates :title, 
             presence: true, 
             length: { minimum: 3}

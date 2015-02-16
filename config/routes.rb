@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :stories
   resources :qualities
   resources :requirements
+  resources :outcomes
+  resources :effects
   
   root 'characters#new'
   # The priority is based upon order of creation: first created -> highest priority.

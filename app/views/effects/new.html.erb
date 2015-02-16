@@ -1,0 +1,15 @@
+<h1>Add a New Effect</h1>
+
+<% unless @outcome_id.nil? %>
+  <p>Existing Effects for Outcome: <b><%= @outcome.title %></b></p>
+    <% if @effects.count > 0 %>
+      <%= render 'effecttable' %>
+    <% else %>
+      <p><i>There are no effects for this outcome yet.</i></p>
+    <% end %>
+<% end %>
+<br>
+<p><b>New Effect:</b></p>
+<%= render 'effectform' %>
+
+<%= link_to "Return to Outcomes Index", outcomes_path %>

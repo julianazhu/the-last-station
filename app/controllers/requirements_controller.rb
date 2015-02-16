@@ -4,8 +4,6 @@ class RequirementsController < ApplicationController
   end
 
   def show
-    @requirement = Requirement.find(params[:id])
-    @requirements = @requirement.story.requirements
   end
 
   def new
@@ -29,8 +27,11 @@ class RequirementsController < ApplicationController
     @requirement = Requirement.new(requirement_params)
     @qualities = Quality.all
     @stories = Story.all
+    @story_id = params[:story_id]
     if  @requirement.save
-      redirect_to @requirement
+      redirect_to :controller => 'requirements', 
+                  :action => 'new',
+                  :story_id => @requirement.story_id
     else
       render 'new'
     end
@@ -49,8 +50,10 @@ class RequirementsController < ApplicationController
   def destroy
     @requirement = Requirement.find(params[:id])
     @requirement.destroy
-    
-    redirect_to requirements_path
+    @story_id = params[:story_id]
+    redirect_to :controller => 'requirements', 
+                :action => 'new',
+                :story_id => @requirement.story_id
   end
   
   def requirement_params

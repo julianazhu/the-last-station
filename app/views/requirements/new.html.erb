@@ -2,7 +2,11 @@
 
 <% unless @story_id.nil? %>
   <p>Existing Requirements for Story: <b><%= @story.title %></b></p>
-  <%= render 'requirementtable' %>
+    <% if @requirements.count > 0 %>
+      <%= render 'requirementtable' %>
+    <% else %>
+      <p><i>There are no requirements for this story yet.</i></p>
+    <% end %>
 <% end %>
 <br>
 <p><b>New Requirement:</b></p>

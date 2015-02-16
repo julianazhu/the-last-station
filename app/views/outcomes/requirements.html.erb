@@ -1,4 +1,4 @@
-    <h2>Story Requirements</h2>
+    <h2>Story Outcomes</h2>
       <table>
         <tr>
           <th>Quality</th>
@@ -6,18 +6,18 @@
           <th>Amount</th>
           <th>Action</th>
         </tr>
-        <%= for @story.requirements.each do |existing_requirements| %>
+        <%= for @story.outcomes.each do |existing_outcomes| %>
           <tr>
-            <td><%= existing_requirements.quality_id %></td>
-            <td><%= existing_requirements.modifier %></td>
-            <td><%= existing_requirements.amount %></td>    
+            <td><%= existing_outcomes.quality_id %></td>
+            <td><%= existing_outcomes.modifier %></td>
+            <td><%= existing_outcomes.amount %></td>    
             <td><%= link_to 'Edit',  %></td>                
           <tr>
         <% end %>
-        <%= fields_for @requirement do |requirement| %>
+        <%= fields_for @outcome do |outcome| %>
           <tr>   
             <td>
-            <%= requirement.select(:quality_id) do %>
+            <%= outcome.select(:quality_id) do %>
               <% Quality.all.collect{|q| [q.name, q.id]}.each do |c| -%>
                 <%= content_tag(:option, c.first, value: c.last) %>
               <% end %>

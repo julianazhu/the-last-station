@@ -1,0 +1,15 @@
+<h1>Add a New Outcome</h1>
+
+<% unless @story_id.nil? %>
+  <p>Existing Outcomes for Story: <b><%= @story.title %></b></p>
+    <% if @outcomes.count > 0 %>
+      <%= render 'outcometable' %>
+    <% else %>
+      <p><i>There are no outcomes for this story yet.</i></p>
+    <% end %>
+<% end %>
+<br>
+<p><b>New Outcome:</b></p>
+<%= render 'outcomeform' %>
+
+<%= link_to "Return to Stories Index", stories_path %>

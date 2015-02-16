@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Story</th>
+    <th>Outcome</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  <% @outcomes.each do |outcome| %>
+    <tr>
+      <td><%= outcome.id %></td>
+      <td><%= outcome.story.title %></td>
+      <td><%= outcome.title %></td>
+      <td><%= outcome.body %></td>
+      <td>
+        <%= link_to 'Edit', edit_outcome_path(outcome) %>,
+        <%= link_to 'Destroy', outcome_path(outcome), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

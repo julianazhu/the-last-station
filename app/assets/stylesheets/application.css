@@ -38,3 +38,20 @@ text_area {
 height: 100px;
 width:200px;
 }
+
+label {
+    display: block;
+}
+
+input {
+    width: 400px;
+}
+
+select {
+    width: 200px;
+}
+
+textarea {
+    height: 200px;
+    width: 400px;
+}
