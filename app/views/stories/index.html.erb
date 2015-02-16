@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Key</th>
-    <th>Name</th>
+    <th>Title</th>
     <th>Text</th>
     <th>Image</th>
     <th>Actions</th>
@@ -19,7 +19,7 @@
       <td><%= link_to 'Edit Story', edit_story_path(story) %>,
           <%= link_to 'Delete Story', story_path(story), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
-      <td><%= link_to 'Add Requirements', new_requirement_path %></td>
+      <td><%= link_to 'Add Requirements', {:controller => "requirements", :action => "new", :story_id => story.id} %></td>
       </tr>
   <% end %>
 </table>

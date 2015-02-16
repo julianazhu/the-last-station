@@ -3,23 +3,28 @@
       <%= requirement.label :story_title %>  
       <%= requirement.select(:story_id) do %>
         <% @stories.collect{|q| [q.title, q.id]}.each do |c| -%>
-          <%= content_tag(:option, c.first, value: c.last) %>
+          <% if @requirement.story_id == c.last or c.last == params[:story_id].to_i%>
+            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+          <% else %>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
         <% end %>
       <% end %>
-    <p>
-
-    </p>
     <p> 
       <%= requirement.label :quality_name %>    
       <%= requirement.select(:quality_id) do %>
         <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
-          <%= content_tag(:option, c.first, value: c.last) %>
+          <% if @requirement.quality_id == c.last %>
+            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+          <% else %>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
         <% end %>
       <% end %>
     </p>
     <p>    
       <%= requirement.label :modifier %>
-      <%= select_tag(:modifier, options_for_select([['greater than',1],['less than',2],['equals',3]])) %>
+      <%= requirement.select(:modifier, options_for_select([['greater than','greater than'],['less than','less than'],['equals','equals']])) %>
     </p>
     <p>    
       <%= requirement.label :amount %>

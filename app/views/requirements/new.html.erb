@@ -1,2 +1,11 @@
 <h1>Add a New Requirement</h1>
+
+<% unless @story_id.nil? %>
+  <p>Existing Requirements for Story: <b><%= @story.title %></b></p>
+  <%= render 'requirementtable' %>
+<% end %>
+<br>
+<p><b>New Requirement:</b></p>
 <%= render 'requirementform' %>
+
+<%= link_to "Return to Stories Index", stories_path %>

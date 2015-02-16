@@ -1,7 +1,9 @@
 class Requirement < ActiveRecord::Base
   belongs_to :story
-  has_one :quality
-  validates :quality, 
+  belongs_to :quality
+  validates :story_id,
+          presence: true
+  validates :quality_id, 
           presence: true
   validates :modifier, 
           presence: true

@@ -1,5 +1,6 @@
-<p> You have successfully created the requirement: <%= @requirement.requirement_quality_name %></p>
+<p> All Requirements for Story:<b><%= @requirement.story.title %></b></p>
 
 <%= render 'requirementtable'%>
 
-<p><%= link_to 'Go to Index', requirements_path %></p>
+<p><%= link_to 'Show All Stories', stories_path %></p>
+<p><%= link_to 'Show all Requirements for All Stories', requirements_path %></p>

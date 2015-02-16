@@ -10,12 +10,10 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
-#    @requirement = Requirement.new
   end
   
   def edit
     @story = Story.find(params[:id])
-#    @requirement = Requirement.new
   end
   
   def create

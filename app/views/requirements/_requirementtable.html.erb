@@ -1,7 +1,8 @@
 <table>
   <tr>
     <th>Key</th>
-    <th>Requirement</th>
+    <th>Story</th>
+    <th>Quality Required</th>
     <th>Modifier</th>
     <th>Amount</th>
     <th>Actions</th>
@@ -9,9 +10,10 @@
   <% @requirements.each do |requirement| %>
     <tr>
       <td><%= requirement.id %></td>
-      <td><%= requirement.requirement_quality_name %></td>
+      <td><%= requirement.story.title %></td>
+      <td><%= requirement.quality.name %></td>
       <td><%= requirement.modifier %></td>
-      <td><%= image_tag "#{requirement.amount}" %></td>
+      <td><%= requirement.amount %></td>
       <td>
         <%= link_to 'Edit', edit_requirement_path(requirement) %>,
         <%= link_to 'Destroy', requirement_path(requirement), method: :delete %>
