@@ -6,8 +6,6 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    @characterstat = @character.characterstat
-    @characterstats = CharacterStat.all  
   end
 
   def new
@@ -48,6 +46,10 @@ class CharactersController < ApplicationController
     @character.destroy
     
     redirect_to characters_path
+  end
+  
+  def show_eligible_stories
+    
   end
   
   private

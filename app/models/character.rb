@@ -1,5 +1,5 @@
 class Character < ActiveRecord::Base
-  has_many :qualities, through: :characterStats
+  has_many :characterstats
   validates :name, 
             presence: true, 
             length: { minimum: 3}

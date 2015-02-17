@@ -1,18 +1,4 @@
-<p> Welcome, <%= @character.character_name %></p>
+<p> Welcome, <%= @character.name %></p>
 
 <p>Let's check out your stats:<p>
-<table>
-  <tr>
-    <td><b>Quality</b></td>
-    <td><b>Description</b></td>
-    <td><b>Points</b></td>
-  <tr>
-    <tr>
-      <td><%= @characterstats.quality_name %></td>
-      <td><%= @characterstats.quality_description %></td>
-      <td><%= @characterstats.points %></td>
-    </tr>
-  <% if @characterstats.size == 0%>
-    <em>You literally have no qualities.</em>
-  <% end %>
-</table>
+Nothing to see here yet!

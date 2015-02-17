@@ -3,7 +3,7 @@
   <p>They call you:</p>
   <%= form_for :character, url: characters_path do |name| %>
     <%= render 'characterformerrors' %>
-    <p>    <%= name.text_field :character_name %>
+    <p>    <%= name.text_field :name %>
     </p>
     <p>
       <%= name.submit "BEGIN!" %>

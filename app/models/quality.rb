@@ -1,5 +1,4 @@
 class Quality < ActiveRecord::Base
-  has_many :characterStats
   has_many :requirements
   delegate :name, :description, :image_path, to: :characterstats, prefix: true
   delegate :name, to: :requirements, prefix: true
