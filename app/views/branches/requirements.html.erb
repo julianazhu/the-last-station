@@ -1,0 +1,29 @@
+    <h2>Story Branchs</h2>
+      <table>
+        <tr>
+          <th>Quality</th>
+          <th>Modifier</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+        <%= for @story.branches.each do |existing_branches| %>
+          <tr>
+            <td><%= existing_branches.quality_id %></td>
+            <td><%= existing_branches.modifier %></td>
+            <td><%= existing_branches.amount %></td>    
+            <td><%= link_to 'Edit',  %></td>                
+          <tr>
+        <% end %>
+        <%= fields_for @branch do |branch| %>
+          <tr>   
+            <td>
+            <%= branch.select(:quality_id) do %>
+              <% Quality.all.collect{|q| [q.name, q.id]}.each do |c| -%>
+                <%= content_tag(:option, c.first, value: c.last) %>
+              <% end %>
+            </td>
+            <td></td>
+            <% end %>
+          </tr>
+        <% end %>  
+      </table>

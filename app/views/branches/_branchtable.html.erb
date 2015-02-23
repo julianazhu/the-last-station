@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Story</th>
+    <th>Branch</th>
+    <th>Description</th>
+    <th>Outcome</th>
+    <th>Actions</th>
+  </tr>
+  <% @branches.each do |branch| %>
+    <tr>
+      <td><%= branch.id %></td>
+      <td><%= branch.story.title %></td>
+      <td><%= branch.title %></td>
+      <td><%= branch.body %></td>
+      <td><%= branch.outcome %></td>
+      <td>
+        <%= link_to 'Edit', edit_branch_path(branch) %>,
+        <%= link_to 'Destroy', branch_path(branch), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

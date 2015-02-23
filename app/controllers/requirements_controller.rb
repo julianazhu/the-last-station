@@ -1,4 +1,16 @@
 class RequirementsController < ApplicationController
+before_action :find_requirement, only: [:edit, :update, :destroy]
+before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
+
+  def get_all_qualities_and_stories
+    @qualities = Quality.all
+    @stories = Story.all
+  end
+
+  def find_requirement
+    @requirement = Requirement.find(params[:id])
+  end
+
   def index
     @requirements = Requirement.all
   end
@@ -8,8 +20,6 @@ class RequirementsController < ApplicationController
 
   def new
     @requirement = Requirement.new
-    @qualities = Quality.all
-    @stories = Story.all
     @story_id = params[:story_id]
       unless @story_id.nil?
         @story = Story.find(@story_id)
@@ -18,15 +28,10 @@ class RequirementsController < ApplicationController
   end
   
   def edit
-    @requirement = Requirement.find(params[:id])
-    @qualities = Quality.all
-    @stories = Story.all
   end
   
   def create
     @requirement = Requirement.new(requirement_params)
-    @qualities = Quality.all
-    @stories = Story.all
     @story_id = params[:story_id]
     if  @requirement.save
       redirect_to :controller => 'requirements', 
@@ -38,8 +43,6 @@ class RequirementsController < ApplicationController
   end
   
   def update
-    @requirement = Requirement.find(params[:id])
-    
     if @requirement.update(requirement_params)
       redirect_to @requirement
     else
@@ -48,7 +51,6 @@ class RequirementsController < ApplicationController
   end
   
   def destroy
-    @requirement = Requirement.find(params[:id])
     @requirement.destroy
     @story_id = params[:story_id]
     redirect_to :controller => 'requirements', 

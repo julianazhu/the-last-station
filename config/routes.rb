@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :stories
   resources :qualities
   resources :requirements
-  resources :outcomes
+  resources :branches
   resources :effects
   
   root 'characters#new'

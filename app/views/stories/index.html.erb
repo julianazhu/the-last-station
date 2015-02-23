@@ -8,7 +8,7 @@
     <th>Image</th>
     <th>Actions</th>
     <th>Requirements</th>
-    <th>Outcomes</th>
+    <th>Branches</th>
     <th>Effects</th>
   </tr>
  
@@ -21,9 +21,9 @@
       <td><%= link_to 'Edit Story', edit_story_path(story) %>,
           <%= link_to 'Delete Story', story_path(story), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
-      <td><%= link_to 'Show/Add Requirements', {:controller => "requirements", :action => "new", :story_id => story.id} %></td>
-      <td><%= link_to 'Show/Add Outcomes', {:controller => "outcomes", :action => "new", :story_id => story.id} %></td>
-      <td><%= link_to 'Show/Add Effects', {:controller => "effects", :action => "new", :story_id => story.id} %></td>
+      <td><%= link_to 'Show/Add Requirements', new_requirement_path(:story_id => story.id) %></td>
+      <td><%= link_to 'Show/Add Branches', new_branch_path(:story_id => story.id) %></td>
+      <td><%= link_to 'Show/Add Effects', new_effect_path(:story_id => story.id) %></td>
       </tr>
   <% end %>
 </table>

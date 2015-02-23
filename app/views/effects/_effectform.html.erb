@@ -1,9 +1,9 @@
   <%= form_for @effect do |effect| %>
     <%= render 'effectformerrors' %>
-      <%= effect.label :outcome_title %>  
-      <%= effect.select(:outcome_id) do %>
-        <% @outcomes.collect{|q| [q.title, q.id]}.each do |c| -%>
-          <% if @effect.outcome_id == c.last or c.last == params[:outcome_id].to_i%>
+      <%= effect.label :branch_title %>  
+      <%= effect.select(:branch_id) do %>
+        <% @branches.collect{|q| [q.title, q.id]}.each do |c| -%>
+          <% if @effect.branch_id == c.last or c.last == params[:branch_id].to_i%>
             <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
           <% else %>
             <%= content_tag(:option, c.first, value: c.last) %>

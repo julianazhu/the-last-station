@@ -1,7 +1,7 @@
 <table>
   <tr>
     <th>Key</th>
-    <th>Outcome</th>
+    <th>Branch</th>
     <th>Quality Required</th>
     <th>Modifier</th>
     <th>Amount</th>
@@ -10,7 +10,7 @@
   <% @effects.each do |effect| %>
     <tr>
       <td><%= effect.id %></td>
-      <td><%= effect.outcome.title %></td>
+      <td><%= effect.branch.title %></td>
       <td><%= effect.quality.name %></td>
       <td><%= effect.modifier %></td>
       <td><%= effect.amount %></td>

@@ -1,4 +1,32 @@
 <p> Welcome, <%= @character.name %></p>
 
-<p>Let's check out your stats:<p>
-Nothing to see here yet!
+<h2>Stories Available</h2>
+<table>
+  <tr>
+    <th>Story Name</th>
+    <th>Requirements</th>
+    <th>Actions</th>
+  </tr>
+  <% @stories.each do |story| %>
+    <tr>
+      <td><%= story.title %></td>
+      <td>
+        <ul>
+        <% story.requirements.each do |requirement| %>
+          <li>
+            <%= requirement.quality.name %>
+            <%= requirement.modifier %>
+            <%= requirement.amount %>
+          </li>
+        <% end %>
+        </ul>
+      </td>
+      <td>
+        <%= link_to 'Go', story_path(:story_id => story.id, :character_id => @character.id) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= render 'characterstats' %>
+

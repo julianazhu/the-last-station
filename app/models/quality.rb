@@ -1,7 +1,7 @@
 class Quality < ActiveRecord::Base
   has_many :requirements
-  delegate :name, :description, :image_path, to: :characterstats, prefix: true
-  delegate :name, to: :requirements, prefix: true
+  has_many :stats
+  delegate :name, to: :requirements, prefix: true #Not entirely sure this is necessary. Maybe delete.
   validates :name, 
             presence: true, 
             length: { minimum: 3}

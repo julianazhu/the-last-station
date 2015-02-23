@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216234116) do
+ActiveRecord::Schema.define(version: 20150219064913) do
 
-  create_table "character_stat", force: true do |t|
-    t.integer  "character_id"
-    t.integer  "quality_id"
-    t.integer  "points"
+  create_table "branches", force: true do |t|
+    t.integer  "story_id"
+    t.string   "title"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "outcome"
   end
 
   create_table "characters", force: true do |t|
@@ -28,18 +29,10 @@ ActiveRecord::Schema.define(version: 20150216234116) do
   end
 
   create_table "effects", force: true do |t|
-    t.integer  "outcome_id"
+    t.integer  "branch_id"
     t.integer  "quality_id"
     t.string   "modifier"
     t.integer  "amount"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "outcomes", force: true do |t|
-    t.integer  "story_id"
-    t.string   "title"
-    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,13 +48,19 @@ ActiveRecord::Schema.define(version: 20150216234116) do
     t.string   "type"
   end
 
-  add_index "qualities", ["character_id"], name: "index_qualities_on_character_id"
-
   create_table "requirements", force: true do |t|
     t.integer  "story_id"
     t.integer  "quality_id"
     t.string   "modifier"
     t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stats", force: true do |t|
+    t.integer  "character_id"
+    t.integer  "quality_id"
+    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

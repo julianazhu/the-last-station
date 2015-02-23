@@ -1,7 +1,7 @@
 class Effect < ActiveRecord::Base
-  belongs_to :outcome
+  belongs_to :branch
   belongs_to :quality
-  validates :outcome_id,
+  validates :branch_id,
           presence: true
   validates :quality_id, 
           presence: true

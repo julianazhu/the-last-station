@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
   has_many :requirements
-  has_many :outcomes
+  has_many :branches
   validates :title, 
             presence: true, 
             length: { minimum: 3}
