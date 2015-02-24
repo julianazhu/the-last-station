@@ -15,7 +15,7 @@
         <% story.requirements.each do |requirement| %>
           <li>
             <%= requirement.quality.name %>
-            <%= requirement.modifier %>
+            <%= requirement.operation %>
             <%= requirement.amount %>
           </li>
         <% end %>

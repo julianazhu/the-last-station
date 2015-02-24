@@ -3,7 +3,7 @@
     <th>Key</th>
     <th>Story</th>
     <th>Quality Required</th>
-    <th>Modifier</th>
+    <th>Operation</th>
     <th>Amount</th>
     <th>Actions</th>
   </tr>
@@ -12,7 +12,7 @@
       <td><%= requirement.id %></td>
       <td><%= requirement.story.title %></td>
       <td><%= requirement.quality.name %></td>
-      <td><%= requirement.modifier %></td>
+      <td><%= requirement.operation %></td>
       <td><%= requirement.amount %></td>
       <td>
         <%= link_to 'Edit', edit_requirement_path(requirement) %>,

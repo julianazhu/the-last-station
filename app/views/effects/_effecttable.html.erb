@@ -3,7 +3,7 @@
     <th>Key</th>
     <th>Branch</th>
     <th>Quality Required</th>
-    <th>Modifier</th>
+    <th>Operation</th>
     <th>Amount</th>
     <th>Actions</th>
   </tr>
@@ -12,7 +12,7 @@
       <td><%= effect.id %></td>
       <td><%= effect.branch.title %></td>
       <td><%= effect.quality.name %></td>
-      <td><%= effect.modifier %></td>
+      <td><%= effect.operation %></td>
       <td><%= effect.amount %></td>
       <td>
         <%= link_to 'Edit', edit_effect_path(effect) %>,

@@ -5,7 +5,7 @@ class Effect < ActiveRecord::Base
           presence: true
   validates :quality_id, 
           presence: true
-  validates :modifier, 
+  validates :operation, 
           presence: true
   validates :amount, 
           presence: true,

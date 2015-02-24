@@ -14,7 +14,7 @@ before_action :find_story, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @character = Character.where(id: params[:character_id]).first
+    @character = Character.find_by(params[:character_id])
   end
 
   def new

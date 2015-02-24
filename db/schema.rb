@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223224345) do
+ActiveRecord::Schema.define(version: 20150224060841) do
 
   create_table "branches", force: true do |t|
     t.integer  "story_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150223224345) do
   create_table "effects", force: true do |t|
     t.integer  "branch_id"
     t.integer  "quality_id"
-    t.string   "modifier"
+    t.string   "operation"
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150223224345) do
   create_table "requirements", force: true do |t|
     t.integer  "story_id"
     t.integer  "quality_id"
-    t.string   "modifier"
+    t.string   "operation"
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"

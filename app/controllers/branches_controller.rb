@@ -1,6 +1,10 @@
 class BranchesController < ApplicationController
 before_action :find_branch, only: [:show, :edit, :update, :destroy]
 
+  def find_character
+    @character = Character.find(params[:character_id])
+  end
+
   def find_branch
     @branch = Branch.find(params[:branch_id])
   end
@@ -29,8 +33,8 @@ before_action :find_branch, only: [:show, :edit, :update, :destroy]
       @stat = Stat.find_by(character_id: @character_id, quality_id: @quality_id)
       check_stat_exists
       # Save temporary information about old stat points
-      @old_stat_points = @stat.points
-      # Update the Character's stats per the modifier
+      @old_stat_points = @stat.points 
+      # Update the Character's stats per the operation
       @stat.points += effect.amount
       @stat.save
       outcome_summary = "Your #{@quality.name} has increased from #{@old_stat_points} to #{@stat.points}."
@@ -65,6 +69,7 @@ before_action :find_branch, only: [:show, :edit, :update, :destroy]
   def edit
     @qualities = Quality.all
     @stories = Story.all
+    
   end
   
   def create

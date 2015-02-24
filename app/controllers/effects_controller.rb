@@ -1,5 +1,5 @@
 class EffectsController < ApplicationController
-before_action :find_effect, only: [:edit, :update, :destroy]
+before_action :find_effect, only: [:show, :edit, :update, :destroy]
 
   def find_effect
     @effect = Effect.find(params[:id])
@@ -10,6 +10,7 @@ before_action :find_effect, only: [:edit, :update, :destroy]
   end
 
   def show
+    @effects = Effect.all
   end
 
   def new
@@ -60,6 +61,6 @@ before_action :find_effect, only: [:edit, :update, :destroy]
   end
   
   def effect_params
-    params.require(:effect).permit(:branch_id, :quality_id, :modifier, :amount)
+    params.require(:effect).permit(:branch_id, :quality_id, :operation, :amount)
   end
 end

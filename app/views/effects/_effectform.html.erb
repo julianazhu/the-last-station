@@ -23,8 +23,8 @@
       <% end %>
     </p>
     <p>    
-      <%= effect.label :modifier %>
-      <%= effect.select(:modifier, options_for_select([['increase','increase'],['decrease','decrease'],['equals','equals']])) %>
+      <%= effect.label :operation %>
+      <%= effect.select(:operation, options_for_select([['plus','plus'],['minus','minus']])) %>
     </p>
     <p>    
       <%= effect.label :amount %>

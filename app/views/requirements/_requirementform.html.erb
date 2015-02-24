@@ -23,8 +23,8 @@
       <% end %>
     </p>
     <p>    
-      <%= requirement.label :modifier %>
-      <%= requirement.select(:modifier, options_for_select([['greater than','greater than'],['less than','less than'],['equals','equals']])) %>
+      <%= requirement.label :operation %>
+      <%= requirement.select(:operation, options_for_select([['greater than','greater than'],['less than','less than'],['equals','equals']])) %>
     </p>
     <p>    
       <%= requirement.label :amount %>

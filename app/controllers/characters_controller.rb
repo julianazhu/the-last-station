@@ -17,21 +17,21 @@ class CharactersController < ApplicationController
             # else                                             #This Character does not have this quality in their stats. Act as if the Character's stat amount is zero.
               # @stat_amount = 0
             # end
-            # @eligibility = eligibility_calculator(:@stat_amount, :@requirement.modifier, :@requirement.amount)
+            # @eligibility = eligibility_calculator(:@stat_amount, :@requirement.operation, :@requirement.amount)
           # end
       # end
     # end
   # end 
   
-  # def eligibility_calculator(stat_amount, modifier, requirement_amount)
-    # if modifier == "greater than"
+  # def eligibility_calculator(stat_amount, operation, requirement_amount)
+    # if operation == "greater than"
       # stat_amount > requirement_amount
-    # elsif modifier == "less than"
+    # elsif operation == "less than"
       # stat_amount < requirement_amount
-    # elsif modifier == "equals"
+    # elsif operation == "equals"
       # stat_amount == requirement_amount
     # else
-      # "Error: Modifier is not an accepted value. ABORT. FATAL. Ring the catastrophe bell."
+      # "Error: Operation is not an accepted value. ABORT. FATAL. Ring the catastrophe bell."
     # end
   end
   

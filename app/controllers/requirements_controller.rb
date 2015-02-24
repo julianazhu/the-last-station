@@ -59,6 +59,6 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   end
   
   def requirement_params
-    params.require(:requirement).permit(:story_id, :quality_id, :modifier, :amount)
+    params.require(:requirement).permit(:story_id, :quality_id, :operation, :amount)
   end
 end
