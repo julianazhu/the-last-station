@@ -6,7 +6,7 @@ class Branch < ActiveRecord::Base
   validates :title,
             presence: true,
             length: { minimum: 5}
-  validates :body, 
+  validates :description, 
             presence: true,
             length: { minimum: 5}
   validates :outcome, 

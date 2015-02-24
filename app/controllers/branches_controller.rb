@@ -2,7 +2,41 @@ class BranchesController < ApplicationController
 before_action :find_branch, only: [:show, :edit, :update, :destroy]
 
   def find_branch
-    @branch = Branch.find(params[:id])
+    @branch = Branch.find(params[:branch_id])
+  end
+  
+  def check_stat_exists
+    if @stat.nil?
+      create_blank_character_stat
+    end
+  end
+  
+  def create_blank_character_stat
+    @new_stat = Stat.new()
+    @new_stat.character_id = @character_id
+    @new_stat.quality_id = @quality_id
+    @new_stat.points = 0
+    @new_stat.save
+    @stat = @new_stat
+  end
+  
+  def execute_effects
+    @outcomes = []
+    @branch.effects.each do |effect|
+      # Compare the Character's Qualities with each of the Story branch effects.   
+      @quality_id = effect.quality_id
+      @quality = Quality.find_by(:id => @quality_id)
+      @stat = Stat.find_by(character_id: @character_id, quality_id: @quality_id)
+      check_stat_exists
+      # Save temporary information about old stat points
+      @old_stat_points = @stat.points
+      # Update the Character's stats per the modifier
+      @stat.points += effect.amount
+      @stat.save
+      outcome_summary = "Your #{@quality.name} has increased from #{@old_stat_points} to #{@stat.points}."
+      #Create the array of outcomes for the view
+      @outcomes.push(outcome_summary)
+    end
   end
   
   def index
@@ -10,7 +44,11 @@ before_action :find_branch, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @branches = Branch.all
+    @character = Character.find(params[:character_id])
+    @character_id = params[:character_id].to_i
+    unless @character.nil?
+      execute_effects
+    end
   end
 
   def new
@@ -58,6 +96,6 @@ before_action :find_branch, only: [:show, :edit, :update, :destroy]
   end
   
   def branch_params
-    params.require(:branch).permit(:story_id, :title, :body, :outcome)
+    params.require(:branch).permit(:story_id, :title, :description, :outcome)
   end
 end

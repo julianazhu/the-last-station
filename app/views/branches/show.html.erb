@@ -1,6 +1,17 @@
-<p> All Branches for Story:<b><%= @branch.story.title %></b></p>
+<h1><%= @branch.title %></h1>
 
-<%= render 'branchtable'%>
+<p><%= @branch.outcome %></p>
 
-<p><%= link_to 'Show All Stories', stories_path %></p>
-<p><%= link_to 'Show all Branches for All Stories', branches_path %></p>
+<% unless @outcomes.nil? %>
+  <ul>
+  <% @outcomes.each do |outcome| %>
+    <li><%= outcome %></li>
+  <% end %>
+  </ul>
+<% end %>
+<p><%= link_to "Continue", character_path(:branch_id => @branch.id, :character_id => @character.id)%></p>
+
+<% if @character.nil? %>
+  <p><%= link_to 'Show All Stories', stories_path %></p>
+  <p><%= link_to 'Show all Branches for All Stories', branches_path %></p>
+<% end %>

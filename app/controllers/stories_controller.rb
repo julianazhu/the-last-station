@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
 before_action :find_story, only: [:show, :edit, :update, :destroy]
 
   def find_story
-    @story = Story.find(params[:id])
+    @story = Story.find(params[:story_id])
   end
   
   def find_stat(quality_id)
@@ -14,20 +14,7 @@ before_action :find_story, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    if params[:character_id]
-      @character = Character.where(id: params[:character_id]).first           #Get the character
-      @story.effects.each do |effect|                                         #Get each story effect
-        @stat = find_stat(effect.quality_id)
-        if @stat.first.nil?   
-          @stat = Stat.new(params[:stat])                                     #Move this out into its own method
-          @stat.character_id = @character.id
-          @stat.quality_id = effect.quality_id
-          @stat.points = 0
-          @stat.save
-        end
-        @stat.points += effect.amount
-      end
-    end
+    @character = Character.where(id: params[:character_id]).first
   end
 
   def new
