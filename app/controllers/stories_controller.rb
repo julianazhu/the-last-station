@@ -14,7 +14,7 @@ before_action :find_story, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @character = Character.find_by(params[:character_id])
+    @character = Character.find(params[:character_id])
   end
 
   def new
@@ -29,7 +29,7 @@ before_action :find_story, only: [:show, :edit, :update, :destroy]
       if  @story.save
         redirect_to @story
       else
-        render 'new'
+        render 'index'
       end
   end
   

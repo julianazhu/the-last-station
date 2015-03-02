@@ -12,12 +12,15 @@
       <td><%= story.title %></td>
       <td>
         <ul>
-        <% story.requirements.each do |requirement| %>
+        <% if story.requirements.first.nil? %>
+          <li>No requirements.</li>
+        <% else story.requirements.each do |requirement| %>
           <li>
             <%= requirement.quality.name %>
             <%= requirement.operation %>
             <%= requirement.amount %>
           </li>
+          <% end %>
         <% end %>
         </ul>
       </td>
@@ -27,6 +30,6 @@
     </tr>
   <% end %>
 </table>
-
+<br>
 <%= render 'characterstats' %>
 

@@ -1,45 +1,42 @@
 class BranchesController < ApplicationController
 before_action :find_branch, only: [:show, :edit, :update, :destroy]
-
-  def find_character
-    @character = Character.find(params[:character_id])
-  end
+before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
 
   def find_branch
     @branch = Branch.find(params[:branch_id])
   end
   
-  def check_stat_exists
-    if @stat.nil?
-      create_blank_character_stat
-    end
-  end
-  
-  def create_blank_character_stat
-    @new_stat = Stat.new()
-    @new_stat.character_id = @character_id
-    @new_stat.quality_id = @quality_id
-    @new_stat.points = 0
-    @new_stat.save
-    @stat = @new_stat
+  def get_all_qualities_and_stories
+    @qualities = Quality.all
+    @stories = Story.all
   end
   
   def execute_effects
     @outcomes = []
     @branch.effects.each do |effect|
-      # Compare the Character's Qualities with each of the Story branch effects.   
-      @quality_id = effect.quality_id
-      @quality = Quality.find_by(:id => @quality_id)
-      @stat = Stat.find_by(character_id: @character_id, quality_id: @quality_id)
-      check_stat_exists
+      @stat = @character.stats.find_or_initialize_by(:quality_id => effect.quality.id) do |stat|
+        stat.points = 0
+      end
       # Save temporary information about old stat points
       @old_stat_points = @stat.points 
       # Update the Character's stats per the operation
-      @stat.points += effect.amount
+      calculate_effect_result(effect, effect.operation)
       @stat.save
-      outcome_summary = "Your #{@quality.name} has increased from #{@old_stat_points} to #{@stat.points}."
+      outcome_summary = "Your #{effect.quality.name} has #{@operation_description} from #{@old_stat_points} to #{@stat.points}."
       #Create the array of outcomes for the view
       @outcomes.push(outcome_summary)
+    end
+  end
+  
+  def calculate_effect_result(effect, operation)
+    if operation == "plus"
+      @stat.points += effect.amount
+      @operation_description = "increased"
+    elsif operation == "minus"
+      @stat.points -= effect.amount
+      @operation_description = "decreased"
+    else
+      raise "Error: Operation is not an accepted value. ABORT. FATAL. Ring the catastrophe bell."
     end
   end
   
@@ -50,15 +47,11 @@ before_action :find_branch, only: [:show, :edit, :update, :destroy]
   def show
     @character = Character.find(params[:character_id])
     @character_id = params[:character_id].to_i
-    unless @character.nil?
-      execute_effects
-    end
+    execute_effects unless @character.nil?
   end
 
   def new
     @branch = Branch.new
-    @qualities = Quality.all
-    @stories = Story.all
     @story_id = params[:story_id]
       unless @story_id.nil?
         @story = Story.find(@story_id)
@@ -67,15 +60,10 @@ before_action :find_branch, only: [:show, :edit, :update, :destroy]
   end
   
   def edit
-    @qualities = Quality.all
-    @stories = Story.all
-    
   end
   
   def create
     @branch = Branch.new(branch_params)
-    @qualities = Quality.all
-    @stories = Story.all
     if  @branch.save
     redirect_to :controller => 'branches', 
                 :action => 'new',

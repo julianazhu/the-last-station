@@ -5,38 +5,41 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
   end
 
-  def eligible_stories()
-  # Outputs an array of all stories whose requirements are met by the player. Or hash, or something. I have no idea. 
-    # Story.all.each do |story|                              #Loop through each of the stories
-      # story.requirements.each do |requirement|             #Loop through each of the requirements
-        # @quality_id = requirement.quality_id
-          # @character.stats.each do |stat|                    #Loop through each of the Character's stats
-            # @stat_quality_id = stat.quality_id
-            # if @stat_quality_id == @quality_id               #Check if the Character has this quality in their stats
-              # @stat_amount = @stat.amount
-            # else                                             #This Character does not have this quality in their stats. Act as if the Character's stat amount is zero.
-              # @stat_amount = 0
-            # end
-            # @eligibility = eligibility_calculator(:@stat_amount, :@requirement.operation, :@requirement.amount)
-          # end
-      # end
-    # end
-  # end 
+  def find_eligible_stories()
+    @eligible_stories = []
+    loop_through_all_stories
+  end 
   
-  # def eligibility_calculator(stat_amount, operation, requirement_amount)
-    # if operation == "greater than"
-      # stat_amount > requirement_amount
-    # elsif operation == "less than"
-      # stat_amount < requirement_amount
-    # elsif operation == "equals"
-      # stat_amount == requirement_amount
-    # else
-      # "Error: Operation is not an accepted value. ABORT. FATAL. Ring the catastrophe bell."
-    # end
+  def loop_through_all_stories
+    Story.all.each do |story|
+      @story_eligibility = true
+      if story.requirements.first.nil? 
+        @eligible_stories.push(story)
+      else
+        loop_through_story_requirements(story)
+      end
+    end
   end
   
-  def play_story(story_id)
-    
+  def loop_through_story_requirements(story)
+    story.requirements.each do |requirement| 
+      corresponding_character_stat = @character.stats.find_by(quality_id: requirement.quality.id) 
+      @requirement_eligibility = requirement_eligibility_calculator(requirement, corresponding_character_stat)
+      @story_eligibility = @story_eligibility && @requirement_eligibility
+      @eligible_stories.push(story) unless @story_eligibility == false
+    end
+  end
+  
+  def requirement_eligibility_calculator(requirement, stat)
+    if requirement.operation == "greater than"
+      stat.points > requirement.amount
+    elsif requirement.operation == "less than"
+      stat.points < requirement.amount
+    elsif requirment.operation == "equals"
+      stat.points == requirement.amount
+    else
+      raise "Error: Operation is not an accepted type. ABORT. FATAL. Ring the catastrophe bell."
+    end
   end
   
   def index
@@ -44,7 +47,12 @@ class CharactersController < ApplicationController
   end
 
   def show
-    @stories = Story.all
+    if @character.nil?
+      @stories = Story.all
+    else 
+      find_eligible_stories
+      @stories = @eligible_stories
+    end
     @stats = @character.stats
   end
 
