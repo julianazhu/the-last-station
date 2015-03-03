@@ -51,4 +51,5 @@ class Character < ActiveRecord::Base
     end
   end
 
+ private :loop_through_all_stories, :loop_through_story_requirements, :get_corresponding_character_stat, :requirement_eligibility_calculator
 end

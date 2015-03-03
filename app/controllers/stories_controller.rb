@@ -14,7 +14,9 @@ before_action :find_story, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @character = Character.find(params[:character_id])
+    if :character_id?
+      @character = Character.find(params[:character_id])
+    end
   end
 
   def new
@@ -27,9 +29,9 @@ before_action :find_story, only: [:show, :edit, :update, :destroy]
   def create
     @story = Story.new(story_params)
       if  @story.save
-        redirect_to @story
+        redirect_to :action => show, :story_id => @story.id
       else
-        render 'index'
+        render 'new'
       end
   end
   

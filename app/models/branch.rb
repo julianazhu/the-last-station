@@ -25,7 +25,7 @@ class Branch < ActiveRecord::Base
       @outcome_summary = effect.apply(@stat)
       @outcomes.push(@outcome_summary) unless @outcome_summary.nil?
     end
-    @outcomes = @outcomes
+    return @outcomes
   end
 
 end

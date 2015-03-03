@@ -1,3 +1,4 @@
+<div id="storyform">
   <%= form_for @story do |story| %>
     <%= render 'storyformerrors' %>
     <p><%= story.label :title %>
@@ -13,3 +14,4 @@
       <%= story.submit %>
     </p>
   <% end %>
+</div>

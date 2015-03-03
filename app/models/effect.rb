@@ -28,7 +28,7 @@ class Effect < ActiveRecord::Base
     else
       raise "Error: Operation is not an accepted value. ABORT. FATAL. Ring the catastrophe bell."
     end
-    @outcome_summary = "Your #{self.quality.name} has #{operation_description} from #{old_stat_points} to #{stat.points}." unless old_stat_points == 0
+    return "Your #{self.quality.name} has #{operation_description} from #{old_stat_points} to #{stat.points}." unless old_stat_points == 0
   end
 
 

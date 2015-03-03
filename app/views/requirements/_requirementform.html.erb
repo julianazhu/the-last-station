@@ -1,36 +1,57 @@
-  <%= form_for @requirement do |requirement| %>
-    <%= render 'requirementformerrors' %>
-      <%= requirement.label :story_title %>  
-      <%= requirement.select(:story_id) do %>
-        <% @stories.collect{|q| [q.title, q.id]}.each do |c| -%>
-          <% if @requirement.story_id == c.last or c.last == params[:story_id].to_i%>
-            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
-          <% else %>
-            <%= content_tag(:option, c.first, value: c.last) %>
+<%= form_for @requirement do |requirement| %>
+  <%= render 'requirementformerrors' %>
+  <table>
+    <tr>
+      <th>Key</th>
+      <th>Story</th>
+      <th>Quality Required</th>
+      <th>Operation</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+    <% unless @requirements.nil? %>
+      <% @requirements.each do |requirement| %>
+        <tr>
+          <td><%= requirement.id %></td>
+          <td><%= requirement.story.title %></td>
+          <td><%= requirement.quality.name %></td>
+          <td><%= requirement.operation %></td>
+          <td><%= requirement.amount %></td>
+          <td>
+            <%= link_to 'Edit', edit_requirement_path(requirement) %>,
+            <%= link_to 'Destroy', requirement_path(requirement), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <td></td>
+      <td> 
+        <%= requirement.hidden_field :story_id, :value => @story.id %>
+        <b><%= @story.title %></b>
+      </td>
+      <td>    
+        <%= requirement.select(:quality_id) do %>
+          <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
+            <% if @requirement.quality_id == c.last %>
+              <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+            <% else %>
+              <%= content_tag(:option, c.first, value: c.last) %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    <p> 
-      <%= requirement.label :quality_name %>    
-      <%= requirement.select(:quality_id) do %>
-        <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
-          <% if @requirement.quality_id == c.last %>
-            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
-          <% else %>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </p>
-    <p>    
-      <%= requirement.label :operation %>
-      <%= requirement.select(:operation, options_for_select([['greater than','greater than'],['less than','less than'],['equals','equals']])) %>
-    </p>
-    <p>    
-      <%= requirement.label :amount %>
-      <%= requirement.text_field :amount %>
-    </p>
-    <p>
-      <%= requirement.submit %>
-    </p>
-  <% end %>
+      </td>
+      <td>
+        <%= requirement.select(:operation, options_for_select([['greater than','greater than'],
+                                                               ['less than','less than'],
+                                                               ['equals','equals']])) %>
+      </td>
+      <td>
+        <%= requirement.text_field :amount %>
+      </td>
+      <td>
+        <%= requirement.button :submit, name: "story_id", value: @story.id %>
+      </td>
+    </tr>
+  </table>
+<% end %>

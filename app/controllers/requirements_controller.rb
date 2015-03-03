@@ -1,10 +1,15 @@
 class RequirementsController < ApplicationController
 before_action :find_requirement, only: [:edit, :update, :destroy]
 before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
+before_action :find_story, only: [:new, :create]
 
   def get_all_qualities_and_stories
     @qualities = Quality.all
     @stories = Story.all
+  end
+
+  def find_story
+    @story = Story.find(params[:story_id])
   end
 
   def find_requirement
@@ -20,11 +25,7 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
 
   def new
     @requirement = Requirement.new
-    @story_id = params[:story_id]
-      unless @story_id.nil?
-        @story = Story.find(@story_id)
-        @requirements = @story.requirements
-      end
+    @requirements = @story.requirements
   end
   
   def edit
@@ -32,10 +33,8 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   
   def create
     @requirement = Requirement.new(requirement_params)
-    @story_id = params[:story_id]
     if  @requirement.save
-      redirect_to :controller => 'requirements', 
-                  :action => 'new',
+      redirect_to :action => 'new',
                   :story_id => @requirement.story_id
     else
       render 'new'
@@ -59,6 +58,6 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   end
   
   def requirement_params
-    params.require(:requirement).permit(:story_id, :quality_id, :operation, :amount)
+    params.require(:requirement).permit(:quality_id, :operation, :amount, :story_id)
   end
 end
