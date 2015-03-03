@@ -13,8 +13,7 @@ class CharactersController < ApplicationController
     if @character.nil?
       @stories = Story.all
     else 
-      Story.find_eligible_stories(@character)
-      @stories = @eligible_stories
+      @stories = @character.find_eligible_stories
     end
     @stats = @character.stats
   end
