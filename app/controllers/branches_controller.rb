@@ -18,7 +18,7 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   def show
     @character = Character.find(params[:character_id])
     @character_id = params[:character_id].to_i
-    Branch.execute_effects(@branch, @character) unless @character.nil?
+    @outcomes = @branch.execute_effects(@character) unless @character.nil?
   end
 
   def new

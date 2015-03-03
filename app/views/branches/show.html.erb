@@ -1,11 +1,10 @@
 <h1><%= @branch.title %></h1>
 
 <p><%= @branch.outcome %></p>
-
 <% unless @outcomes.nil? %>
   <ul>
   <% @outcomes.each do |outcome| %>
-    <li><%= outcome %></li>
+      <li><%= outcome %></li>
   <% end %>
   </ul>
 <% end %>

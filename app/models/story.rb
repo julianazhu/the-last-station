@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
-  has_many :requirements
-  has_many :branches
+  has_many :requirements, :dependent => :destroy
+  has_many :branches, :dependent => :destroy
   validates :title, 
             presence: true, 
             length: { minimum: 3}
