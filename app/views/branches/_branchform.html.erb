@@ -1,30 +1,22 @@
-<><div id="branch">
+<div id="branch">
   <%= form_for @branch do |branch| %>
     <%= render 'branchformerrors' %>
-      <%= branch.label :story_title %>  
-      <%= branch.select(:story_id) do %>
-        <% @stories.collect{|q| [q.title, q.id]}.each do |c| -%>
-          <% if @branch.story_id == c.last or c.last == params[:story_id].to_i%>
-            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
-          <% else %>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
-        <% end %>
-      <% end %>
-    <p>    
-      <%= branch.label :branch_title %>
-      <%= branch.text_field :title %>
-    </p>
-    <p>    
-      <%= branch.label :branch_description %>
-      <%= branch.text_area :description %>
-    </p>
-    <p>    
-      <%= branch.label :branch_outcome_text %>
-      <%= branch.text_area :outcome %>
-    </p>
-    <p>
-      <%= branch.submit %>
-    </p>
+    <%= branch.hidden_field :story_id, :value => @story.id %>
+    <table>
+      <tr>
+        <td>
+          <%= branch.label :branch_title %>
+          <%= branch.text_field :title %> 
+          <%= branch.label :branch_description %>
+          <%= branch.text_area :description %>
+        </td>
+        <td>   
+          <%= branch.label :branch_outcome_text %>
+          <%= branch.text_area :outcome %>
+          <br>
+          <%= branch.button :submit, name: "story_id", value: @story.id %>
+        </td>
+      </tr>
+    </table>
   <% end %>
 </div>

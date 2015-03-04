@@ -1,14 +1,13 @@
 <h1>Add a New Branch</h1>
 
 <% unless @story_id.nil? %>
-  <p>Existing Branches for Story: <b><%= @story.title %></b></p>
+  <p>Story: <b><%= @story.title %></b></p>
     <% if @branches.count > 0 %>
       <%= render 'branchtable' %>
     <% else %>
       <p><i>There are no branches for this story yet.</i></p>
     <% end %>
 <% end %>
-<br>
 <p><b>New Branch:</b></p>
 <%= render 'branchform' %>
 

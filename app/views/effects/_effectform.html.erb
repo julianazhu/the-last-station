@@ -1,16 +1,42 @@
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Branch</th>
+    <th>Quality Required</th>
+    <th>Operation</th>
+    <th>Amount</th>
+    <th>Actions</th>
+  </tr>
+  <% @effects.each do |effect| %>
+  <tr>
+    <td><%= effect.id %></td>
+    <td><%= effect.branch.title %></td>
+    <td><%= effect.quality.name %></td>
+    <td><%= effect.operation %></td>
+    <td><%= effect.amount %></td>
+    <td>
+      <%= link_to 'Edit', edit_effect_path(effect) %>,
+      <%= link_to 'Destroy', effect_path(effect), method: :delete %>
+    </td>
+  </tr>
+  <% end %>
   <%= form_for @effect do |effect| %>
-    <%= render 'effectformerrors' %>
-      <%= effect.label :branch_title %>  
-      <%= effect.select(:branch_id) do %>
-        <% @branches.collect{|q| [q.title, q.id]}.each do |c| -%>
-          <% if @effect.branch_id == c.last or c.last == params[:branch_id].to_i%>
-            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
-          <% else %>
-            <%= content_tag(:option, c.first, value: c.last) %>
+    <%= render 'effectformerrors' %> 
+    <tr>
+      <td></td>
+      <td>
+        <%= effect.label :branch_title %>  
+        <%= effect.select(:branch_id) do %>
+          <% @branches.collect{|q| [q.title, q.id]}.each do |c| -%>
+            <% if @effect.branch_id == c.last or c.last == params[:branch_id].to_i%>
+              <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+            <% else %>
+              <%= content_tag(:option, c.first, value: c.last) %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    <p> 
+      </td> 
+      <td>
       <%= effect.label :quality_name %>    
       <%= effect.select(:quality_id) do %>
         <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
@@ -21,16 +47,17 @@
           <% end %>
         <% end %>
       <% end %>
-    </p>
-    <p>    
-      <%= effect.label :operation %>
-      <%= effect.select(:operation, options_for_select([['plus','plus'],['minus','minus']])) %>
-    </p>
-    <p>    
-      <%= effect.label :amount %>
-      <%= effect.text_field :amount %>
-    </p>
-    <p>
-      <%= effect.submit %>
-    </p>
+      </td>
+      <td>    
+        <%= effect.label :operation %>
+        <%= effect.select(:operation, options_for_select([['plus','plus'],['minus','minus']])) %>
+      </td>
+      <td>    
+        <%= effect.label :amount %>
+        <%= effect.text_field :amount %>
+      </td>
+      <td>
+        <%= effect.submit %>
+    </tr>
   <% end %>
+</table>

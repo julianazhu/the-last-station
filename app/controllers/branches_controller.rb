@@ -1,6 +1,7 @@
 class BranchesController < ApplicationController
 before_action :find_branch, only: [:show, :edit, :update, :destroy]
 before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
+before_action :get_root_story, only: [:new, :create]
 
   def find_branch
     @branch = Branch.find(params[:branch_id])
@@ -9,6 +10,19 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   def get_all_qualities_and_stories
     @qualities = Quality.all
     @stories = Story.all
+  end
+
+  def get_root_story
+    @story_id = params[:story_id]
+    unless @story_id.nil?
+      @story = Story.find(@story_id)
+      @branches = @story.branches
+    end
+  end
+
+  def redirect_to_new_branch
+    redirect_to :action => 'new',
+                :story_id => @branch.story_id
   end
   
   def index
@@ -23,11 +37,6 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
 
   def new
     @branch = Branch.new
-    @story_id = params[:story_id]
-      unless @story_id.nil?
-        @story = Story.find(@story_id)
-        @branches = @story.branches
-      end
   end
   
   def edit
@@ -36,9 +45,7 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   def create
     @branch = Branch.new(branch_params)
     if  @branch.save
-    redirect_to :controller => 'branches', 
-                :action => 'new',
-                :story_id => @branch.story_id
+      redirect_to_new_branch
     else
       render 'new'
     end
@@ -46,7 +53,7 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   
   def update
     if @branch.update(branch_params)
-      redirect_to @branch
+      redirect_to_new_branch
     else
       render 'edit'
     end
@@ -54,9 +61,7 @@ before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
   
   def destroy
     @branch.destroy
-    redirect_to :controller => 'branches', 
-                :action => 'new',
-                :story_id => @branch.story_id
+    redirect_to_new_branch
   end
   
   def branch_params
