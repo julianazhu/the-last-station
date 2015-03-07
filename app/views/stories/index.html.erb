@@ -9,7 +9,6 @@
     <th>Actions</th>
     <th>Requirements</th>
     <th>Branches</th>
-    <th>Effects</th>
   </tr>
  
   <% @stories.each do |story| %>
@@ -23,7 +22,6 @@
       </td>
       <td><%= link_to 'Show/Add Requirements', new_requirement_path(:story_id => story.id) %></td>
       <td><%= link_to 'Show/Add Branches', new_branch_path(:story_id => story.id) %></td>
-      <td><%= link_to 'Show/Add Effects', new_effect_path(:story_id => story.id) %></td>
       </tr>
   <% end %>
 </table>

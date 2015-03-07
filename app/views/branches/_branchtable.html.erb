@@ -6,6 +6,7 @@
     <th>Description</th>
     <th>Outcome</th>
     <th>Actions</th>
+    <th>Effects</th>
   </tr>
   <% @branches.each do |branch| %>
     <tr>
@@ -17,6 +18,9 @@
       <td>
         <%= link_to 'Edit', edit_branch_path(branch) %>,
         <%= link_to 'Destroy', branch_path(branch), method: :delete %>
+      </td>
+      <td>
+        <%= link_to 'Show/Add Effects', new_effect_path(:branch_id => branch.id) %>
       </td>
     </tr>
   <% end %>

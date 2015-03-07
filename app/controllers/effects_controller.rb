@@ -1,6 +1,8 @@
 class EffectsController < ApplicationController
 before_action :find_effect, only: [:show, :edit, :update, :destroy]
-before_action :get_all_effects, only: [:index, :show, :new, :create]
+before_action :get_all_effects, only: [:index, :show, :edit]
+before_action :find_root_branch, only: [:new, :create, :edit, :destroy]
+before_action :get_all_qualities, only: [:new, :create, :edit]
 
   def find_effect
     @effect = Effect.find(params[:id])
@@ -8,6 +10,15 @@ before_action :get_all_effects, only: [:index, :show, :new, :create]
 
   def get_all_effects
     @effects = Effect.all
+  end
+
+  def find_root_branch
+    @branch = Branch.find(params[:branch_id])
+    @effects = @branch.effects
+  end
+
+  def get_all_qualities
+    @qualities = Quality.all
   end
   
   def index
@@ -18,25 +29,15 @@ before_action :get_all_effects, only: [:index, :show, :new, :create]
 
   def new
     @effect = Effect.new
-    @qualities = Quality.all
-    @branches = Branch.all
-    @story_id = params[:story_id]
-    unless @story_id.nil?
-      @story = Story.find(@story_id)
-      @branches = @story.branches
-    end
   end
   
   def edit
     @qualities = Quality.all
-    @branches = Branch.all
   end
   
   def create
-    @effect = Effect.new(effect_params)
-    @qualities = Quality.all
-    @branches = Branch.all
-    @branch_id = params[:branch_id]
+    @effect = Effect.find_or_initialize_by(:branch_id => @branch.id, :quality_id => params[:effect][:quality_id])
+    @effect.attributes = effect_params
     if  @effect.save
       redirect_to :action => 'new',
                   :branch_id => @effect.branch_id
@@ -55,9 +56,7 @@ before_action :get_all_effects, only: [:index, :show, :new, :create]
   
   def destroy
     @effect.destroy
-    @branch_id = params[:branch_id]
-    redirect_to :controller => 'effects', 
-                :action => 'new',
+    redirect_to :action => 'new',
                 :branch_id => @effect.branch_id
   end
   
