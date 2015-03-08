@@ -14,44 +14,75 @@
  *= require_self
  */
 table { 
- border-collapse: collapse; 
- border: 1px solid;
- max-width: 100%;
+  border-collapse: collapse; 
+  border: 1px solid;
+  max-width: 100%;
 }
 
 table td{
-border:1px solid #000000;
-padding: 5px;
-vertical-align: bottom;
+  border: 1px solid #000000;
+  padding: 5px;
+  vertical-align: bottom;
 }
 
 table th{
-border:1px solid #000000;
-padding: 5px;
+  border: 1px solid #000000;
+  padding: 5px;
 }
 
 text_field {
-width: 50px;
+  width: 50px;
 }
 
 text_area {
-height: 100px;
-width:200px;
+  height: 100px;
+  width: 200px;
 }
 
 label {
-    display: block;
+  display: block;
 }
 
 input {
-    width: 200px;
+  width: 100%;
 }
 
 select {
-    width: 180px;
+  width: 180px;
 }
 
 textarea {
-    height: 200px;
-    width: 400px;
+  height: 200px;
+  width: 100%;
+  min-width: 400px;
+}
+
+#storyform_and_requirementform_wrapper {
+  float:left;
+  border: 1px solid #000000;
+  border-radius: 1%;
+  padding: 1% ;
+  max-width: 100%;
+}
+
+#storyform {
+  float: left;
+  border-right: 1px solid #d3d3d3;
+  padding: 0% 3% 0% 1%;
+  max-width: 46%;
+}
+
+#requirementform {
+  float: left;
+  padding: 1%;
+  max-width: 46%;
+  padding: 0% 1% 0% 3%;
+}
+
+#requirement_amount{
+  max-width: 50px;
+}
+
+#requirement_operation{
+  max-width: 110px;
 }

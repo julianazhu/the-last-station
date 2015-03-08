@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   resources :characters
-  resources :stories
+  resources :stories do
+    member do
+      post 'update_or_create_requirement'
+    end
+  end
   resources :qualities
   resources :requirements
   resources :branches
   resources :effects
   
   root 'characters#new'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

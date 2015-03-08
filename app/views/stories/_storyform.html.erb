@@ -1,17 +1,20 @@
-<div id="storyform">
-  <%= form_for @story do |story| %>
-    <%= render 'storyformerrors' %>
-    <p><%= story.label :title %>
-       <%= story.text_field :title %>
-    </p>
-    <p>    <%= story.label :body %>
-           <%= story.text_area :body %>
-    </p>
-    <p>    <%= story.label :image_path %>
-           <%= story.text_field :image_path %>
-    </p>
-    <p>
-      <%= story.submit %>
-    </p>
-  <% end %>
+<div id="storyform_and_requirementform_wrapper">
+  <div id="storyform">
+    <%= form_for @story do |story| %>
+      <%= render 'storyformerrors' %>
+      <h3><%= story.label :title %>
+         <%= story.text_field :title %>
+      </h3>
+      <p>    <%= story.label :image_path %>
+             <%= story.text_field :image_path %>
+      </p>
+      <p>    <%= story.label :body %>
+             <%= story.text_area :body %>
+      </p>
+      <p>
+        <%= story.submit %>
+      </p>
+    <% end %>
+  </div>
+  <%= render 'requirementform'%>
 </div>
