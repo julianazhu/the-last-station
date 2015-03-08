@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :characters
   resources :stories do
-    member do
+    collection do
       post 'update_or_create_requirement'
     end
   end

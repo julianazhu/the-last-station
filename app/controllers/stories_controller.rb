@@ -4,10 +4,10 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
 
   def find_story
     if params[:id].blank?
-      params[:id] = Story.last.id + 1
+      @story = Story.new
+    else
+      @story = Story.find(params[:id])
     end
-    @story = Story.find_or_create_by(:id => params[:id])
-    @story.save
   end
   
   # Not sure if this is needed any more
@@ -27,10 +27,11 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
 
   def update_or_create_requirement
     @qualities = Quality.all
+    @story.save
     @requirement = Requirement.find_or_initialize_by(:story_id => @story.id, :quality_id => params[:requirement][:quality_id])
     @requirement.attributes = requirement_params
     if  @requirement.save
-      redirect_to edit_story_path
+      redirect_to :action => 'edit', :id => @story.id
     else
       find_story_requirements
       render 'edit'
