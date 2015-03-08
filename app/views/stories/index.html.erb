@@ -5,7 +5,6 @@
     <th>Key</th>
     <th>Title</th>
     <th>Actions</th>
-    <th>Requirements</th>
     <th>Branches</th>
   </tr>
  
@@ -16,7 +15,6 @@
       <td><%= link_to 'Edit Story', edit_story_path(:id => story.id, :story_id => story.id) %>,
           <%= link_to 'Delete Story', story_path(:id => story.id, :story_id => story.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
-      <td><%= link_to 'Show/Add Requirements', new_requirement_path(:story_id => story.id) %></td>
       <td><%= link_to 'Show/Add Branches', new_branch_path(:story_id => story.id) %></td>
       </tr>
   <% end %>

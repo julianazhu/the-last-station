@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     collection do
       post 'update_or_create_requirement'
     end
+    member do
+      delete 'destroy_requirement'
+    end
   end
   resources :qualities
-  resources :requirements
   resources :branches
   resources :effects
   

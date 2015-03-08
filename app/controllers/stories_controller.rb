@@ -38,6 +38,12 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
     end
   end
 
+  def destroy_requirement
+    @requirement = Requirement.find(params[:requirement_id])
+    @requirement.destroy
+    redirect_to new_story_path(@story)
+  end
+
   def index
     @stories = Story.all
   end
