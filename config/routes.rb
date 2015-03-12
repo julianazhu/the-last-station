@@ -9,7 +9,14 @@ Rails.application.routes.draw do
     end
   end
   resources :qualities
-  resources :branches
+  resources :branches do
+    collection do
+      post 'update_or_create_effect'
+    end
+    member do
+      delete 'destroy_effect'
+    end
+  end
   resources :effects
   
   root 'characters#new'

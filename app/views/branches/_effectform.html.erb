@@ -1,0 +1,44 @@
+<h3>Branch Effects</h3>
+<table>
+  <tr>
+    <th>Quality</th>
+    <th>Operation</th>
+    <th>Amount</th>
+    <th>Actions</th>
+  </tr>
+  <% current_branch.effects.each do |effect| %>
+  <tr>
+    <td><%= effect.quality.name %></td>
+    <td><%= effect.operation %></td>
+    <td><%= effect.amount %></td>
+    <td>
+      <%= link_to 'Delete', destroy_effect_branch_path(:effect_id => effect, :id => current_branch.id), method: :delete %>
+    </td>
+  </tr>
+  <% end %>
+  <%= form_for @effect, :url => url_for(:controller => 'branches', :action => 'update_or_create_effect') do |effect| %>
+    <%= render 'effectformerrors' %> 
+    <%= effect.hidden_field :branch_id, :value => current_branch.id %>
+    <tr>
+      <td>
+      <%= effect.select(:quality_id) do %> 
+        <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
+          <% if @effect.quality_id == c.last %>
+            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
+          <% else %>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      <% end %>
+      </td>
+      <td>    
+        <%= effect.select(:operation, options_for_select([['plus','plus'],['minus','minus']])) %>
+      </td>
+      <td>    
+        <%= effect.text_field :amount %>
+      </td>
+      <td>
+        <%= effect.button :submit, name: "branch_id", value: current_branch.id %>
+    </tr>
+  <% end %>
+</table>

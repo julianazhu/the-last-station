@@ -1,10 +1,13 @@
 class BranchesController < ApplicationController
-before_action :find_branch, only: [:show, :edit, :update, :destroy]
+before_action :find_branch, only: [:show, :edit, :update, :destroy, :update_or_create_effect]
 before_action :get_all_qualities_and_stories, only: [:new, :edit, :create]
-before_action :get_root_story, only: [:new, :create]
+before_action :get_root_story, only: [:new, :create, :edit]
+before_action :new_effect, only: [:new, :edit]
 
   def find_branch
-    @branch = Branch.find(params[:branch_id])
+    unless params[:branch_id].nil? 
+      @branch = Branch.find(params[:branch_id])
+    end
   end
   
   def get_all_qualities_and_stories
@@ -24,7 +27,32 @@ before_action :get_root_story, only: [:new, :create]
     redirect_to :action => 'new',
                 :story_id => @branch.story_id
   end
-  
+
+  def update_or_create_effect
+    @story = @branch.story
+    @qualities = Quality.all
+    @branch.save
+    @branches = @story.branches
+    @effect = Effect.find_or_initialize_by(:branch_id => @branch.id, :quality_id => params[:effect][:quality_id])
+    @effect.attributes = effect_params
+    if  @effect.save
+      redirect_to :action => 'edit', :id => @branch.id
+    else
+      @effects = @branch.effects
+      render 'edit'
+    end
+  end
+
+  def destroy_effect
+    @effect = Effect.find(params[:effect_id])
+    @effect.destroy
+    redirect_to new_branch_path(@branch)
+  end
+
+  def new_effect
+    @effect = Effect.new
+  end
+
   def index
     @branches = Branch.all
   end
@@ -40,6 +68,9 @@ before_action :get_root_story, only: [:new, :create]
   end
   
   def edit
+    @branches = Branch.all
+    @branch = Branch.find(params[:id])
+    @story = @branch.story
   end
   
   def create
@@ -63,8 +94,13 @@ before_action :get_root_story, only: [:new, :create]
     @branch.destroy
     redirect_to_new_branch
   end
-  
+
+  private
   def branch_params
     params.require(:branch).permit(:story_id, :title, :description, :outcome)
+  end
+
+  def effect_params
+    params.require(:effect).permit(:branch_id, :quality_id, :operation, :amount)
   end
 end
