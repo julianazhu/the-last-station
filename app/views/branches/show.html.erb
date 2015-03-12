@@ -8,7 +8,7 @@
   <% end %>
   </ul>
 <% end %>
-<p><%= link_to "Continue", character_path(:character_id => @character.id, :branch_id => @branch.id)%></p>
+<p><%= link_to "Continue", character_path()%></p>
 
 <% if @character.nil? %>
   <p><%= link_to 'Show All Stories', stories_path %></p>

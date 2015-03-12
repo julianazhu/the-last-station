@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
   before_action :find_character, only: [:show, :edit, :update, :destroy, :eligible_stories]
   
   def find_character
-    @character = Character.find(params[:id])
+    @character = Character.find(params[:character_id])
   end
   
   def index

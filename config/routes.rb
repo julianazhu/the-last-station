@@ -1,25 +1,61 @@
 Rails.application.routes.draw do
-  resources :characters
-  resources :stories do
-    collection do
-      post 'update_or_create_requirement'
-    end
-    member do
-      delete 'destroy_requirement'
-    end
-  end
-  resources :qualities
-  resources :branches do
-    collection do
-      post 'update_or_create_effect'
-    end
-    member do
-      delete 'destroy_effect'
-    end
-  end
-  resources :effects
-  
   root 'characters#new'
+
+  #Character Routes
+  get 'characters' => 'characters#index', as: :characters
+  post 'characters' => 'characters#create'
+  get 'characters/new' => 'characters#new', as: :new_character
+  get 'characters/:character_id/rename' => 'characters#edit' , as: :edit_character
+  get 'characters/:character_id' => 'characters#show', as: :character
+  patch 'characters/:character_id' => 'characters#update'
+  delete 'characters/:character_id' => 'characters#destroy'
+
+  #Stories Routes
+  get 'stories' => 'stories#index', as: :stories
+  post 'stories' => 'stories#create'
+  get 'stories/new' => 'stories#new', as: :new_story
+  get 'stories/:story_id/edit' => 'stories#edit', as: :edit_story
+  get 'stories/:story_id' => 'stories#show', as: :story
+  get 'characters/:character_id/:story_id' => 'stories#show', as: :play_story
+  patch 'stories/:story_id' => 'stories#update'
+  delete 'stories/:story_id' => 'stories#destroy' 
+  post 'stories/:story_id/update_requirements' => 'stories#update_or_create_requirement'
+  delete 'stories/:story_id/delete_requirements' => 'stories#destroy_requirement', as: :destroy_requirement
+
+
+  #Qualities Routes
+  resources :qualities
+  
+  #Branches Routes
+  post 'stories/:story_id/branches' => 'branches#create', as: :branches
+  get 'stories/:story_id/branches/new' => 'branches#new', as: :new_branch
+  get 'stories/:story_id/:branch_id/edit' => 'branches#edit', as: :edit_branch
+  get 'stories/:story_id/:branch_id' => 'branches#show', as: :branch
+  patch 'stories/:story_id/:branch_id' => 'branches#update'
+  delete 'stories/:story_id/:branch_id' => 'branches#destroy'
+  get 'characters/:character_id/:story_id/:branch_id' => 'branches#show'
+  post 'stories/:story_id/:branch_id/update_effects' => 'branches#update_or_create_effect'
+  delete 'stories/:story_id/:branch_id/delete_effect' => 'branches#destroy_effect', as: :destroy_effect
+
+
+  # resources :stories do
+  #   collection do
+  #     post 'update_or_create_requirement'
+  #   end
+  #   member do
+  #     delete 'destroy_requirement'
+  #   end
+  # end
+  # resources :branches do
+  #   collection do
+  #     post 'update_or_create_effect'
+  #   end
+  #   member do
+  #     delete 'destroy_effect'
+  #   end
+  # end
+  # resources :effects
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

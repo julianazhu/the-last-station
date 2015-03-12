@@ -3,11 +3,7 @@ before_action :find_story, only: [:new, :show, :edit, :update, :destroy, :update
 before_action :set_up_new_requirement, only: [:new, :edit, :update]
 
   def find_story
-    if params[:id].blank?
-      @story = Story.new
-    else
-      @story = Story.find(params[:id])
-    end
+      @story = Story.find(params[:story_id])
   end
   
   # Not sure if this is needed any more
@@ -31,7 +27,7 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
     @requirement = Requirement.find_or_initialize_by(:story_id => @story.id, :quality_id => params[:requirement][:quality_id])
     @requirement.attributes = requirement_params
     if  @requirement.save
-      redirect_to :action => 'edit', :id => @story.id
+      redirect_to :action => 'edit', :story_id => @story.id
     else
       find_story_requirements
       render 'edit'
@@ -67,7 +63,7 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
     @story = Story.new(story_params)
 
     if  @story.save
-    redirect_to :action => 'new', :id => @story.id
+    redirect_to :action => 'new', :story_id => @story.id
     else
       render 'new'
     end
@@ -75,7 +71,7 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
   
   def update
     if @story.update(story_params)
-      redirect_to :action => 'edit', :id => @story.id
+      redirect_to :action => 'edit', :story_id => @story.id
     else
       render 'edit'
     end

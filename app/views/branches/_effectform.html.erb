@@ -12,11 +12,11 @@
     <td><%= effect.operation %></td>
     <td><%= effect.amount %></td>
     <td>
-      <%= link_to 'Delete', destroy_effect_branch_path(:effect_id => effect, :id => current_branch.id), method: :delete %>
+      <%= link_to 'Delete', destroy_effect_path(:effect_id => effect.id, :branch_id => current_branch.id), method: :delete %>
     </td>
   </tr>
   <% end %>
-  <%= form_for @effect, :url => url_for(:controller => 'branches', :action => 'update_or_create_effect') do |effect| %>
+  <%= form_for @effect, :url => url_for(:controller => 'branches', :action => 'update_or_create_effect', :branch_id => current_branch.id, :story_id => @story.id) do |effect| %>
     <%= render 'effectformerrors' %> 
     <%= effect.hidden_field :branch_id, :value => current_branch.id %>
     <tr>
@@ -38,7 +38,7 @@
         <%= effect.text_field :amount %>
       </td>
       <td>
-        <%= effect.button :submit, name: "branch_id", value: current_branch.id %>
+        <%= effect.button :submit %>
     </tr>
   <% end %>
 </table>

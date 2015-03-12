@@ -16,7 +16,7 @@
             <td><%= requirement.operation %></td>
             <td><%= requirement.amount %></td>
             <td>
-              <%= link_to 'Delete', destroy_requirement_story_path(:requirement_id => requirement, :id => @story.id), method: :delete %>
+              <%= link_to 'Delete', destroy_requirement_path(:requirement_id => requirement, :id => @story.id), method: :delete %>
             </td>
           </tr>
         <% end %>

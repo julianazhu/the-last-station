@@ -12,7 +12,7 @@
              <%= story.text_area :body %>
       </p>
       <p>
-        <%= story.submit %>
+        <%= story.button :submit, name: "story_id", value: @story.id %>
       </p>
     <% end %>
   </div>
