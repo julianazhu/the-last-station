@@ -37,25 +37,6 @@ Rails.application.routes.draw do
   post 'stories/:story_id/:branch_id/update_effects' => 'branches#update_or_create_effect'
   delete 'stories/:story_id/:branch_id/delete_effect' => 'branches#destroy_effect', as: :destroy_effect
 
-
-  # resources :stories do
-  #   collection do
-  #     post 'update_or_create_requirement'
-  #   end
-  #   member do
-  #     delete 'destroy_requirement'
-  #   end
-  # end
-  # resources :branches do
-  #   collection do
-  #     post 'update_or_create_effect'
-  #   end
-  #   member do
-  #     delete 'destroy_effect'
-  #   end
-  # end
-  # resources :effects
-
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
