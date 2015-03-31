@@ -1,51 +1,35 @@
 <div id="requirementform">
   <h3>Story Requirements</h3>
-  <%= form_for @requirement, :url => url_for(:controller => 'stories', :action => 'update_or_create_requirement') do |requirement| %>
-    <%= render 'requirementformerrors' %>
-    <table>
-      <tr>
-        <th>Quality Required</th>
-        <th>Operation</th>
-        <th>Amount</th>
-        <th>Actions</th>
-      </tr>
-      <% unless @requirements.nil? %>
-        <% @requirements.each do |requirement| %>
-          <tr>
-            <td><%= requirement.quality.name %></td>
-            <td><%= requirement.operation %></td>
-            <td><%= requirement.amount %></td>
-            <td>
-              <%= link_to 'Delete', destroy_requirement_path(:requirement_id => requirement, :id => @story.id), method: :delete %>
-            </td>
-          </tr>
-        <% end %>
+  <table>
+    <tr>
+      <th>Quality Required</th>
+      <th>Operation</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+    <%= story.fields_for :requirements do |requirement| %>
+    <tr class="requirement_fields">
+      <% unless requirement.object.id.blank? %>
+        <%= requirement.hidden_field(:id, :value => requirement.object.id)%>
       <% end %>
-      <tr>
-        <%= requirement.hidden_field :id, :value => @story.id %>
-        <td>    
-          <%= requirement.select(:quality_id) do %>
-            <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
-              <% if @requirement.quality_id == c.last %>
-                <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
-              <% else %>
-                <%= content_tag(:option, c.first, value: c.last) %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </td>
-        <td>
-          <%= requirement.select(:operation, options_for_select([['greater than','greater than'],
-                                                                 ['less than','less than'],
-                                                                 ['equals','equals']])) %>
-        </td>
-        <td>
-          <%= requirement.text_field :amount %>
-        </td>
-        <td>
-          <%= requirement.button :submit, name: "id", value: @story.id %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
+      <td>    
+        <%= requirement.select(:quality_id, Quality.all.collect {|q| [ q.name, q.id ] }, { include_blank: true }) %>
+      </td> 
+      <td>
+        <%= requirement.select(:operation, [['greater than','greater than'], ['less than','less than'],['equals','equals']], { include_blank: true }) %>
+      </td>
+      <td>
+        <%= requirement.text_field :amount %>
+      </td>
+      <td>
+        <%= requirement.hidden_field :_destroy %>
+        <% if requirement.object.id.blank? %>
+          <div id="submit_button"><%= story.button :submit, name: "story_id", value: @story.id %></div>
+        <% else %>
+          <%= link_to "Delete", destroy_requirement_path(:requirement_id => requirement.object.id, :story_id => @story.id), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 </div>

@@ -1,4 +1,4 @@
-/*
+  /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -52,9 +52,9 @@ select {
 }
 
 textarea {
-  height: 200px;
+  height: 150px;
   width: 100%;
-  min-width: 400px;
+  min-width: 330px;
 }
 
 #storyform_and_requirementform_wrapper {
@@ -76,14 +76,6 @@ textarea {
   float: left;
   padding: 0% 1% 0% 3%;
   max-width: 46%;
-}
-
-#requirement_amount{
-  max-width: 50px;
-}
-
-#requirement_operation{
-  max-width: 110px;
 }
 
 .branch_card{
@@ -111,4 +103,8 @@ textarea {
 
 #branch_description{
   height:80px;
+}
+
+#submit_button{
+  clear: left;
 }

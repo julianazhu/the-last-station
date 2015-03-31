@@ -1,4 +1,4 @@
-<h3>Branch Effects</h3>
+<b>Branch Effects</b>
 <table>
   <tr>
     <th>Quality</th>
@@ -12,7 +12,7 @@
     <td><%= effect.operation %></td>
     <td><%= effect.amount %></td>
     <td>
-      <%= link_to 'Delete', destroy_effect_path(:effect_id => effect.id, :branch_id => current_branch.id), method: :delete %>
+      <%= link_to 'Delete', destroy_effect_path(:effect_id => effect.id, :branch_id => current_branch.id, :story_id => params[:story_id]), method: :delete %>
     </td>
   </tr>
   <% end %>

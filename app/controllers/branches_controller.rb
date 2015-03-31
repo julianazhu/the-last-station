@@ -1,5 +1,5 @@
 class BranchesController < ApplicationController
-before_action :find_branch, only: [:show, :edit, :update, :destroy, :update_or_create_effect]
+before_action :find_branch, only: [:show, :edit, :destroy, :update, :update_or_create_effect]
 before_action :get_all_qualities_and_stories, only: [:new, :edit, :create, :update_or_create_effect]
 before_action :get_root_story, only: [:new, :create, :edit, :update_or_create_effect]
 before_action :new_effect, only: [:new, :edit]
@@ -56,7 +56,7 @@ before_action :new_effect, only: [:new, :edit]
   def show
     @character = Character.find(params[:character_id])
     @character_id = params[:character_id].to_i
-    @outcomes = @branch.execute_effects(@character) unless @character.nil?
+    @outcomes = @branch.execute_branch_effects(@character) unless @character.nil?
   end
 
   def new
@@ -65,8 +65,6 @@ before_action :new_effect, only: [:new, :edit]
   
   def edit
     @branches = Branch.all
-    @branch = Branch.find(params[:branch_id])
-    @story = @branch.story
   end
   
   def create
@@ -80,8 +78,9 @@ before_action :new_effect, only: [:new, :edit]
   
   def update
     if @branch.update(branch_params)
-      redirect_to_new_branch
+      redirect_to :action => 'edit'
     else
+    raise 
       render 'edit'
     end
   end

@@ -1,10 +1,9 @@
 class Requirement < ActiveRecord::Base
   belongs_to :story
   belongs_to :quality
-  validates :story_id,
-          presence: true
   validates :quality_id, 
-          presence: true
+          presence: true,
+          uniqueness: { scope: :story_id, message: "can't be the same as another requirement."}
   validates :operation, 
           presence: true
   validates :amount, 

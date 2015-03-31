@@ -1,34 +1,22 @@
 <% @branches.each do |branch| %>
+  <%= form_for branch, as: :patch, url: update_branch_path(branch, :branch_id => branch.id) do |b| %>
   <div class="branch_card">
+    <%= render 'branchformerrors', :branch => b %>
+    <%= b.hidden_field :branch_id, :value => branch.id %>
+    <%= b.hidden_field :story_id, :value => @story.id %>
     <div class ="branch_card_left_column">
-      <p>
-        <%= link_to 'Edit Branch', edit_branch_path(:branch_id => branch.id) %> |
-        <%= link_to 'Delete Branch', branch_path(:story_id => branch.story.id, :branch_id => branch.id), method: :delete %>
-      </p>
-      <p><b>Title: </b><%= branch.title %></p>
-      <p><b>Hook: </b><br><%= branch.description %></p>
-      <p><b>Outcome: </b><br><%= branch.outcome %></p>
-    </div>
+      <b><%= b.label :Title %></b>
+      <%= b.text_field :title %> 
+      <b><%= b.label(:Hook, class: "branch_description") %></b>
+      <%= b.text_area :description %>
+      <b><%= b.label :Outcome %></b>
+      <%= b.text_area :outcome %>
+      <br>
+      <%= b.button :submit %>
+    </div>  
     <div class ="branch_card_right_column">
       <p><%= render 'effectform', :current_branch => branch %></p>
     </div>
   </div>
-<% end %>
-<div class="branch_card">
-  <%= form_for @branch, :url => url_for(:action => 'new') do |branch| %>
-    <%= render 'branchformerrors' %>
-    <%= branch.hidden_field :story_id, :value => @story.id %>
-    <div class ="branch_card_left_column">
-      <b><%= branch.label :Title %></b>
-      <%= branch.text_field :title %> 
-      <b><%= branch.label(:Hook, class: "branch_description") %></b>
-      <%= branch.text_area :description %>
-      <b><%= branch.label :Outcome %></b>
-      <%= branch.text_area :outcome %>
-      <br>
-      <%= branch.button :submit %>
-    </div>  
-    <div class ="branch_card_right_column">
-    </div>
   <% end %>
-</div>
+<% end %>
