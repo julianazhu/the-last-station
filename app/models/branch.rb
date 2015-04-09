@@ -1,7 +1,9 @@
 class Branch < ActiveRecord::Base
-  has_many :effects, :dependent => :destroy
   belongs_to :story
-  accepts_nested_attributes_for :effects, :reject_if => lambda { |a| a[:amount].blank? }
+  has_many :effects, :dependent => :destroy
+  accepts_nested_attributes_for :effects,
+                                :reject_if => :all_blank, 
+                                :allow_destroy => true
   validates :story_id, 
             presence: true
   validates :title,

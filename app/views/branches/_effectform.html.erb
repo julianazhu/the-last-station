@@ -1,44 +1,35 @@
-<b>Branch Effects</b>
-<table>
-  <tr>
-    <th>Quality</th>
-    <th>Operation</th>
-    <th>Amount</th>
-    <th>Actions</th>
-  </tr>
-  <% current_branch.effects.each do |effect| %>
-  <tr>
-    <td><%= effect.quality.name %></td>
-    <td><%= effect.operation %></td>
-    <td><%= effect.amount %></td>
-    <td>
-      <%= link_to 'Delete', destroy_effect_path(:effect_id => effect.id, :branch_id => current_branch.id, :story_id => params[:story_id]), method: :delete %>
-    </td>
-  </tr>
-  <% end %>
-  <%= form_for @effect, :url => url_for(:controller => 'branches', :action => 'update_or_create_effect', :branch_id => current_branch.id, :story_id => @story.id) do |effect| %>
-    <%= render 'effectformerrors' %> 
-    <%= effect.hidden_field :branch_id, :value => current_branch.id %>
+<div id="effectform">
+  <h3>Branch Effects</h3>
+  <table>
     <tr>
-      <td>
-      <%= effect.select(:quality_id) do %> 
-        <% @qualities.collect{|q| [q.name, q.id]}.each do |c| -%>
-          <% if @effect.quality_id == c.last %>
-            <%= content_tag(:option, c.first, value: c.last, :selected => true) %>
-          <% else %>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
-        <% end %>
+      <th>Quality Required</th>
+      <th>Operation</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+    <%= branch.fields_for :effects do |effect| %>
+    <tr class="effect_fields">
+      <% unless effect.object.id.blank? %>
+        <%= effect.hidden_field(:id, :value => effect.object.id)%>
       <% end %>
-      </td>
       <td>    
-        <%= effect.select(:operation, options_for_select([['plus','plus'],['minus','minus']])) %>
+        <%= effect.select(:quality_id, Quality.all.collect {|q| [ q.name, q.id ] }, { include_blank: true }) %>
+      </td> 
+      <td>
+        <%= effect.select(:operation, [['plus','plus'], ['minus','minus'],['equals','equals']], { include_blank: true }) %>
       </td>
-      <td>    
+      <td>
         <%= effect.text_field :amount %>
       </td>
       <td>
-        <%= effect.button :submit %>
+        <%= effect.hidden_field :_destroy %>
+        <% if effect.object.id.blank? %>
+          <div id="submit_button"><%= branch.button :submit, name: "branch_id", value: branch.object.id %></div>
+        <% else %>
+          <%= link_to "Delete", destroy_effect_path(:effect_id => effect.object.id, :branch_id => branch.object.id), method: :delete %>
+        <% end %>
+      </td>
     </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
+</div>

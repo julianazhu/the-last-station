@@ -1,0 +1,32 @@
+<div class="branch_card">
+  <div class ="branch_card_left_column">
+    <b><%= f.label :Title %></b>
+    <%= f.text_field :title %> 
+    <b><%= f.label(:Hook, class: "branch_description") %></b>
+    <%= f.text_area :description %>
+    <b><%= f.label :Outcome %></b>  
+    <%= f.text_area :outcome %> 
+    <br>
+  </div>  
+  <div class ="branch_card_right_column">
+    <div id="effectform">
+      <h3>Branch Effects</h3>
+      <table class="effects-table-<%="#{f.object.id}"%>">
+        <tr>
+          <th>Quality Required</th>
+          <th>Operation</th>
+          <th>Amount</th>
+          <th>Actions</th>
+        </tr>
+        <%= f.fields_for :effects do |effect| %>
+        <%= render 'effect_fields', :f => effect %>
+        <% end %>
+      </table>
+        <%= link_to_add_association 'Add Effect', f, :effects, 'data-association-insertion-node' => ".effects-table-#{f.object.id}",'data-association-insertion-method' => "append" %>
+    </div>
+  </div>
+  <div id="update_branch">
+    <%= f.button :submit, name: "story_id", value: @story.id %><br><br>
+    <%= link_to_remove_association('Delete Branch', f, { wrapper_class: 'branch_card'}) %>
+  </div>
+</div>

@@ -4,18 +4,18 @@
   <tr>
     <th>Key</th>
     <th>Title</th>
+    <th>Text</th>
     <th>Actions</th>
-    <th>Branches</th>
   </tr>
  
   <% @stories.each do |story| %>
     <tr>
       <td><%= story.id %></td>
       <td><%= story.title %></td>
+      <td><%= truncate(story.body, :length => 100) %></td>
       <td><%= link_to 'Edit Story', edit_story_path(:story_id => story.id) %>,
           <%= link_to 'Delete Story', story_path(:id => story.id, :story_id => story.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
-      <td><%= link_to 'Show/Add Branches', edit_branches_path(:story_id => story.id) %></td>
       </tr>
   <% end %>
 </table>

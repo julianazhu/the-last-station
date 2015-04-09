@@ -1,10 +1,9 @@
 class Effect < ActiveRecord::Base
   belongs_to :branch
   belongs_to :quality
-  validates :branch_id,
-          presence: true
   validates :quality_id, 
-          presence: true
+          presence: true,
+          uniqueness: { scope: :branch_id, message: "can't be the same as another effect."}
   validates :operation, 
           presence: true
   validates :amount, 
@@ -13,7 +12,7 @@ class Effect < ActiveRecord::Base
 
   def apply(stat)
     old_stat_points = stat.points 
-    if operation == "plus" &&
+    if operation == "plus"
       stat.points += self.amount
       operation_description = "increased"
       stat.save
@@ -24,6 +23,13 @@ class Effect < ActiveRecord::Base
         stat.points -= self.amount
       end
       operation_description = "decreased"
+      stat.save
+    elsif operation == "equals"
+      if self.amount > stat.points
+        operation_description = "increased" 
+      else
+        operation_description = "decreased" 
+      end
       stat.save
     else
       raise "Error: Operation is not an accepted value. ABORT. FATAL. Ring the catastrophe bell."

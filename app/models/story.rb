@@ -1,8 +1,11 @@
 class Story < ActiveRecord::Base
-  has_many :requirements, :dependent => :destroy
   has_many :branches, :dependent => :destroy
+  has_many :requirements, :dependent => :destroy
   accepts_nested_attributes_for :branches, 
-                                :reject_if => lambda { |a| a[:description].blank? }
+                                reject_if: ->(attributes){ 
+                                  attributes.except(:effects_attributes).values.all?( &:blank? ) 
+                                },
+                                :allow_destroy => true
   accepts_nested_attributes_for :requirements, 
                                 :reject_if => :all_blank, 
                                 :allow_destroy => true

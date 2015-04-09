@@ -1,6 +1,6 @@
 <div id="requirementform">
   <h3>Story Requirements</h3>
-  <table>
+  <table id="requirements-table">
     <tr>
       <th>Quality Required</th>
       <th>Operation</th>
@@ -8,28 +8,8 @@
       <th>Actions</th>
     </tr>
     <%= story.fields_for :requirements do |requirement| %>
-    <tr class="requirement_fields">
-      <% unless requirement.object.id.blank? %>
-        <%= requirement.hidden_field(:id, :value => requirement.object.id)%>
-      <% end %>
-      <td>    
-        <%= requirement.select(:quality_id, Quality.all.collect {|q| [ q.name, q.id ] }, { include_blank: true }) %>
-      </td> 
-      <td>
-        <%= requirement.select(:operation, [['greater than','greater than'], ['less than','less than'],['equals','equals']], { include_blank: true }) %>
-      </td>
-      <td>
-        <%= requirement.text_field :amount %>
-      </td>
-      <td>
-        <%= requirement.hidden_field :_destroy %>
-        <% if requirement.object.id.blank? %>
-          <div id="submit_button"><%= story.button :submit, name: "story_id", value: @story.id %></div>
-        <% else %>
-          <%= link_to "Delete", destroy_requirement_path(:requirement_id => requirement.object.id, :story_id => @story.id), method: :delete %>
-        <% end %>
-      </td>
-    </tr>
+    <%= render 'requirement_fields', :f => requirement %>
     <% end %>
   </table>
+    <%= link_to_add_association 'Add Requirement', story, :requirements, 'data-association-insertion-node' => "#requirements-table",'data-association-insertion-method' => "append" %>
 </div>

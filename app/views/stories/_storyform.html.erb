@@ -1,6 +1,6 @@
-<div id="storyform_and_requirementform_wrapper">
-  <%= form_for @story do |story| %>
+<%= form_for @story do |story| %>
   <%= render 'storyformerrors' %>
+  <div id="storyform_and_requirementform_wrapper">
     <div id="storyform">
       <h3>
         <%= story.label :title %>
@@ -17,5 +17,12 @@
     </div>
     <%= render 'requirementform', :story => story %>
     <div id="submit_button"><%= story.button :submit, name: "story_id", value: @story.id %></div>
-  <% end %>
-</div>
+  </div>
+  <div id="branchform_wrapper">
+    <h2>Story Branches</h2>
+    <%= story.fields_for :branches do |branch| %>
+      <%= render 'branch_fields', :f => branch %>
+    <% end %>
+    <%= link_to_add_association "+ Add Branch", story, :branches,'data-association-insertion-traversal' => "prev", 'data-association-insertion-method' => "prepend" %>
+  </div>
+<% end %>

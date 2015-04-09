@@ -61,8 +61,15 @@ textarea {
   float:left;
   border: 1px solid #000000;
   border-radius: 1%;
-  padding: 1% ;
+  padding: 1%;
   width: 70%;
+  margin-bottom: 3%;
+}
+
+#branchform_wrapper {
+  clear:left;
+  margin-left: 5%;
+  margin-bottom: 5%;
 }
 
 #storyform {
@@ -83,7 +90,6 @@ textarea {
   border: 1px solid #000000;
   border-radius: 1%;
   padding: 1%;
-  margin-left: 5%;
   margin-bottom: 3%;
   overflow: hidden;
 }
@@ -105,6 +111,14 @@ textarea {
   height:80px;
 }
 
+#update_branch{
+  clear: left;
+  padding:1%;
+  max-width: 10%
+}
+
 #submit_button{
   clear: left;
+  padding:1%;
+  max-width: 10%
 }

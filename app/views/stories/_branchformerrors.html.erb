@@ -1,0 +1,9 @@
+ <% if branch.object.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% branch.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

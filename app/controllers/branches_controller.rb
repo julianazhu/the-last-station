@@ -27,18 +27,6 @@ before_action :new_effect, only: [:new, :edit]
     redirect_to :action => 'new'
   end
 
-  def update_or_create_effect
-    @branch.save
-    @effect = Effect.find_or_initialize_by(:branch_id => @branch.id, :quality_id => params[:effect][:quality_id])
-    @effect.attributes = effect_params
-    if  @effect.save
-      redirect_to :action => 'edit'
-    else
-      @effects = @branch.effects
-      render 'edit'
-    end
-  end
-
   def destroy_effect
     @effect = Effect.find(params[:effect_id])
     @effect.destroy
@@ -47,6 +35,12 @@ before_action :new_effect, only: [:new, :edit]
 
   def new_effect
     @effect = Effect.new
+  end
+
+  def build_effects_for_each_branch
+    @branches.each do |b|
+      b.effects.build
+    end
   end
 
   def index
@@ -61,10 +55,12 @@ before_action :new_effect, only: [:new, :edit]
 
   def new
     @branch = Branch.new
+    build_effects_for_each_branch
   end
   
   def edit
     @branches = Branch.all
+    build_effects_for_each_branch
   end
   
   def create
@@ -92,10 +88,7 @@ before_action :new_effect, only: [:new, :edit]
 
   private
   def branch_params
-    params.require(:branch).permit(:story_id, :title, :description, :outcome)
-  end
-
-  def effect_params
-    params.require(:effect).permit(:branch_id, :quality_id, :operation, :amount)
+    params.require(:branch).permit(:story_id, :title, :description, :outcome, 
+                                   effects_attributes:[:id,:branch_id, :quality_id, :operation, :amount, :_destroy])
   end
 end

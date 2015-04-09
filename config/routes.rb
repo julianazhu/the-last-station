@@ -17,24 +17,18 @@ Rails.application.routes.draw do
   get 'stories/:story_id/edit' => 'stories#edit', as: :edit_story
   get 'stories/:story_id' => 'stories#show', as: :story
   get 'characters/:character_id/:story_id' => 'stories#show', as: :play_story
-  patch 'stories/:story_id' => 'stories#update',as: :update_story
-  delete 'stories/:story_id' => 'stories#destroy' 
-  delete 'stories/:story_id/delete_requirements' => 'stories#destroy_requirement', as: :destroy_requirement
-
+  patch 'stories/:story_id' => 'stories#update', as: :update_story
+  delete 'stories/:story_id' => 'stories#destroy'
 
   #Qualities Routes
   resources :qualities
   
   #Branches Routes
-  # post 'stories/:story_id/branches' => 'branches#create'
   # get 'stories/:story_id/branches/new' => 'branches#new', as: :new_branch
-  get 'stories/:story_id/branches/edit' => 'branches#edit', as: :edit_branches
-  # get 'stories/:story_id/:branch_id' => 'branches#show', as: :branch
-  patch 'stories/:story_id/branches/:branch_id/edit' => 'branches#update', as: :update_branch
-  delete 'stories/:story_id/:branch_id' => 'branches#destroy'
+  # get 'stories/:story_id/branches/edit' => 'branches#edit', as: :edit_branches
+  # patch 'stories/:story_id/branches/:branch_id/edit' => 'branches#update', as: :update_branch
+  # delete 'stories/:story_id/:branch_id' => 'branches#destroy'
   get 'characters/:character_id/:story_id/:branch_id' => 'branches#show'
-  post 'stories/:story_id/:branch_id/update_effects' => 'branches#update_or_create_effect'
-  delete 'stories/:story_id/:branch_id/delete_effect' => 'branches#destroy_effect', as: :destroy_effect
 
   
   # The priority is based upon order of creation: first created -> highest priority.

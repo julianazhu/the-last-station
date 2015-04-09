@@ -1,28 +1,11 @@
 class StoriesController < ApplicationController
-before_action :find_story, only: [:show, :edit, :update, :destroy, :create_requirement, :destroy_requirement]
-before_action :set_up_new_requirement, only: [:new, :edit, :update]
+before_action :find_story, only: [:show, :edit, :update, :destroy, :destroy_requirement]
 
   def find_story
-      @story = Story.find(params[:story_id])
+    @story = Story.find(params[:story_id])
+    @branches = @story.branches
   end
   
-
-  def set_up_new_requirement
-    @requirement = Requirement.new
-    @qualities = Quality.all
-    @stories = Story.all
-  end
-
-  def create_requirement
-
-  end
-
-  def destroy_requirement
-    @requirement = Requirement.find(params[:requirement_id])
-    @requirement.destroy
-    redirect_to edit_story_path(@story)
-  end
-
   def index
     @stories = Story.all
   end
@@ -40,7 +23,6 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
   end
   
   def edit
-    @story.requirements.build
     @requirements = @story.requirements
   end
   
@@ -68,6 +50,9 @@ before_action :set_up_new_requirement, only: [:new, :edit, :update]
   
   private
   def story_params
-    params.require(:story).permit(:title, :body, :image_path, requirements_attributes:[ :id, :quality_id, :amount, :operation, :_destroy ])
+    params.require(:story).permit(:title, :body, :image_path, 
+                                  requirements_attributes:[ :id, :quality_id, :amount, :operation, :_destroy ],
+                                  branches_attributes:[ :id, :story_id, :title, :description, :outcome, :_destroy,  
+                                    effects_attributes:[ :id, :branch_id, :quality_id, :operation, :amount, :_destroy] ])
   end
 end
