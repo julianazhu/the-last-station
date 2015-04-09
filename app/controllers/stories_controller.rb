@@ -1,9 +1,21 @@
 class StoriesController < ApplicationController
 before_action :find_story, only: [:show, :edit, :update, :destroy, :destroy_requirement]
+before_action :find_character, only: [:show, :play_branch]
 
   def find_story
     @story = Story.find(params[:story_id])
     @branches = @story.branches
+  end
+
+  def find_character
+    unless params[:character_id].nil?
+      @character = Character.find(params[:character_id])
+    end
+  end
+
+  def play_branch
+    @branch = Branch.find(params[:branch_id])
+    @outcomes = @branch.execute_branch_effects(@character) unless @character.nil?
   end
   
   def index
@@ -11,9 +23,6 @@ before_action :find_story, only: [:show, :edit, :update, :destroy, :destroy_requ
   end
 
   def show
-    unless params[:character_id].nil?
-      @character = Character.find(params[:character_id])
-    end
   end
 
   def new

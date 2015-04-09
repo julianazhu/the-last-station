@@ -16,20 +16,15 @@ Rails.application.routes.draw do
   get 'stories/new' => 'stories#new', as: :new_story
   get 'stories/:story_id/edit' => 'stories#edit', as: :edit_story
   get 'stories/:story_id' => 'stories#show', as: :story
-  get 'characters/:character_id/:story_id' => 'stories#show', as: :play_story
   patch 'stories/:story_id' => 'stories#update', as: :update_story
   delete 'stories/:story_id' => 'stories#destroy'
 
+  #Front-End Playable Routes
+  get 'characters/:character_id/:story_id' => 'stories#show', as: :play_story
+  get 'characters/:character_id/:story_id/:branch_id' => 'stories#play_branch', as: :play_branch
+
   #Qualities Routes
   resources :qualities
-  
-  #Branches Routes
-  # get 'stories/:story_id/branches/new' => 'branches#new', as: :new_branch
-  # get 'stories/:story_id/branches/edit' => 'branches#edit', as: :edit_branches
-  # patch 'stories/:story_id/branches/:branch_id/edit' => 'branches#update', as: :update_branch
-  # delete 'stories/:story_id/:branch_id' => 'branches#destroy'
-  get 'characters/:character_id/:story_id/:branch_id' => 'branches#show'
-
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

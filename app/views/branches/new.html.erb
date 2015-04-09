@@ -1,8 +1,0 @@
-<h1>Add a New Branch</h1>
-
-<% unless @story_id.nil? %>
-  <p>Story: <b><%= @story.title %></b></p>
-  <%= render 'branchform' %>
-<% end %>
-
-<%= link_to "Return to Stories Index", stories_path %>
