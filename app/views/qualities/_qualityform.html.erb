@@ -1,0 +1,20 @@
+<%= form_for @quality do |quality| %>
+  <%= render 'qualityformerrors' %>
+  <p> 
+    <%= quality.label :name %>    
+    <%= quality.text_field :name %>
+  </p>
+  <p>    
+    <%= quality.label :description %>
+    <%= quality.text_area :description %>
+  </p>
+  <p>    
+    <%= quality.label :image_path %>
+    <%= quality.text_field :image_path %>
+  </p>
+  <p>
+    <%= quality.submit "Update Quality", :id => "quality_submit_button" %>
+  </p>
+<% end %>
+
+<p>&#8592;<%= link_to "Qualities Index", qualities_path %></p>
