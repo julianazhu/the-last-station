@@ -10,31 +10,31 @@ class Effect < ActiveRecord::Base
           presence: true,
           numericality: {only_integer: true}
 
-  def apply(stat)
-    old_stat_points = stat.points 
+  def apply(character_stat)
+    old_character_stat_points = character_stat.points 
     if operation == "plus"
-      stat.points += self.amount
+      character_stat.points += self.amount
       operation_description = "increased"
-      stat.save
+      character_stat.save
     elsif operation == "minus"
-      if self.amount > stat.points
-        stat.points = 0
+      if self.amount > character_stat.points
+        character_stat.points = 0
       else
-        stat.points -= self.amount
+        character_stat.points -= self.amount
       end
       operation_description = "decreased"
-      stat.save
+      character_stat.save
     elsif operation == "equals"
-      if self.amount > stat.points
+      if self.amount > character_stat.points
         operation_description = "increased" 
       else
         operation_description = "decreased" 
       end
-      stat.save
+      character_stat.save
     else
       raise "Error: Operation is not an accepted value. ABORT. FATAL. Ring the catastrophe bell."
     end
-    return "Your #{self.quality.name} has #{operation_description} from #{old_stat_points} to #{stat.points}." unless old_stat_points == 0
+    return "Your #{self.quality.name} has #{operation_description} from #{old_character_stat_points} to #{character_stat.points}."
   end
 
 

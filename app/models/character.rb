@@ -3,6 +3,7 @@ class Character < ActiveRecord::Base
   validates :name, 
             presence: true, 
             length: { minimum: 3}
+  validates_format_of :name, :with => /\A[a-zA-Z\d ]*\Z/, :message => "can only use letters, numbers, spaces."
 
   def find_eligible_stories
     @eligible_stories = []
@@ -13,7 +14,7 @@ class Character < ActiveRecord::Base
   def loop_through_all_stories
     Story.all.each do |story|
       @story_eligibility = true
-      if story.requirements.first.nil? 
+      if story.requirements.empty? 
         @eligible_stories.push(story)
       else
         loop_through_story_requirements(story)
@@ -26,8 +27,8 @@ class Character < ActiveRecord::Base
       @character_stat_points = get_corresponding_character_stat(requirement)
       @requirement_eligibility = requirement_eligibility_calculator(requirement, @character_stat_points)
       @story_eligibility = @story_eligibility && @requirement_eligibility
-      @eligible_stories.push(story) unless @story_eligibility == false
     end
+    @eligible_stories.push(story) if @story_eligibility == true
   end
 
   def get_corresponding_character_stat(requirement)
@@ -44,7 +45,7 @@ class Character < ActiveRecord::Base
       character_stat_points > requirement.amount
     elsif requirement.operation == "less than"
       character_stat_points < requirement.amount
-    elsif requirment.operation == "equals"
+    elsif requirement.operation == "equals"
       character_stat_points == requirement.amount
     else
       raise "Error: Operation is not an accepted type. ABORT. FATAL. Ring the catastrophe bell."
