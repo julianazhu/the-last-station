@@ -57,6 +57,46 @@ textarea {
   min-width: 330px;
 }
 
+h1 {
+  font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.3999996185303px;
+}
+h3 {
+  font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 15.3999996185303px;
+}
+p {
+  font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/* Front End */
+
+body {
+background-color: #FFFFFF;
+color: #000000;
+}
+
+
+/* Back End */
+#backend_navigation {
+  width: 100%;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 1%
+}
+
 #storyform_and_requirementform_wrapper {
   float:left;
   border: 1px solid #000000;

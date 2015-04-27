@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:character_id])
   end
 
-  def intro
+  def intro()
   end
   
   def index
@@ -36,7 +36,7 @@ class CharactersController < ApplicationController
     else
     @character = Character.new(character_params) 
       if  @character.save
-        redirect_to intro_path(@character)
+        redirect_to intro_path(@character.id)
       else
         render 'new'
       end
