@@ -26,7 +26,7 @@
         <th>Action</th>
       </tr>
       <%= quality.fields_for :levels do |f| %>
-        <%= render 'level_fields', :f => f %>
+        <%= render 'level_fields', :f => f %> 
       <% end %>
     </table>
   <%= link_to_add_association "+ Add Level", quality, :levels, 'data-association-insertion-node' => ".levels_table", 'data-association-insertion-method' => "append" %>

@@ -1,4 +1,4 @@
-class Level < ActiveRecord::Base
+  class Level < ActiveRecord::Base
   belongs_to :quality
   validates :amount,
             presence: true,

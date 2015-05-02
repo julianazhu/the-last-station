@@ -2,10 +2,10 @@
   <%= render 'storyformerrors' %>
   <div id="storyform_and_requirementform_wrapper">
     <div id="storyform">
-      <h3>
+      <p>
         <%= story.label :title %>
         <%= story.text_field :title %>
-      </h3>
+      </p>
       <p>    
         <%= story.label :image_path %>
         <%= story.text_field :image_path %>
@@ -23,6 +23,6 @@
     <%= story.fields_for :branches do |branch| %>
       <%= render 'branch_fields', :f => branch %>
     <% end %>
-    <%= link_to_add_association "+ Add Branch", story, :branches,'data-association-insertion-traversal' => "prev", 'data-association-insertion-method' => "prepend" %>
+    <%= link_to_add_association "+ Add Branch", story, :branches,'data-association-insertion-node' => ".branch_card", 'data-association-insertion-method' => "after" %>
   </div>
 <% end %>
