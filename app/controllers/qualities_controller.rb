@@ -10,6 +10,7 @@ class QualitiesController < ApplicationController
 
   def new
     @quality = Quality.new
+    @quality.levels.build
   end
   
   def edit
@@ -23,7 +24,7 @@ class QualitiesController < ApplicationController
     else
     @quality = Quality.new(quality_params)
       if  @quality.save
-        redirect_to @quality
+        redirect_to qualities_path
       else
         render 'new'
       end
@@ -49,8 +50,7 @@ class QualitiesController < ApplicationController
   
   private
   def quality_params
-    params.require(:quality).permit(:name, 
-                                    :description, 
-                                    :image_path)
+    params.require(:quality).permit(:name, :description, :image_path,
+                                    levels_attributes:[ :id, :quality_id, :amount, :description, :image_path, :_destroy])
   end
 end

@@ -1,20 +1,34 @@
 <%= form_for @quality do |quality| %>
-  <%= render 'qualityformerrors' %>
-  <p> 
-    <%= quality.label :name %>    
-    <%= quality.text_field :name %>
-  </p>
-  <p>    
-    <%= quality.label :description %>
-    <%= quality.text_area :description %>
-  </p>
-  <p>    
-    <%= quality.label :image_path %>
-    <%= quality.text_field :image_path %>
-  </p>
-  <p>
-    <%= quality.submit "Update Quality", :id => "quality_submit_button" %>
-  </p>
+  <div id="quality_form_wrapper">
+    <%= render 'qualityformerrors' %>
+    <p> 
+      <%= quality.label :name %>    
+      <%= quality.text_field :name %>
+    </p>
+    <p>    
+      <%= quality.label :description %>
+      <%= quality.text_area :description %>
+    </p>
+    <p>    
+      <%= quality.label :image_path %>
+      <%= quality.text_field :image_path %>
+    </p>
+    <p>
+      <%= quality.submit "Update Quality", :id => "quality_submit_button" %>
+    </p>
+  </div>
+  <div id="level_form_wrapper">
+    <table class="levels_table">
+      <tr>
+        <th>Level</th>
+        <th>Description</th>
+        <th>Image Path</th>
+        <th>Action</th>
+      </tr>
+      <%= quality.fields_for :levels do |f| %>
+        <%= render 'level_fields', :f => f %>
+      <% end %>
+    </table>
+  <%= link_to_add_association "+ Add Level", quality, :levels, 'data-association-insertion-node' => ".levels_table", 'data-association-insertion-method' => "append" %>
+  </div>
 <% end %>
-
-<p>&#8592;<%= link_to "Qualities Index", qualities_path %></p>

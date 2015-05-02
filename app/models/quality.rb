@@ -1,6 +1,10 @@
 class Quality < ActiveRecord::Base
   has_many :requirements, :dependent => :destroy
   has_many :stats, :dependent => :destroy
+  has_many :levels, :dependent => :destroy
+  accepts_nested_attributes_for :levels, 
+                                :reject_if => :all_blank,
+                                :allow_destroy => true
   delegate :name, to: :requirements, prefix: true #Not entirely sure this is necessary. Maybe delete.
   validates :name, 
             presence: true, 

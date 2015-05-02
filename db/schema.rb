@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303044041) do
+ActiveRecord::Schema.define(version: 20150502051353) do
 
   create_table "branches", force: true do |t|
     t.string   "story_id"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20150303044041) do
 
   add_index "effects", ["branch_id"], name: "index_effects_on_branch_id"
   add_index "effects", ["quality_id"], name: "index_effects_on_quality_id"
+
+  create_table "levels", force: true do |t|
+    t.integer  "quality_id"
+    t.integer  "amount"
+    t.string   "description"
+    t.string   "image_path"
+    t.boolean  "triangular"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "qualities", force: true do |t|
     t.string   "name"

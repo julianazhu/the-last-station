@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quality_id: 1
+  amount: 1
+  description: MyString
+  image_path: MyString
+  triangular: false
+
+two:
+  quality_id: 1
+  amount: 1
+  description: MyString
+  image_path: MyString
+  triangular: false
