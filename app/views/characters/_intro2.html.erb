@@ -1,0 +1,8 @@
+<div id="intro2">
+<p>The ache in the your head recedes, but when you try to think back, your vision flashes with pain.</p>
+  <%= form_for :character, url: characters_path do |f| %>
+    <%= render 'characterformerrors' %>
+    <p><b>Your new name:</b></p>
+    <%= f.text_field :name %>
+    <a href="#" data-next-flashcard="#intro3">Continue...</a>
+</div>

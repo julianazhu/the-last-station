@@ -1,0 +1,20 @@
+<div id="intro3">
+	<p>You look into a window and see your reflection staring back. You are:</p>
+    <p>
+    <%= f.radio_button :gender, "female" %>
+    <%= label :gender_male, "A woman. " %>
+    </p>
+    <p>
+    <%= f.radio_button :gender, "male" %>
+    <%= label :gender_male, "A man." %>
+    </p>
+    <p>
+    <%= f.radio_button :gender, "hot" %>
+    <%= f.label :gender_neither, "Unconscionably attractive. Other things remain a mystery, like why this question is even here. We aren't even using your answer. It is entirely not relevant to the game. We just wanted to be cool and liberal like Fallen London. Feel free to click whatever the heck you want." %>
+    </p>
+    <p>
+    <%= f.radio_button :gender, "asexual." %>
+    <%= label :gender_male, "A sentient carrot." %>
+    </p>
+    <a href="#" data-next-flashcard="#intro4">Continue...</a>
+</div>
