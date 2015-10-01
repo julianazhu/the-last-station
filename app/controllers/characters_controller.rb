@@ -1,13 +1,10 @@
 class CharactersController < ApplicationController  
-  before_action :find_character, only: [:show, :edit, :update, :intro, :destroy, :eligible_stories]
+  before_action :find_character, only: [:show, :edit, :update, :destroy, :eligible_stories]
   
   def find_character
     @character = Character.find(params[:character_id])
   end
 
-  def intro()
-  end
-  
   def index
     @characters = Character.all
   end
@@ -59,6 +56,6 @@ class CharactersController < ApplicationController
   
   private
   def character_params
-    params.require(:character).permit(:name)
+    params.require(:character).permit(:name, :gender, :avatar_image_path)
   end
 end

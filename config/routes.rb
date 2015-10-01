@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   get 'characters/new' => 'characters#new', as: :new_character
   get 'characters/:character_id/rename' => 'characters#edit' , as: :edit_character
   get 'characters/:character_id' => 'characters#show', as: :character
-  get 'characters/:character_id/intro' => 'characters#intro', as: :intro
   patch 'characters/:character_id' => 'characters#update'
   delete 'characters/:character_id' => 'characters#destroy'
+
+  #Intro
+  get 'intro' => 'characters#intro', as: :intro
 
   #Stories Routes
   get 'stories' => 'stories#index', as: :stories

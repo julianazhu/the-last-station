@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502051353) do
+ActiveRecord::Schema.define(version: 20150512030428) do
 
   create_table "branches", force: true do |t|
     t.string   "story_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20150502051353) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_image_path"
+    t.string   "gender"
   end
 
   create_table "effects", force: true do |t|

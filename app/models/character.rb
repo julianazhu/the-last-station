@@ -2,8 +2,12 @@ class Character < ActiveRecord::Base
   has_many :stats, :dependent => :destroy
   validates :name, 
             presence: true, 
-            length: { minimum: 3}
+            length: { minimum: 3 }
   validates_format_of :name, :with => /\A[a-zA-Z\d ]*\Z/, :message => "can only use letters, numbers, spaces."
+  validates :avatar_image_path,
+            length: { minimum: 5 } 
+  validates :gender,
+            presence: true
 
   def find_eligible_stories
     @eligible_stories = []
