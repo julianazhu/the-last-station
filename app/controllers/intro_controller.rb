@@ -1,8 +1,5 @@
 class IntroController < ApplicationController
-  def show
-  end
-
-  def intro2
+  def intro1
     @character = Character.new
   end
 end

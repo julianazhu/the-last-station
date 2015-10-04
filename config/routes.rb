@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'characters#new'
+  root 'intro#intro1'
 
   #Characters Routes
   get 'characters' => 'characters#index', as: :characters
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete 'characters/:character_id' => 'characters#destroy'
 
   #Intro
-  get 'intro' => 'characters#intro', as: :intro
+  get 'intro' => 'intro#intro1'
 
   #Stories Routes
   get 'stories' => 'stories#index', as: :stories
