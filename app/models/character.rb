@@ -1,14 +1,50 @@
 class Character < ActiveRecord::Base
+attr_writer :current_step
   has_many :stats, :dependent => :destroy
   validates :name, 
-            presence: true, 
-            length: { minimum: 3 }
-  validates_format_of :name, :with => /\A[a-zA-Z\d ]*\Z/, :message => "can only use letters, numbers, spaces."
+            length: { minimum: 3 },
+            presence: true,
+            format: { with: /\A[a-zA-Z\d ]*\Z/, :message => "can only use letters, numbers, spaces." },
+            :if => lambda { |f| f.current_step == "name" }
   validates :avatar_image_path,
-            length: { minimum: 5 } 
-  validates :gender,
-            presence: true
+            length: { minimum: 5 },
+            presence: true,
+            :if => lambda { |f| f.current_step == "avatar"}
+  validates_presence_of :gender, :if => lambda { |f| f.current_step == "gender"}
 
+# Intro Form
+def current_step
+  @current_step || steps.first
+end
+
+def steps
+  %w[intro name gender avatar]
+end
+
+def next_step
+  self.current_step = steps[steps.index(current_step)+1]
+end
+
+def previous_step
+  self.current_step = steps[steps.index(current_step)-1]
+end
+
+def first_step?
+  current_step == steps.first
+end
+
+def last_step?
+  current_step == steps.last
+end
+
+def all_valid?
+  steps.all? do |step|
+    self.current_step = step
+    valid?
+  end
+end
+
+# Gameplay
   def find_eligible_stories
     @eligible_stories = []
     loop_through_all_stories

@@ -1,0 +1,8 @@
+<div id="intro4">
+  <p>The windows are grimy, but if you squint, you can make out your profile.</p>
+  <p><b>You look like: </b><i>(Select one)</i></p>
+  <% (1..12).each do |image| %>
+    <%= image_tag "avatar#{image}.png", :class => "avatar_icon_medium_selectable", :id => "avatar#{image}" %>
+    <% end %>
+  <%= f.hidden_field :avatar_image_path, :value => ""%>
+</div>

@@ -1,56 +1,10 @@
-<%= form_for :character, url: characters_path do |f| %>
-<%= render 'characterformerrors' %>
-<div id="flashcard">
-  <%= image_tag("divider.png", :class => "divider") %>
-  <div id="flashcard_body">
-    <div id="intro1">
-      <p> Unusual noises drift into your ears; chugging, rattling, jingling, all growing louder and more immediate. There is a searing pain in the back of your head. You open your eyes. 
-      </p>
-      <p>There are six neat rows of leather seats, dark wood fixtures and brassy rails. You are seated, and a cold glass window shudders violently against your cheek. You appear to be in an old train carriage. It is empty. 
-      </p>
-      <p>Outside the windows there is only darkness. 
-      </p>
-      <a href="#" data-next-flashcard="#intro2">Continue...</a>
-    </div>
-    <div id="intro2">
-        <p>The ache in your head recedes, but your memories are as shadowy and opaque as the world outside the carriage.</p>
-            <p><b>Your name is:</b></p>
-            <%= f.text_field :name %>
-            <br><br>
-            <a href="#" data-next-flashcard="#intro3">Continue...</a>
-    </div>
-    <div id="intro3">
-            <p>You catch a glimpse of your reflection in the window. You are:</p>
-            <p>
-            <%= f.radio_button :gender, "female" %>
-            <%= label :gender_female, "A woman. " %>
-            </p>
-            <p>
-            <%= f.radio_button :gender, "male" %>
-            <%= label :gender_male, "A man." %>
-            </p>
-            <p>
-            <%= f.radio_button :gender, "unspecified" %>
-            <%= f.label :gender_neither, "A rather dashing mystery." %>
-            </p>
-            <p>
-            <%= f.radio_button :gender, "carrot." %>
-            <%= label :gender_male, "A sentient carrot." %>
-            </p>
-            <a href="#" data-next-flashcard="#intro2">...Back</a>
-            <a href="#" data-next-flashcard="#intro4">Continue...</a>
-    </div>
-    <div id="intro4">
-            <p>The windows are grimy, but if you squint, you can make out your profile.</p>
-            <p><b>You look like: </b></p>
-              <% (1..12).each do |image| %>
-              <%= link_to image_tag("avatar#{image}.png", :class => "avatar_icon_medium", :id => "avatar#{image}", :"data-select-image" => "test"), "#"  %>
-              <% end %>
-            <%= f.hidden_field :avatar_image_path, :value => "" %>
-            <a href="#" data-next-flashcard="#intro3">...Back</a>
-            <p><%= f.submit "Continue", :id => "character_submit_button"%> </p>
-    </div>
-  </div>
+<%= render layout: "/layouts/flashcard" do %>
+  <%= form_for @character do |f| %>
+    <% @character.errors.full_messages.each do |msg|  %>
+      <li><%= msg %></li>
+    <% end %>
+    <%= render "#{@character.current_step}_step", :f => f %>
+    <%= f.submit "Back", :name => "back_button" unless @character.first_step? %>
+    <%= f.submit "Continue" %>
   <% end %>
-  <%= image_tag("divider.png", :class => "bottom_divider") %>
-</div>
+<% end %>

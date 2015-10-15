@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'intro#intro1'
+  root 'characters#new'
 
   #Characters Routes
   get 'characters' => 'characters#index', as: :characters
@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   #Intro
   get 'intro' => 'intro#intro1'
+  get 'intro2' => 'intro#intro2', as: :intro2
+  get 'intro3' => 'intro#intro3', as: :intro3
+  get 'intro4' => 'intro#intro4', as: :intro4
+  post 'validate_character' => 'intro#validate_character_params', as: :validate_character
 
   #Stories Routes
   get 'stories' => 'stories#index', as: :stories

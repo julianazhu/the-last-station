@@ -1,8 +1,0 @@
-<div id="intro4">
-    <p><b>You look like: </b><i>(Select one)</i></p>
-    <% (1..12).each do |image| %>
-    <%= image_tag "#{image}.png", size: "175x225" %>
-    <% end %>
-    <p><%= f.submit "Continue", :id => "character_submit_button"%> </p>
-  <% end %>
-</div>

@@ -19,24 +19,34 @@ class CharactersController < ApplicationController
   end
 
   def new
-    @character = Character.new
+    session[:character_params] ||= {}
+    @character = Character.new(session[:character_params])
+    @character.current_step = session[:character_step]
   end
   
   def edit
   end
   
   def create
-    # Redirect to existing Character if the Character already exists
-    if Character.where(name: character_params[:name]).count > 0
-      @character = Character.where(name: character_params[:name]).first
-      redirect_to @character
+    session[:character_params].deep_merge!(params[:character]) if params[:character]
+    @character = Character.new(session[:character_params])
+    @character.current_step = session[:character_step]
+    if params[:back_button]
+      @character.previous_step
+      elsif @character.valid?
+        if @character.last_step?
+          @character.save if @character.all_valid?
+        else
+         @character.next_step
+        end
+    end
+    session[:character_step] = @character.current_step
+    if @character.new_record?
+      render "new"
     else
-    @character = Character.new(character_params) 
-      if  @character.save
-        redirect_to intro_path(@character.id)
-      else
-        render 'new'
-      end
+      session[:character_step] = session[:character_params] = nil
+      flash[:notice] = "character saved!"
+      redirect_to @character
     end
   end
   
@@ -50,7 +60,6 @@ class CharactersController < ApplicationController
   
   def destroy
     @character.destroy
-    
     redirect_to characters_path
   end
   
