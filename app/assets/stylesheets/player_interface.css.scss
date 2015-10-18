@@ -1,0 +1,80 @@
+/* ::::::::::::::::::::::::::::::::::::::::::::::: Player User Interface ::::::::::::::::::::::::::::::::::::::::::::::: */
+
+body {
+background-color: white;
+color: black;
+}
+
+.error_message {
+  margin: 0;
+  color: red;
+}
+
+.field_with_errors {
+  display: inline-block;
+  width: 100%;
+  input {
+    border: 1px solid red;
+  }
+}
+
+.continue_button:link {
+  color: black;
+}
+
+/* :::::::::::::::::::::::: Flashcards - used in the Intro :::::::::::::::::::::::: */
+#flashcard {
+  position: absolute;
+  left: 27.5%;
+  top: 20%;
+  width: 45%;
+}
+
+#flashcard_body {
+  margin: 0 auto;
+  width: 93%;
+  padding: 3%;
+  border: 1px solid black;
+  box-shadow: 6px 8px 3px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+
+.divider {
+  max-width: 100%;
+  margin:0;
+  padding:0;
+  display: block;
+}
+
+.bottom_divider {
+  /* this code flips the divider image upside down */
+  @extend .divider;
+  -moz-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  transform: scaleY(-1);
+  -ms-filter: flipv; /*IE*/
+  filter: flipv;;
+}
+
+/* :::::::::::::::::::::::: Avatars :::::::::::::::::::::::: */
+.avatar_icon_small{
+  max-width: 100px;
+  max-height:200px;
+}
+
+.avatar_icon_medium{
+  max-width: 175px;
+  max-height:250px;
+}
+
+.avatar_icon_medium_selectable{
+  @extend .avatar_icon_medium
+}
+
+/* :::::::::::::::::::::::: Intro :::::::::::::::::::::::: */
+
+input[id="character_name"]{
+  display: block;
+  margin: auto;
+}
