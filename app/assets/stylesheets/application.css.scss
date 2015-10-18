@@ -64,7 +64,7 @@ label {
 input[type="submit"]{
   @extend .text;
   font-size: 16px;
-  display: block;
+  display: inline-block;
   margin: auto;
   border: solid 1px black;
   background-color: white;
@@ -74,14 +74,11 @@ input[type="submit"]{
 input[type="submit"]:hover{
   background-color: black;
   color: white;
-  outline: 0;
 }
 
 input[type='text']{
-  width:98%;
-  outline: 0;
+  width:92%;
 }
-
 
 select {
   width: 180px;
@@ -91,6 +88,19 @@ textarea {
   height: 150px;
   width: 98%;
   min-width: 330px;
+}
+
+.error_message {
+  margin: 2% auto;
+  color: red;
+  width:96%;
+}
+
+.field_with_errors {
+  display: inline;
+  input {
+    border: 1px solid red;
+  }
 }
 
 /* :::::::::::::::::::::::: Tables :::::::::::::::::::::::: */

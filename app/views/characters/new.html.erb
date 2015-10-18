@@ -2,8 +2,9 @@
   <%= form_for @character do |f| %>
     <%= render "#{@character.current_step}_step", :f => f %>
     <div id="flashcard_buttons">
-      <%= f.submit "Back", :name => "back_button" unless @character.first_step? %>
-      <%= f.submit "Continue" %>
+      <%= f.submit "Go back", :name => "back_button" unless @character.first_step? %>
+      <%= "|" unless @character.first_step? %>
+      <%= f.submit "Continue", :id => "continue_button" %>
   </div>
   <% end %>
 <% end %>

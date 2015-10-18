@@ -5,22 +5,6 @@ background-color: white;
 color: black;
 }
 
-.error_message {
-  margin: 0;
-  color: red;
-}
-
-.field_with_errors {
-  display: inline-block;
-  width: 100%;
-  input {
-    border: 1px solid red;
-  }
-}
-
-.continue_button:link {
-  color: black;
-}
 
 /* :::::::::::::::::::::::: Flashcards - used in the Intro :::::::::::::::::::::::: */
 #flashcard {
@@ -57,6 +41,14 @@ color: black;
   filter: flipv;;
 }
 
+#flashcard_buttons{
+  text-align: center;
+}
+
+#intro_radio_buttons{
+  margin-left: 2%;  
+}
+
 /* :::::::::::::::::::::::: Avatars :::::::::::::::::::::::: */
 .avatar_icon_small{
   max-width: 100px;
@@ -77,4 +69,12 @@ color: black;
 input[id="character_name"]{
   display: block;
   margin: auto;
+}
+
+input[id="back_button"]{
+
+}
+
+input[id="continue_button"]{
+
 }
