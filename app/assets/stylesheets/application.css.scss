@@ -14,15 +14,86 @@
  *= require_self
  */
 
- /* **Variables** */
-$lightgrey: #D8D8D8;
-$backgroundblue: #00124A;
+@import 'variables';
 
-/* **Basic Styles** */
+/* :::::::::::::::::::::::::::::::::::::::::::::::: Basic Styles :::::::::::::::::::::::::::::::::::::::::::::::: */
+.text{
+  font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+  font-style: normal;
+  font-variant: normal;
+}
+
+h1 {
+  @extend .text;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 26.3999996185303px;
+}
+h3 {
+  @extend .text;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 15.3999996185303px;
+}
+p {
+  @extend .text;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  align: justify;
+  margin: 10px;
+}
+
+img {
+  margin:0;
+  padding:0;
+  background-color: inherit; 
+  border: none;
+}
+
+/* :::::::::::::::::::::::: Forms :::::::::::::::::::::::: */
 
 form {
   display: block;
 }
+
+label {
+  /*display: block;*/
+}
+
+input[type="submit"]{
+  @extend .text;
+  font-size: 16px;
+  display: block;
+  margin: auto;
+  border: solid 1px black;
+  background-color: white;
+  margin-top: 5px;
+}
+
+input[type="submit"]:hover{
+  background-color: black;
+  color: white;
+  outline: 0;
+}
+
+input[type='text']{
+  width:98%;
+  outline: 0;
+}
+
+
+select {
+  width: 180px;
+}
+
+textarea {
+  height: 150px;
+  width: 98%;
+  min-width: 330px;
+}
+
+/* :::::::::::::::::::::::: Tables :::::::::::::::::::::::: */
 
 table { 
   border-collapse: collapse; 
@@ -50,189 +121,3 @@ text_area {
   width: 200px;
 }
 
-label {
-  /*display: block;*/
-}
-
-input[type='text']{
-  width:98%;
-}
-
-select {
-  width: 180px;
-}
-
-textarea {
-  height: 150px;
-  width: 98%;
-  min-width: 330px;
-}
-
-h1 {
-  font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-  font-size: 24px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 26.3999996185303px;
-}
-h3 {
-  font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-  font-size: 20px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 15.3999996185303px;
-}
-p {
-  font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-  font-size: 16px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  line-height: 20px;
-  align: justify;
-}
-
-img {
-  margin:0;
-  padding:0;
-  background-color: inherit; 
-  border: none;
-}
-
-/* **Front End** */
-
-body {
-background-color: white;
-color: black;
-}
-
-.continue_button:link {
-  color: black;
-}
-
-
-/*Flashcards - used in the Intro */
-#flashcard {
-  position: absolute;
-  left: 27.5%;
-  top: 20%;
-  width: 45%;
-}
-
-#flashcard_body {
-  margin: 0 auto;
-  width: 92.5%;
-  padding: 3%;
-  border: 1px solid black;
-  box-shadow: 6px 8px 3px rgba(0, 0, 0, 0.5);
-  background-color: white;
-}
-
-.divider {
-  max-width: 100%;
-  margin:0;
-  padding:0;
-  display: block;
-}
-
-.bottom_divider {
-  /* this code flips the divider image upside down */
-  @extend .divider;
-  -moz-transform: scaleY(-1);
-  -webkit-transform: scaleY(-1);
-  -o-transform: scaleY(-1);
-  transform: scaleY(-1);
-  -ms-filter: flipv; /*IE*/
-  filter: flipv;;
-}
-
-/* Avatars */
-.avatar_icon_small{
-  max-width: 100px;
-  max-height:200px;
-}
-
-.avatar_icon_medium{
-  max-width: 175px;
-  max-height:250px;
-}
-
-.avatar_icon_medium_selectable{
-  @extend .avatar_icon_medium
-}
-
-
-/* **Back End** */
-#backend_navigation {
-  width: 100%;
-  border-bottom: 1px solid black;
-  padding-bottom: 1%
-}
-
-#storyform_and_requirementform_wrapper {
-  float:left;
-  border: 1px solid black;
-  border-radius: 1%;
-  padding: 1%;
-  width: 70%;
-  margin-bottom: 3%;
-}
-
-#branchform_wrapper {
-  clear:left;
-  margin-left: 5%;
-  margin-bottom: 5%;
-}
-
-#storyform {
-  float: left;
-  border-right: 1px solid $lightgrey;
-  padding: 0% 3% 0% 1%;
-  max-width: 46%;
-}
-
-#requirementform {
-  float: left;
-  padding: 0% 1% 0% 3%;
-  max-width: 46%;
-}
-
-.branch_card{
-  width: 75%; 
-  border: 1px solid black;
-  border-radius: 1%;
-  padding: 1%;
-  margin-bottom: 3%;
-  overflow: hidden;
-}
-
-.branch_card_left_column{
-  float: left;
-  padding: 0% 3% 0% 1%;
-  max-width:35%;
-  border-right: 1px solid $lightgrey;
-}
-
-.branch_card_right_column{
-  float: left;
-  max-width: 55%;
-  padding: 0% 1% 0% 3%;
-}
-
-#branch_description{
-  height:80px;
-}
-
-#update_branch{
-  clear: left;
-  padding:1%;
-  max-width: 10%
-}
-
-#submit_button{
-  clear: left;
-  padding:1%;
-  max-width: 10%
-}

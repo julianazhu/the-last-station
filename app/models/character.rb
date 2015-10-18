@@ -2,17 +2,15 @@ class Character < ActiveRecord::Base
 attr_writer :current_step
   has_many :stats, :dependent => :destroy
   validates :name, 
-            length: { minimum: 3 },
-            presence: true,
-            format: { with: /\A[a-zA-Z\d ]*\Z/, :message => "can only use letters, numbers, spaces." },
+            :presence => { :message => "Pick a name! Any name! Ideally with letters and everything."},
+            format: { with: /\A[a-zA-Z\d ]*\Z/, :message => "You get a strong feeling that your name is made all out of letters. Maybe with spaces in between." },
             :if => lambda { |f| f.current_step == "name" }
   validates :avatar_image_path,
-            length: { minimum: 5 },
-            presence: true,
+            :presence => { :message =>  "It doesn't look like anything is selected...let's try this again. " },
             :if => lambda { |f| f.current_step == "avatar"}
-  validates_presence_of :gender, :if => lambda { |f| f.current_step == "gender"}
+  validates_presence_of :gender, :if => lambda { |f| f.current_step == "gender"}, :message => "It's a difficult question, but here's a secret: you can just change your mind later. You have that power. So just pick something."
 
-# Intro Form
+# Related to the Introduction Form wizard
 def current_step
   @current_step || steps.first
 end
@@ -44,7 +42,7 @@ def all_valid?
   end
 end
 
-# Gameplay
+# Gameplay related methods
   def find_eligible_stories
     @eligible_stories = []
     loop_through_all_stories

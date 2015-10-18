@@ -16,4 +16,10 @@
     <%= f.radio_button :gender, "asexual." %>
     <%= label :gender_male, "A sentient carrot." %>
     </p>
+  <div class="error_messages">
+    <% @character.errors[:gender].each do | msg |  %>
+      <p class="error_message"><%= msg %></p>
+    <% end %>
+  </div>
+  <br>
 </div>
