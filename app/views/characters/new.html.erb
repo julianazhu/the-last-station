@@ -1,10 +1,16 @@
-<%= render layout: "/layouts/flashcard" do %>
-  <%= form_for @character do |f| %>
-    <%= render "#{@character.current_step}_step", :f => f %>
-    <div id="flashcard_buttons">
-      <%= f.submit "Go back", :name => "back_button" unless @character.first_step? %>
-      <%= "|" unless @character.first_step? %>
-      <%= f.submit "Continue", :id => "continue_button" %>
+<div id="wrapper">
+  <%= render partial: "header" %>
+  <div id="intro_body">
+    <%= render layout: "/layouts/flashcard" do %>
+      <%= form_for @character do |f| %>
+        <%= render "#{@character.current_step}_step", :f => f %>
+        <div id="flashcard_buttons">
+          <%= f.submit "Go back", :name => "back_button" unless @character.first_step? %>
+          <%= "|" unless @character.first_step? %>
+          <%= f.submit "Continue", :id => "continue_button" %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <% end %>
-<% end %>
+  <%= render partial: "layouts/footer" %>
+</div>

@@ -1,17 +1,57 @@
+@import 'variables';
+
 /* ::::::::::::::::::::::::::::::::::::::::::::::: Player User Interface ::::::::::::::::::::::::::::::::::::::::::::::: */
 
-body {
-background-color: white;
-color: black;
+#footer{
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  bottom: 0;
 }
 
+#footer_center_div{
+  margin: 0 auto;  
+  width:80%;
+  height: 8px;
+  border-top: 1px solid $darkgrey;
+  p{
+    text-align: center;
+    margin: 0.5%;
+    color: $darkgrey;
+  }
+}
+
+/* :::::::::::::::::::::::::::::::::::::::  Intro ::::::::::::::::::::::::::::::::::::::: */
+
+#intro_header{
+  min-height: 34px;
+  border-bottom: 1px solid $darkgrey;
+  padding-top:1%;
+  h1{
+    text-align: center;
+    font-size:2.5em;
+    color: black;
+    text-shadow: 1px 2px $lightgrey;
+  }
+}
+
+#intro_body {
+  padding-top: 4%;
+  padding-bottom: 30px;
+}
 
 /* :::::::::::::::::::::::: Flashcards - used in the Intro :::::::::::::::::::::::: */
+#intro_title{
+  color: $lightgrey;
+}
+
 #flashcard {
-  position: absolute;
-  left: 27.5%;
+  margin: auto;
   top: 20%;
   width: 45%;
+  input[type="text"]{
+    margin: auto;
+  }
 }
 
 #flashcard_body {
@@ -51,30 +91,52 @@ color: black;
 
 /* :::::::::::::::::::::::: Avatars :::::::::::::::::::::::: */
 .avatar_icon_small{
-  max-width: 100px;
-  max-height:200px;
+  max-width: 10%;
 }
 
 .avatar_icon_medium{
-  max-width: 175px;
-  max-height:250px;
+  max-width: 32%;
 }
 
 .avatar_icon_medium_selectable{
-  @extend .avatar_icon_medium
+  @extend .avatar_icon_medium;
 }
 
-/* :::::::::::::::::::::::: Intro :::::::::::::::::::::::: */
+/* :::::::::::::::::::::::: Main Game :::::::::::::::::::::::: */
 
-input[id="character_name"]{
-  display: block;
-  margin: auto;
+#main_game_wrapper{
+  width: 80%;
+  margin:  auto;
+  overflow: auto;
+  padding-bottom: 30px;
 }
 
-input[id="back_button"]{
-
+#main_header{
+  overflow: hidden;
+  border: 1px solid black;
+  clear: both;
+  padding: 5%;
+  margin-bottom: 2%;
 }
 
-input[id="continue_button"]{
+#main_content_and_sidebar_wrapper{  
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 2%
+}
 
+#main_sidebar{
+  display:inline-block;
+  width:20%;
+  float:left;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+#main_content{
+  border: 1px solid black;
+  display:inline-block;
+  width: 78%;
+  float:right;
+  overflow: hidden;
 }

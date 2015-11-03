@@ -16,7 +16,17 @@
 
 @import 'variables';
 
-/* :::::::::::::::::::::::::::::::::::::::::::::::: Basic Styles :::::::::::::::::::::::::::::::::::::::::::::::: */
+/* :::::::::::::::::::::::::::::::::::::::::::::::: Basic Styles and Page Elements :::::::::::::::::::::::::::::::::::::::::::::::: */
+body,html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+div{
+  display: block;
+}
+
 .text{
   font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
   font-style: normal;
@@ -44,11 +54,24 @@ p {
   margin: 10px;
 }
 
-img {
+b{
+  font-weight: bold;
+}
+
+i{
+  font-style: italic;
+}
+
+img{
   margin:0;
   padding:0;
   background-color: inherit; 
   border: none;
+}
+
+#wrapper{
+  min-height: 100%;
+  position: relative;
 }
 
 /* :::::::::::::::::::::::: Forms :::::::::::::::::::::::: */
@@ -87,7 +110,6 @@ select {
 textarea {
   height: 150px;
   width: 98%;
-  min-width: 330px;
 }
 
 .error_message {
@@ -109,6 +131,7 @@ table {
   border-collapse: collapse; 
   border: 1px solid;
   max-width: 100%;
+  margin-top: 2%;
 }
 
 table td{

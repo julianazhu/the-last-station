@@ -8,6 +8,5 @@ class Stat < ActiveRecord::Base
           presence: true,
           numericality: {only_integer: true}
   validates :points, 
-          presence: true,
           numericality: {only_integer: true}
 end

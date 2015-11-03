@@ -5,17 +5,10 @@ Rails.application.routes.draw do
   get 'characters' => 'characters#index', as: :characters
   post 'characters' => 'characters#create'
   get 'characters/new' => 'characters#new', as: :new_character
-  get 'characters/:character_id/rename' => 'characters#edit' , as: :edit_character
+  get 'characters/:character_id/edit' => 'characters#edit' , as: :edit_character
   get 'characters/:character_id' => 'characters#show', as: :character
   patch 'characters/:character_id' => 'characters#update'
   delete 'characters/:character_id' => 'characters#destroy'
-
-  #Intro
-  get 'intro' => 'intro#intro1'
-  get 'intro2' => 'intro#intro2', as: :intro2
-  get 'intro3' => 'intro#intro3', as: :intro3
-  get 'intro4' => 'intro#intro4', as: :intro4
-  post 'validate_character' => 'intro#validate_character_params', as: :validate_character
 
   #Stories Routes
   get 'stories' => 'stories#index', as: :stories

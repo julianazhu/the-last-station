@@ -3,7 +3,7 @@ attr_writer :current_step
   has_many :stats, :dependent => :destroy
   validates :name, 
             :presence => { :message => "Pick a name! Any name! Ideally with letters and everything."},
-            format: { with: /\A[a-zA-Z\d ]*\Z/, :message => "You get a strong feeling that your name is made up of letters, and maybe spaces. Numbers probably indicate you have brain damage and/or bad parents, but that's not your fault." },
+            format: { with: /\A[a-zA-Z\d ]*\Z/, :message => "You get a strong feeling that your name is made up almost entirely out of letters, and maybe spaces. Numbers probably indicate you have brain damage and/or bad parents, but that's not your fault." },
             :if => lambda { |f| f.current_step == "name" }
   validates :avatar_image_path,
             :presence => { :message =>  "It doesn't look like anything is selected...let's try this again. " },

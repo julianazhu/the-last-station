@@ -2,16 +2,16 @@
 	<p>You look into a window and see your reflection staring back. You are:</p>
   <div id="intro_radio_buttons">
     <%= f.radio_button :gender, "female" %>
-    <%= label :gender_female, "A woman. " %>
+    <%= f.label :gender_female, "A woman. " %>
     <br><br>
     <%= f.radio_button :gender, "male" %>
-    <%= label :gender_male, "A man." %>
+    <%= f.label :gender_male, "A man." %>
     <br><br>
     <%= f.radio_button :gender, "neither" %>
     <%= f.label :gender_neither, "Exceptionally good-looking. The rest remains a mystery." %>
     <br><br>
     <%= f.radio_button :gender, "asexual." %>
-    <%= label :gender_carrot, "A sentient carrot." %>
+    <%= f.label :gender_asexual, "A sentient carrot." %>
   </div>
   <div class="error_messages">
     <% @character.errors[:gender].each do | msg |  %>
