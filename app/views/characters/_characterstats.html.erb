@@ -3,7 +3,7 @@
 <% if @stats.count > 0 %>
   <ul>
   <% @character.stats.each do |stat| %>
-    <li>Your <%= stat.quality.name %> is <%= stat.points %></li>
+    <li>Your <%= stat.quality.name %> is <%= stat.value %></li>
   <% end %>
   </ul>
 <% else %>

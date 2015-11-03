@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512030428) do
+ActiveRecord::Schema.define(version: 20151103020241) do
 
   create_table "branches", force: true do |t|
     t.string   "story_id"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20150512030428) do
   create_table "stats", force: true do |t|
     t.string   "character_id"
     t.string   "quality_id"
-    t.integer  "points"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
