@@ -45,7 +45,7 @@ class CharactersController < ApplicationController
       render "new"
     else
       session[:character_step] = session[:character_params] = nil
-      flash[:notice] = "character saved!"
+      @character.build_initial_character_stats
       redirect_to @character
     end
   end

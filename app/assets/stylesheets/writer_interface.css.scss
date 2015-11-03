@@ -23,6 +23,16 @@
   margin-bottom: 5%;
 }
 
+#level_form_wrapper {
+  clear: both;
+}
+
+.levels_table{
+  th{
+    min-width: 200px;
+  }
+}
+
 #storyform {
   float: left;
   border-right: 1px solid $lightgrey;
