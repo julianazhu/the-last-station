@@ -27,7 +27,7 @@ class CharactersController < ApplicationController
   def edit
   end
   
-  def create
+  def create  
     session[:character_params].deep_merge!(params[:character]) if params[:character]
     @character = Character.new(session[:character_params])
     @character.current_step = session[:character_step]

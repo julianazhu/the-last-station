@@ -28,6 +28,7 @@ before_action :find_character, only: [:show, :play_branch]
   def new
     @story = Story.new
     @story.requirements.build
+    @story.branches.build
     @requirements = @story.requirements
   end
   

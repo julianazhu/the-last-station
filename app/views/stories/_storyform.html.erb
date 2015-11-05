@@ -23,6 +23,6 @@
     <%= story.fields_for :branches do |branch| %>
       <%= render 'branch_fields', :f => branch %>
     <% end %>
-    <%= link_to_add_association "+ Add Branch", story, :branches,'data-association-insertion-node' => ".branch_card", 'data-association-insertion-method' => "after" %>
+    <%= link_to_add_association "+ Add Branch", story, :branches,'data-association-insertion-node' => "#add_branch_link", 'data-association-insertion-method' => "before", :id => "add_branch_link" %>
   </div>
 <% end %>

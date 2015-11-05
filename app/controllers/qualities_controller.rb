@@ -35,7 +35,8 @@ class QualitiesController < ApplicationController
     @quality = Quality.find(params[:id])
     
     if @quality.update(quality_params)
-      redirect_to @quality
+      flash[:notice] = "Successfully updated the Quality."
+      redirect_to qualities_path
     else
       render 'edit'
     end

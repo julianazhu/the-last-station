@@ -4,6 +4,8 @@
 
 ready = ->
 
+  $('#continue_button').focus();
+
   clearAllShadows = () ->
     clearShadow avatar for avatar in $(".avatar_icon_medium_selectable")
 

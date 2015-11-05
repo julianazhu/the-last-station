@@ -10,7 +10,11 @@
     <tr>
       <td><%= quality.id %></td>
       <td><%= quality.name %></td>
-      <td><%= quality.description %></td>
+      <td><%= quality.description %>
+        <% quality.levels.each do |level| %>
+            <p><%=level.amount%>. <%= level.description %></p>
+        <% end%>
+      </td>
       <td><%= image_tag "#{quality.image_path}" %></td>
       <td>
         <%= link_to 'Edit', edit_quality_path(quality) %>,

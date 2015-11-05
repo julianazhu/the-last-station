@@ -12,7 +12,7 @@ class FindEligibleStories
     @eligible_stories
   end 
 
-# rewrite this to make more sense asap
+# rewrite this to make more sense ASAP
   def loop_through_all_stories
     Story.all.each do |story|
       @story_eligibility = true
@@ -38,7 +38,7 @@ class FindEligibleStories
     if character_stat == nil
       character_stat_points = 0
     else
-      character_stat_points = character_stat.value.to_i
+      character_stat_points = character_stat.points
     end
   end
   

@@ -1,32 +1,34 @@
-<h1><%= @story.title %></h1>
-<% if @story.image_path?%>
-  <p><%= image_tag "#{@story.image_path}" %></p>
-<% end %>
-<p><%= @story.body %></p>
-
-<% unless @story.branches.nil?%>
-  <ul>
-  <% @story.branches.each do |branch|%>
-    <li>
-      <%= branch.title %>
-      <ul>
-        <li>
-          <%= branch.description %>
-          <%= link_to "Continue", play_branch_path(:branch_id => branch.id)%>.
-        </li>
-      </ul>
-    </li>
+<%= render layout: "/layouts/main_game" do %>
+  <h1><%= @story.title %></h1>
+  <% if @story.image_path?%>
+    <p><%= image_tag "#{@story.image_path}" %></p>
   <% end %>
-  </ul>
-<% end %>
+  <p><%= @story.body %></p>
 
-<% if @character.nil? %>
-  <ol>
-    <% for requirements in @story.requirements %>
-      <li><%= requirement.quality %></li>
+  <% unless @story.branches.nil?%>
+    <ul>
+    <% @story.branches.each do |branch|%>
+      <li>
+        <%= branch.title %>
+        <ul>
+          <li>
+            <%= branch.description %>
+            <%= link_to "Continue", play_branch_path(:branch_id => branch.id)%>.
+          </li>
+        </ul>
+      </li>
+    <% end %>
+    </ul>
   <% end %>
-  </ol>
-  <p><%= link_to 'Edit Story', edit_story_path(@story) %></p>
-  <p><%= link_to 'Delete Story', story_path(@story), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-  <p><%= link_to 'Show All Story Cards', stories_path %></p>
+
+  <% if @character.nil? %>
+    <ol>
+      <% for requirements in @story.requirements %>
+        <li><%= requirement.quality %></li>
+    <% end %>
+    </ol>
+    <p><%= link_to 'Edit Story', edit_story_path(@story) %></p>
+    <p><%= link_to 'Delete Story', story_path(@story), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p><%= link_to 'Show All Story Cards', stories_path %></p>
+  <% end %>
 <% end %>
