@@ -5,7 +5,7 @@ class Quality < ActiveRecord::Base
   accepts_nested_attributes_for :levels, 
                                 :reject_if => :all_blank,
                                 :allow_destroy => true
-  delegate :name, to: :requirements, prefix: true #Not entirely sure this is necessary. Maybe delete.
+  delegate :name, to: :requirements, prefix: true #Not entirely sure this is necessary anymore. Maybe delete.
   validates :name, 
             presence: true, 
             length: { minimum: 3}
@@ -15,4 +15,10 @@ class Quality < ActiveRecord::Base
   validates :image_path, 
             allow_blank: true,
             length: { minimum: 3}
+
+  def find_by_name(quality_name)
+    Quality.where(name: quality_name).first
+  end
+
 end
+

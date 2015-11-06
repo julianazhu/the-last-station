@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105065349) do
+ActiveRecord::Schema.define(version: 20151106123521) do
 
   create_table "branches", force: true do |t|
     t.string   "story_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20151105065349) do
     t.boolean  "triangular"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "minimum_points"
   end
 
   create_table "qualities", force: true do |t|

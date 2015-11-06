@@ -9,7 +9,6 @@ class FindEligibleStories
   def find_eligible_stories
     @eligible_stories = []
     loop_through_all_stories
-    @eligible_stories
   end 
 
 # rewrite this to make more sense ASAP

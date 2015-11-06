@@ -12,14 +12,16 @@ class Character < ActiveRecord::Base
     validates_presence_of :gender, :if => lambda { |f| f.current_step == "gender"}, :message => "It's a difficult question, but there's a secret: you can just change your mind later. So just pick anything."
 
   def build_initial_character_stats
-    @location_id = Quality.where(name: "Location").first.id
+    @location_id = Quality.find_by_name("Location").id
     stats.create(quality_id: @location_id, value: "1")
   end
 
-  def character_location
-    @location_id = Quality.where(name: "Location").first.id
-    @character_location_stat = self.stats.find_or_initialize_by(:quality_id => @location_id)
-    
+  def get_stat(quality_name)
+    quality = Quality.find_by_name(quality_name)
+    stat = Stat.where(:quality_id => quality.id, :character_id => self.id)
+
+    readable_stat = [stat_id: stat.id, quality: quality_name, points: stat.points, value: "1"]
+    raise
   end
 
   # Following is the logic for the Intro Form Wizard 

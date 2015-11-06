@@ -20,14 +20,11 @@ class Effect < ActiveRecord::Base
     if operation == "plus"
       character_stat.points += self.amount
     elsif operation == "minus"
-      if self.amount > character_stat.points
-        character_stat.points = 0
-      else
-        character_stat.points -= self.amount
-      end
+      character_stat.points -= self.amount
     elsif operation == "equals"
       character_stat.points = self.amount 
     end
+    character_stat.points = 0 if character_stat.points < 0
     character_stat.save
   end
 
