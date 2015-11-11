@@ -15,5 +15,6 @@
 /log/*.log
 /tmp
 
-# Ignore Photoshop files
+# Ignore Photoshop and gimp files
 *.psd
+*.xcf

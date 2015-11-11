@@ -1,5 +1,4 @@
 class Character < ActiveRecord::Base
-  attr_reader :character_location
   attr_writer :current_step
     has_many :stats, :dependent => :destroy
     validates :name, 
@@ -12,18 +11,15 @@ class Character < ActiveRecord::Base
     validates_presence_of :gender, :if => lambda { |f| f.current_step == "gender"}, :message => "It's a difficult question, but there's a secret: you can just change your mind later. So just pick anything."
 
   def build_initial_character_stats
-    @location_id = Quality.find_by_name("Location").id
-    stats.create(quality_id: @location_id, value: "1")
+    character_location = Quality.find_by_name("Location")
+    stats.create(quality_id: character_location.id, points: "1")
   end
 
   def get_stat(quality_name)
     quality = Quality.find_by_name(quality_name)
-    stat = Stat.where(:quality_id => quality.id, :character_id => self.id)
-
-    readable_stat = [stat_id: stat.id, quality: quality_name, points: stat.points, value: "1"]
-    raise
-  end
-
+    stat = Stat.find_by(:quality_id => quality.id, :character_id => self.id)
+  end 
+  
   # Following is the logic for the Intro Form Wizard 
   def current_step
     @current_step || steps.first

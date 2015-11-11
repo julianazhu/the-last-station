@@ -12,4 +12,8 @@ class Stat < ActiveRecord::Base
             presence: true,
             format: { with: /[0-9a-zA-Z]*/ }
 
+  def get_level
+    Level.where(quality_id: self.quality_id).find_by("minimum_points >= ?", self.points)
+  end
+
 end
