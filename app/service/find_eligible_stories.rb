@@ -48,6 +48,8 @@ class FindEligibleStories
       character_stat_points < requirement.amount
     elsif requirement.operation == "equals"
       character_stat_points == requirement.amount
+    elsif requirement.operation == "is not"
+      character_stat_points != requirement.amount
     else
       raise "Error: Operation is not an accepted type. ABORT. FATAL. Ring the catastrophe bell."
     end

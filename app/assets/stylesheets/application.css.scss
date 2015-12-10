@@ -39,19 +39,21 @@ h1 {
   font-weight: 500;
   line-height: 26.3999996185303px;
 }
+
 h3 {
   @extend .text;
   font-size: 20px;
   font-weight: 500;
   line-height: 15.3999996185303px;
 }
+
 p {
   @extend .text;
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
   align: justify;
-  margin: 10px;
+  padding: 10px;
 }
 
 b{
@@ -65,7 +67,7 @@ i{
 img{
   margin:0;
   padding:0;
-  background-color: inherit; 
+   /*background-color: inherit;  THIS IS COMMENTED OUT DUE TO WEIRD BACKGROUND IN SIDEBAR AVATARS - find workaround if it messes up something else */ 
   border: none;
 }
 
@@ -74,6 +76,12 @@ img{
   position: relative;
 }
 
+#right_hand_wrapper{
+  display:block;
+  float: right;
+  width:55%;
+  padding-top:5%;
+}
 /* :::::::::::::::::::::::: Forms :::::::::::::::::::::::: */
 
 form {
@@ -90,13 +98,14 @@ input[type="submit"]{
   display: inline-block;
   margin: auto;
   border: solid 1px black;
-  background-color: white;
+  background-color: black;
   margin-top: 5px;
+  color: white;
 }
 
 input[type="submit"]:hover{
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 input[type='text']{

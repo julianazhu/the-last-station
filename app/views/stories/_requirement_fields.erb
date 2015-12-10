@@ -3,7 +3,7 @@
     <%= f.select(:quality_id, Quality.all.collect {|q| [ q.name, q.id ] }, { include_blank: true }) %>
   </td> 
   <td>
-    <%= f.select(:operation, [['greater than','greater than'], ['less than','less than'],['equals','equals']], { include_blank: true }) %>
+    <%= f.select(:operation, [['greater than','greater than'], ['less than','less than'],['equals','equals'], ['is not','is not']], { include_blank: true }) %>
   </td>
   <td>
     <%= f.text_field :amount %>

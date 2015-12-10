@@ -12,6 +12,9 @@ class IntroController < ApplicationController
   def intro4
   end
 
+  def intro5
+  end
+
   def validate_character
     @character = Character.new(character_params)
   end

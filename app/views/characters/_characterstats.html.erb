@@ -1,6 +1,5 @@
-<h2>Your Stats:</h2>
-<% @stats %>
-<% if @stats.count > 0 %>
+<u>Your Stats:</u>
+<% if @character.stats.count > 0 %>
   <ul>
   <% @character.stats.each do |stat| %>
     <li>Your <%= stat.quality.name %> is <%= stat.points %></li>

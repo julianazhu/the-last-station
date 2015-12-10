@@ -1,10 +1,15 @@
-<div id="main_game_wrapper">
-  <%= render partial: "layouts/header" %>
-  <div id="main_content_and_sidebar_wrapper">
-    <%= render partial: "layouts/sidebar" %>
-    <div id="main_content">
-      <%= yield %>
-    </div> 
+<div id="player_interface_wrapper">
+  <div id="main_game_wrapper">
+    <%= render partial: "layouts/header" %>
+    <div id="main_content_and_sidebar_wrapper">
+      <%= render partial: "layouts/sidebar" %>
+      <div id="main_content">
+        <div id ="main_content_top"></div>
+        <div id ="main_content_middle">
+          <%= yield %>
+        </div>
+        <div id ="main_content_bottom"></div>
+      </div> 
+    </div>
   </div>
 </div>
-<%= render partial: "layouts/footer" %>

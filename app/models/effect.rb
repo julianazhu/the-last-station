@@ -29,6 +29,12 @@ class Effect < ActiveRecord::Base
   end
 
   def generate_descriptive_sentence(original_character_stat_points, character_stat)
+    operation_description = generate_operation_description(original_character_stat_points, character_stat)
+    # result_description = generate_result_description(character_stat)
+    return "Your #{self.quality.name} #{operation_description}."
+  end
+
+  def generate_operation_description(original_character_stat_points, character_stat)
     if original_character_stat_points < character_stat.points
       operation_description = "has increased to"
     elsif original_character_stat_points > character_stat.points
@@ -36,7 +42,10 @@ class Effect < ActiveRecord::Base
     elsif original_character_stat_points = character_stat.points
       operation_description = "remains"
     end
-    return "Your #{self.quality.name} #{operation_description} #{character_stat.points}."
   end
+
+  # def generate_result_description(character_stat)
+  #   character_stat raise
+  # end
 
 end
