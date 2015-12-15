@@ -11,6 +11,6 @@
             length: {minimum: 3}
   validates :minimum_points,
             numericality: {only_integer: true},
-            uniqueness: true,
+            uniqueness: {scope: :quality_id},
             presence: true
 end
