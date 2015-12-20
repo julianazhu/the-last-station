@@ -14,6 +14,10 @@
       <%= quality.text_field :image_path %>
     </p>
     <p>
+      <%= quality.label :is_this_quality_ranked? %>
+      <%= quality.check_box :ranked %>
+    <p>
+    <p>
       <%= quality.submit "Update", :id => "quality_submit_button" %>
     </p>
   </div>

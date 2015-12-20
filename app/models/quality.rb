@@ -15,6 +15,8 @@ class Quality < ActiveRecord::Base
   validates :image_path, 
             allow_blank: true,
             length: { minimum: 3}
+  validates :ranked,
+            presence: true
 
   def find_by_name(quality_name)
     Quality.where(name: quality_name).first

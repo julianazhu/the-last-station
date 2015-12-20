@@ -51,7 +51,7 @@ class QualitiesController < ApplicationController
   
   private
   def quality_params
-    params.require(:quality).permit(:name, :description, :image_path,
+    params.require(:quality).permit(:name, :description, :image_path, :ranked,
                                     levels_attributes:[ :id, :quality_id, :amount, :description, :image_path, :minimum_points, :_destroy])
   end
 end

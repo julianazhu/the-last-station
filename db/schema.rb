@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106123521) do
+ActiveRecord::Schema.define(version: 20151220035703) do
 
   create_table "branches", force: true do |t|
     t.string   "story_id"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20151106123521) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+    t.boolean  "ranked"
   end
 
   add_index "qualities", ["character_id"], name: "index_qualities_on_character_id"
