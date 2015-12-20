@@ -29,9 +29,13 @@ class Effect < ActiveRecord::Base
   end
 
   def generate_descriptive_sentence(original_character_stat_points, character_stat)
-    operation_description = generate_operation_description(original_character_stat_points, character_stat)
-    level_description = generate_level_description(character_stat)
-    return "Your #{self.quality.name} #{operation_description} #{level_description}."
+    character_level = get_character_level(character_stat)
+    if character_stat.quality.ranked? 
+      operation_description = generate_operation_description(original_character_stat_points, character_stat)
+      return "Your #{self.quality.name} #{operation_description} #{character_level.amount}: #{character_level.description}."
+    else
+      return "Your #{self.quality.name} is now #{character_level.description}."
+    end
   end
 
   def generate_operation_description(original_character_stat_points, character_stat)
@@ -44,14 +48,14 @@ class Effect < ActiveRecord::Base
     end
   end
 
-  def generate_level_description(character_stat)
+  def get_character_level(character_stat)
     character_level = 0 
     Level.where(:quality_id => character_stat.quality.id).each do |level|
       if level.minimum_points <= character_stat.points
         character_level = level 
       end
     end
-    character_level.description
+    character_level
   end
 
 end
