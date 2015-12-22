@@ -15,6 +15,7 @@ class QualitiesController < ApplicationController
   
   def edit
     @quality = Quality.find(params[:id])
+    @level = 1
   end
   
   def create

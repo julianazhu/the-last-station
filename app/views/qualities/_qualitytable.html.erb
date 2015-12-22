@@ -12,7 +12,7 @@
       <td><%= quality.name %></td>
       <td><%= quality.description %>
         <% quality.levels.each do |level| %>
-            <p><%=level.amount%>. <%= level.description %></p>
+            <p><%= level.rank %>. <%= level.description %></p>
         <% end%>
       </td>
       <td><%= image_tag "#{quality.image_path}" %></td>

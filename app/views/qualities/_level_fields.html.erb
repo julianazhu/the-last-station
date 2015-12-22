@@ -1,6 +1,7 @@
 <tr class="level_fields">
   <td> 
-    <%= f.text_field :amount %>
+    <%= @level.to_s %>
+    <%= f.hidden_field(:rank, :value => params[@level.to_s]) %>
   </td>
   <td>    
     <%= f.text_field :description %>
@@ -15,4 +16,4 @@
     <%= link_to_remove_association('Delete Level', f, {wrapper_class: 'level_fields'}) %>
   </td>
 </tr>
-
+<% @level = @level.next %>

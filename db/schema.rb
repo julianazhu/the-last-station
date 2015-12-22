@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220035703) do
+ActiveRecord::Schema.define(version: 20151220070533) do
 
   create_table "branches", force: true do |t|
     t.string   "story_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20151220035703) do
 
   create_table "levels", force: true do |t|
     t.integer  "quality_id"
-    t.integer  "amount"
+    t.integer  "rank"
     t.string   "description"
     t.string   "image_path"
     t.boolean  "triangular"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20151220035703) do
     t.string   "story_id"
     t.string   "quality_id"
     t.string   "operation"
-    t.integer  "amount"
+    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

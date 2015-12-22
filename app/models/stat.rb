@@ -1,19 +1,28 @@
 class Stat < ActiveRecord::Base
   belongs_to :character
   belongs_to :quality
+  delegate :name, to: :quality 
   validates :character_id,
             presence: true,
             numericality: {only_integer: true}          
   validates :quality_id,
             presence: true,
             numericality: {only_integer: true}
-  # This should be an integer if the stat is point based, but can be a description i.e. location name. 
   validates :points,
             presence: true,
             format: { with: /[0-9a-zA-Z]*/ }
 
+  def get_description
+    description = Level.get_level_description(self.quality, self.points)
+    if self.get_level.blank?
+      return "You are #{self.name}."
+    else
+      return "Your #{self.name} is " + "#{description}"
+    end
+  end
+
   def get_level
-    Level.where(quality_id: self.quality_id).find_by("minimum_points >= ?", self.points)
+    Level.get_level(self.quality, self.points)
   end
 
 end

@@ -6,7 +6,7 @@
     <%= f.select(:operation, [['greater than','greater than'], ['less than','less than'],['equals','equals'], ['is not','is not']], { include_blank: true }) %>
   </td>
   <td>
-    <%= f.text_field :amount %>
+    <%= f.text_field :points %>
   </td>
   <td>
     <%= link_to_remove_association "Delete", f %>

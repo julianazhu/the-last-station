@@ -61,7 +61,7 @@ before_action :find_character, only: [:show, :play_branch]
   private
   def story_params
     params.require(:story).permit(:title, :body, :image_path, 
-                                  requirements_attributes:[ :id, :quality_id, :amount, :operation, :_destroy ],
+                                  requirements_attributes:[ :id, :quality_id, :points , :operation, :_destroy ],
                                   branches_attributes:[ :id, :story_id, :title, :description, :outcome, :_destroy,  
                                     effects_attributes:[ :id, :branch_id, :quality_id, :operation, :amount, :_destroy] ])
   end

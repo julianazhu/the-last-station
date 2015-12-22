@@ -33,7 +33,7 @@ class FindEligibleStories
   end
 
   def get_corresponding_character_stat(requirement)
-    character_stat = @character.stats.find_by(quality_id: requirement.quality.id)
+    character_stat = @character.stats.find_by(quality_id: requirement.quality_id)
     if character_stat == nil
       character_stat_points = 0
     else
@@ -43,13 +43,13 @@ class FindEligibleStories
   
   def requirement_eligibility_calculator(requirement, character_stat_points)
     if requirement.operation == "greater than"
-      character_stat_points > requirement.amount
+      character_stat_points > requirement.points
     elsif requirement.operation == "less than"
-      character_stat_points < requirement.amount
+      character_stat_points < requirement.points
     elsif requirement.operation == "equals"
-      character_stat_points == requirement.amount
+      character_stat_points == requirement.points
     elsif requirement.operation == "is not"
-      character_stat_points != requirement.amount
+      character_stat_points != requirement.points
     else
       raise "Error: Operation is not an accepted type. ABORT. FATAL. Ring the catastrophe bell."
     end
