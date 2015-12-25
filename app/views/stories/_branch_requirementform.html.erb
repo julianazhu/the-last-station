@@ -1,0 +1,15 @@
+<div class="branch-requirementform">
+  <h3>Requirements</h3>
+  <table id="branch-requirements-table-<%="#{f.object.id}"%>">
+    <tr>
+      <th>Quality Required</th>
+      <th>Operation</th>
+      <th>Points</th>
+      <th>Actions</th>
+    </tr>
+    <%= f.fields_for :branch_requirements do |branch_requirement| %>
+    <%= render 'requirement_fields', :f => branch_requirement %>
+    <% end %>
+  </table>
+    <%= link_to_add_association 'Add Requirement', f, :branch_requirements, 'data-association-insertion-node' => "#branch-requirements-table-#{f.object.id}",'data-association-insertion-method' => "append" %>
+</div>

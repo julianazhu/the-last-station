@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225040039) do
+ActiveRecord::Schema.define(version: 20151225040508) do
 
   create_table "branch_requirements", force: true do |t|
     t.integer  "branch_id"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20151225040039) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "branch_requirements", ["branch_id"], name: "index_branch_requirements_on_branch_id"
+  add_index "branch_requirements", ["quality_id"], name: "index_branch_requirements_on_quality_id"
 
   create_table "branches", force: true do |t|
     t.integer  "story_id"

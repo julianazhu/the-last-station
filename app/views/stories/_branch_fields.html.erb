@@ -2,16 +2,17 @@
   <div class ="branch_card_left_column">
     <b><%= f.label :Title %></b>
     <%= f.text_field :title %> 
-    <b><%= f.label(:Hook, class: "branch_description") %></b>
-    <%= f.text_area :description %>
+    <b><%= f.label :Hook %></b>
+    <%= f.text_area :description, :class => "hook" %>
     <b><%= f.label :Outcome %></b>  
     <%= f.text_area :outcome %> 
     <br>
   </div>  
   <div class ="branch_card_right_column">
-    <div id="effectform">
+    <%= render 'branch_requirementform', :f => f %>
+    <div class="effectform">
       <h3>Branch Effects</h3>
-      <table class="effects-table-<%="#{f.object.id}"%>">
+      <table id="effects-table-<%="#{f.object.id}"%>">
         <tr>
           <th>Quality Required</th>
           <th>Operation</th>
@@ -22,7 +23,7 @@
         <%= render 'effect_fields', :f => effect %>
         <% end %>
       </table>
-        <%= link_to_add_association 'Add Effect', f, :effects, 'data-association-insertion-node' => ".effects-table-#{f.object.id}",'data-association-insertion-method' => "append" %>
+        <%= link_to_add_association 'Add Effect', f, :effects, 'data-association-insertion-node' => "#effects-table-#{f.object.id}",'data-association-insertion-method' => "append" %>
     </div>
   </div>
   <div id="update_branch">

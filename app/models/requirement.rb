@@ -1,6 +1,5 @@
 class Requirement < ActiveRecord::Base
   belongs_to :story
-  belongs_to :branch
   belongs_to :quality
   delegate :id, to: :quality, prefix: true, allow_nil: true
   validates :quality_id, 

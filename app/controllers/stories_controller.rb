@@ -29,13 +29,10 @@ before_action :find_character, only: [:show, :play_branch]
     @story = Story.new
     @story.requirements.build
     @story.branches.build
-    @story.requirements.branches.build
     @requirements = @story.requirements
-    @branch_requirements = @story.branches.requirements
   end
   
   def edit
-    @requirements = @story.requirements
   end
   
   def create
@@ -64,7 +61,8 @@ before_action :find_character, only: [:show, :play_branch]
   def story_params
     params.require(:story).permit(:title, :body, :image_path, :hook,
                                   requirements_attributes:[ :id, :quality_id, :points , :operation, :_destroy ],
-                                  branches_attributes:[ :id, :story_id, :title, :description, :outcome, :_destroy,  
+                                  branches_attributes:[ :id, :title, :description, :outcome, :_destroy,  
+                                    branch_requirements_attributes:[ :id, :branch_id, :quality_id, :points, :operation, :_destroy ],
                                     effects_attributes:[ :id, :branch_id, :quality_id, :operation, :amount, :_destroy] ])
   end
 end

@@ -1,7 +1,7 @@
 class Branch < ActiveRecord::Base
   belongs_to :story
-  has_many :requirements, :dependent => :destroy
-  accepts_nested_attributes_for :requirements,
+  has_many :branch_requirements, :dependent => :destroy
+  accepts_nested_attributes_for :branch_requirements,
                               :reject_if => :all_blank, 
                               :allow_destroy => true
   has_many :effects, :dependent => :destroy
