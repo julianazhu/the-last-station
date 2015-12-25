@@ -9,6 +9,9 @@ class Story < ActiveRecord::Base
                                 :allow_destroy => true
   validates :title, 
             length: { minimum: 3}
+  validates :hook, 
+            allow_blank: true,
+            length: { minimum: 5}
   validates :body, 
             allow_blank: true,
             length: { minimum: 5}

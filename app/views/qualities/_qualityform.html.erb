@@ -24,11 +24,12 @@
   <div id="level_form_wrapper">
     <table class="levels_table">
       <tr>
-        <th>Level</th>
-        <th>Description</th>
-        <th>Image Path</th>
-        <th>Minimum Points</th>
-        <th>Action</th>
+        <th id="level">Level</th>
+        <th id="description">Description</th>
+        <th id="image_path">Image Path</th>
+        <th id="flavor_text">Flavor Text</th>
+        <th id="minimum_points">Minimum Points</th>
+        <th id="action">Action</th>
       </tr>
       <%= quality.fields_for :levels do |f| %>
         <%= render 'level_fields', :f => f %> 

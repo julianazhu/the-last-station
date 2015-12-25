@@ -11,11 +11,15 @@
         <%= story.text_field :image_path %>
       </p>
       <p>    
+        <%= story.label :hook %>
+        <%= story.text_area :hook %>
+      </p>
+      <p>    
         <%= story.label :body %>
         <%= story.text_area :body %>
       </p>
     </div>
-    <%= render 'requirementform', :story => story %>
+    <%= render 'requirementform', :f => story %>
     <div id="submit_button"><%= story.button :submit, name: "story_id", value: @story.id %></div>
   </div>
   <div id="branchform_wrapper">

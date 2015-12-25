@@ -46,7 +46,7 @@ class FindEligibleStories
       character_stat_points > requirement.points
     elsif requirement.operation == "less than"
       character_stat_points < requirement.points
-    elsif requirement.operation == "equals"
+    elsif requirement.operation == "is"
       character_stat_points == requirement.points
     elsif requirement.operation == "is not"
       character_stat_points != requirement.points

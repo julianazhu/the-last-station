@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220070533) do
+ActiveRecord::Schema.define(version: 20151225040039) do
+
+  create_table "branch_requirements", force: true do |t|
+    t.integer  "branch_id"
+    t.integer  "quality_id"
+    t.string   "operation"
+    t.integer  "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "branches", force: true do |t|
-    t.string   "story_id"
+    t.integer  "story_id"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
@@ -33,8 +42,8 @@ ActiveRecord::Schema.define(version: 20151220070533) do
   end
 
   create_table "effects", force: true do |t|
-    t.string   "branch_id"
-    t.string   "quality_id"
+    t.integer  "branch_id"
+    t.integer  "quality_id"
     t.string   "operation"
     t.integer  "amount"
     t.datetime "created_at"
@@ -49,10 +58,10 @@ ActiveRecord::Schema.define(version: 20151220070533) do
     t.integer  "rank"
     t.string   "description"
     t.string   "image_path"
-    t.boolean  "triangular"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "minimum_points"
+    t.text     "flavor_text"
   end
 
   create_table "qualities", force: true do |t|
@@ -60,7 +69,7 @@ ActiveRecord::Schema.define(version: 20151220070533) do
     t.text     "description"
     t.text     "image_path"
     t.integer  "points"
-    t.string   "character_id"
+    t.integer  "character_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
@@ -70,8 +79,8 @@ ActiveRecord::Schema.define(version: 20151220070533) do
   add_index "qualities", ["character_id"], name: "index_qualities_on_character_id"
 
   create_table "requirements", force: true do |t|
-    t.string   "story_id"
-    t.string   "quality_id"
+    t.integer  "story_id"
+    t.integer  "quality_id"
     t.string   "operation"
     t.integer  "points"
     t.datetime "created_at"
@@ -82,8 +91,8 @@ ActiveRecord::Schema.define(version: 20151220070533) do
   add_index "requirements", ["story_id"], name: "index_requirements_on_story_id"
 
   create_table "stats", force: true do |t|
-    t.string   "character_id"
-    t.string   "quality_id"
+    t.integer  "character_id"
+    t.integer  "quality_id"
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -98,6 +107,7 @@ ActiveRecord::Schema.define(version: 20151220070533) do
     t.string   "image_path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "hook"
   end
 
 end

@@ -28,9 +28,14 @@
 }
 
 .levels_table{
-  th{
-    min-width: 200px;
-  }
+  table-layout: fixed;
+  min-width:1000px;
+  #level{ width:2% }
+  #description{ width:13% }
+  #image_path{ width:25% }
+  #flavor_text{ width:45% }
+  #minimum_points{ width:5% }
+  #action{ width:10% }
 }
 
 #storyform {

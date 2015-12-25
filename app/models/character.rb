@@ -19,6 +19,10 @@ class Character < ActiveRecord::Base
     quality = Quality.find_by_name(quality_name)
     stat = Stat.find_by(:quality_id => quality.id, :character_id => self.id)
   end 
+
+  def location
+    get_stat("Location").get_level
+  end
   
   # Following is the logic for the Intro Form Wizard 
   def current_step
@@ -50,6 +54,6 @@ class Character < ActiveRecord::Base
       self.current_step = step
       valid?
     end
-  end  
+  end
 
 end

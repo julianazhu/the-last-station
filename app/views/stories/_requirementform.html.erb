@@ -1,5 +1,5 @@
-<div id="requirementform">
-  <h3>Story Requirements</h3>
+<div class="requirementform">
+  <h3>Requirements</h3>
   <table id="requirements-table">
     <tr>
       <th>Quality Required</th>
@@ -7,9 +7,9 @@
       <th>Points</th>
       <th>Actions</th>
     </tr>
-    <%= story.fields_for :requirements do |requirement| %>
+    <%= f.fields_for :requirements do |requirement| %>
     <%= render 'requirement_fields', :f => requirement %>
     <% end %>
   </table>
-    <%= link_to_add_association 'Add Requirement', story, :requirements, 'data-association-insertion-node' => "#requirements-table",'data-association-insertion-method' => "append" %>
+    <%= link_to_add_association 'Add Requirement', f, :requirements, 'data-association-insertion-node' => "#requirements-table",'data-association-insertion-method' => "append" %>
 </div>

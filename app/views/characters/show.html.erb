@@ -1,7 +1,9 @@
 <%= render layout: "/layouts/main_game" do %>
 
 
-  <h2>Stories Available</h2>
+  <h2><%= @character.location.description%></h2>
+  <p><%= @character.location.flavor_text%></p>
+
   <table>
     <tr>
       <th>Story Name</th>
