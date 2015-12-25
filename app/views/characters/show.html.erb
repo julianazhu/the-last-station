@@ -4,34 +4,15 @@
   <h2><%= @character.location.description%></h2>
   <p><%= @character.location.flavor_text%></p>
 
-  <table>
-    <tr>
-      <th>Story Name</th>
-      <th>Requirements</th>
-      <th>Actions</th>
-    </tr>
-    <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.title %></td>
-        <td>
-          <ul>
-          <% if story.requirements.first.nil? %>
-            <li>No requirements.</li>
-          <% else story.requirements.each do |requirement| %>
-            <li>
-              <%= requirement.quality.name %>
-              <%= requirement.operation %>
-              <%= requirement.get_level %>
-            </li>
-            <% end %>
-          <% end %>
-          </ul>
-        </td>
-        <td>
-          <%= link_to 'Go', play_story_path(:story_id => story.id) %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-  <br>
+  <% @stories.each do |story| %>
+    <div class="story_card">
+      <div class="story_card_left">
+        <h4><%= story.title %></h4>
+        <%= story.hook %>
+      </div>
+      <div class="story_card_right">
+        <%= button_to 'Go', play_story_path(:story_id => story.id), class: "go_button", :method => :get %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

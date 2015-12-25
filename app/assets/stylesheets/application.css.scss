@@ -50,8 +50,16 @@ h2 {
 h3 {
   @extend .text;
   font-size: 20px;
-  font-weight: 500;
-  line-height: 15px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+h4 {
+  @extend .text;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 3px;
 }
 
 p {
@@ -103,10 +111,8 @@ input[type="submit"]{
   @extend .text;
   font-size: 16px;
   display: inline-block;
-  margin: auto;
   border: solid 1px black;
   background-color: black;
-  margin-top: 5px;
   color: white;
 }
 

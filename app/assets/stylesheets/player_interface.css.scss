@@ -209,3 +209,29 @@
   background-image: url('backgrounds/content_frame_bottom.png');  
   background-size:100%; 
 }
+
+.story_card{
+  width: 100%;
+  background-color: black;
+  background:rgba(100,0,0,0.1);
+  min-height: 50px;
+  margin-bottom:1%;
+  border: 1px solid black;
+  padding:1%;
+}
+
+.story_card_left{
+  float:left;
+  width:90%;
+}
+
+.story_card_right{
+  float:right;
+  width:10%;
+}
+
+.go_button{
+  float:right;
+  margin-right: 2%;
+  margin-top: 30%;
+}
