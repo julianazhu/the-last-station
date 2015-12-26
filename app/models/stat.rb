@@ -15,7 +15,7 @@ class Stat < ActiveRecord::Base
   def get_description
     description = Level.get_level_description(self.quality, self.points)
     if self.get_level.blank?
-      return "You are #{self.name}."
+      return "You are #{self.name}"
     else
       return "Your #{self.name} is " + "#{description}"
     end

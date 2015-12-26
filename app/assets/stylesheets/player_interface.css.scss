@@ -195,9 +195,12 @@
 }
 
 #main_content_middle{
+  float:right;
   background-image: url('backgrounds/content_frame_middle.png');  
   background-size:100%;
   padding: 2% 0 0 4%;
+  clear:both;
+  width: 96%;
 }
 
 #content_wrapper{
@@ -205,19 +208,25 @@
 }
 
 #main_content_bottom{
+  clear: both;
   min-height: 28px;
   background-image: url('backgrounds/content_frame_bottom.png');  
   background-size:100%; 
 }
 
 .story_card{
-  width: 100%;
-  background-color: black;
+  width: 98%;
   background:rgba(100,0,0,0.1);
   min-height: 50px;
   margin-bottom:1%;
   border: 1px solid black;
   padding:1%;
+  float:left;
+  .go_button{
+    float:right;
+    margin-right: 2%;
+    margin-top: 40%;
+  }
 }
 
 .story_card_left{
@@ -230,8 +239,29 @@
   width:10%;
 }
 
-.go_button{
+
+.play_branch_card{
+  @extend .story_card
+}
+
+.play_branch_card_top{
+  width: 100%;
+  clear: both;
+}
+.play_branch_card_bottom{
+  .go_button{
+    float:right;
+    margin-right: 0;
+    margin-top: 0;
+    display:inline-block;
+  }
+}
+
+.requirement_description{
+  display:inline-block;
   float:right;
-  margin-right: 2%;
-  margin-top: 30%;
+  margin-right:1%;
+  p{
+    padding:0;
+  }
 }

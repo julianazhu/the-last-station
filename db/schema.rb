@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225040508) do
+ActiveRecord::Schema.define(version: 20151225085726) do
 
   create_table "branch_requirements", force: true do |t|
     t.integer  "branch_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20151225040508) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "outcome"
+    t.string   "image_path"
   end
 
   add_index "branches", ["story_id"], name: "index_branches_on_story_id"

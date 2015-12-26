@@ -19,7 +19,9 @@ class Branch < ActiveRecord::Base
   validates :outcome, 
             allow_blank: true,
             length: { minimum: 5}
-
+  validates :image_path, 
+            allow_blank: true,
+            length: { minimum: 3}
             
   def execute_branch_effects(character)
     @outcomes = []
@@ -32,8 +34,5 @@ class Branch < ActiveRecord::Base
       @outcomes.push(@outcome_summary)
     end
     @outcomes = ["Your qualities are unchanged."] if @outcomes.blank? 
-    return @outcomes
   end
-
-
 end

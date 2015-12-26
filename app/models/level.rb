@@ -26,9 +26,9 @@
       return ""
     elsif level.ranked
       rank = "#{level.rank}: "
-      return (rank or "") + "#{level.description}."
+      return (rank or "") + "#{level.description}"
     else
-      return "#{level.description}."
+      return "#{level.description}"
     end 
   end
 

@@ -1,24 +1,35 @@
 <%= render layout: "/layouts/main_game" do %>
-  <h1><%= @story.title %></h1>
+  <h2><%= @story.title %></h2>
   <% if @story.image_path?%>
-    <p><%= image_tag "#{@story.image_path}" %></p>
+    <%= image_tag "#{@story.image_path}" %>
   <% end %>
   <p><%= @story.body %></p>
-
   <% unless @story.branches.nil?%>
-    <ul>
     <% @story.branches.each do |branch|%>
-      <li>
-        <%= branch.title %>
-        <ul>
-          <li>
-            <%= branch.description %>
-            <%= link_to "Continue", play_branch_path(:branch_id => branch.id)%>.
-          </li>
-        </ul>
-      </li>
+      <div class="play_branch_card">
+        <div class="play_branch_card_top">
+          <h4><%= branch.title %></h4>
+          <%= branch.image_path %>
+          <p><%= branch.description %></p>
+        </div>
+        <div class="play_branch_card_bottom">
+          <% %>
+            <%= button_to "Go", play_branch_path(:branch_id => branch.id), :class => "go_button", :method => "get" %>
+          <% unless branch.branch_requirements.empty? %>
+            <div class="requirement_description">
+              <p><i>Requires
+              <% branch.branch_requirements.each_with_index do |requirement, index|%>
+                <% if index != 0 %>
+                  and
+                <% end %>
+                  <%= requirement.quality.name %> <%= requirement.get_level.rank if requirement.get_level.present?%>
+              <% end %>
+              </i></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-    </ul>
   <% end %>
 
   <% if @character.nil? %>

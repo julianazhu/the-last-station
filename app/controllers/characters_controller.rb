@@ -1,6 +1,16 @@
 class CharactersController < ApplicationController  
   before_action :find_character, only: [:show, :edit, :update, :destroy, :eligible_stories]
   
+  def only_eligible_stories
+    @stories = []
+    FindEligible.new(@character, Story.all).paths.each do |path|
+      if path.include? "eligible"
+        @stories.push(path.first)
+      end
+    end
+    @stories
+  end
+
   def find_character
     @character = Character.find(params[:character_id])
   end
@@ -10,11 +20,7 @@ class CharactersController < ApplicationController
   end
 
   def show
-    if @character.nil?
-      @stories = Story.all
-    else 
-      @stories = FindEligibleStories.new(@character).eligible_stories
-    end
+    @stories = only_eligible_stories
     @stats = @character.stats
   end
 

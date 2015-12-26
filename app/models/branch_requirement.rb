@@ -11,6 +11,6 @@ class BranchRequirement < ActiveRecord::Base
           numericality: {only_integer: true}
 
   def get_level
-    Level.get_level_description(self.quality, self.points)
+    Level.get_level(self.quality, self.points)
   end
 end

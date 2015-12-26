@@ -1,11 +1,13 @@
 <div class="branch_card">
   <div class ="branch_card_left_column">
-    <b><%= f.label :Title %></b>
-    <%= f.text_field :title %> 
-    <b><%= f.label :Hook %></b>
-    <%= f.text_area :description, :class => "hook" %>
-    <b><%= f.label :Outcome %></b>  
-    <%= f.text_area :outcome %> 
+    <p><b><%= f.label :Title %></b>
+    <%= f.text_field :title %></p>
+    <p><b><%= f.label :Image_path %></b>
+    <%= f.text_field :image_path %> </p>
+    <p><b><%= f.label :Hook %></b>
+    <%= f.text_area :description, :class => "hook" %></p>
+    <p><b><%= f.label :Outcome %></b>  
+    <%= f.text_area :outcome %> </p>
     <br>
   </div>  
   <div class ="branch_card_right_column">

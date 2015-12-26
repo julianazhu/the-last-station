@@ -2,7 +2,7 @@
 <% if @character.stats.count > 0 %>
   <ul>
   <% @character.stats.each do |stat| %>
-    <li><%= stat.get_description %></li>
+    <li><%= stat.get_description %>.</li>
   <% end %>
   </ul>
 <% else %>
