@@ -3,7 +3,7 @@ class CharactersController < ApplicationController
   
   def only_eligible_stories
     @stories = []
-    FindEligible.new(@character, Story.all).paths.each do |path|
+    FindEligible.new(@character, Story.all).story_paths.each do |path|
       if path.include? "eligible"
         @stories.push(path.first)
       end
