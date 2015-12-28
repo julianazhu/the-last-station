@@ -15,7 +15,7 @@ before_action :find_character, only: [:show, :play_branch]
 
   def play_branch
     @branch = Branch.find(params[:branch_id])
-    @outcomes = @branch.execute_branch_effects(@character) unless @character.nil?
+    @stat_outcomes = @branch.execute_branch_effects(@character) unless @character.nil?
   end
   
   def index
@@ -25,7 +25,6 @@ before_action :find_character, only: [:show, :play_branch]
   def show
     @story = Story.find(params[:story_id])
     @branches = FindEligible.new(@character, @story.branches).story_paths
-    # raise
   end
 
   def new

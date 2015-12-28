@@ -1,10 +1,9 @@
 <%= render layout: "/layouts/main_game" do %>
   <h1><%= @branch.title %></h1>
-
   <p><%= @branch.outcome %></p>
-  <% unless @outcomes.nil? %>
-    <ul>
-    <% @outcomes.each do |outcome| %>
+  <% unless @stat_outcomes.nil? %>
+    <ul class="outcomes_list">
+    <% @stat_outcomes.each do |outcome| %>
         <li><%= outcome %></li>
     <% end %>
     </ul>

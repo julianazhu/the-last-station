@@ -24,15 +24,16 @@ class Branch < ActiveRecord::Base
             length: { minimum: 3}
             
   def execute_branch_effects(character)
-    @outcomes = []
+    @stat_outcomes = []
 
     self.effects.each do |effect|
       @character_stat = character.stats.find_or_initialize_by(:quality_id => effect.quality.id) do |stat|
         stat.points = 0
       end
       @outcome_summary = effect.apply(@character_stat)
-      @outcomes.push(@outcome_summary)
+      @stat_outcomes.push(@outcome_summary)
     end
-    @outcomes = ["Your qualities are unchanged."] if @outcomes.blank? 
+    @stat_outcomes = ["Your qualities are unchanged."] if @stat_outcomes.blank? 
+    @stat_outcomes
   end
 end
