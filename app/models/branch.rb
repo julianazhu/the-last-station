@@ -22,7 +22,7 @@ class Branch < ActiveRecord::Base
   validates :image_path, 
             allow_blank: true,
             length: { minimum: 3}
-            
+
   def execute_branch_effects(character)
     @stat_outcomes = []
 
@@ -36,4 +36,9 @@ class Branch < ActiveRecord::Base
     @stat_outcomes = ["Your qualities are unchanged."] if @stat_outcomes.blank? 
     @stat_outcomes
   end
+
+  def eligible?(character)
+    eligible = Eligible.new(character, self).eligibility
+  end
+
 end

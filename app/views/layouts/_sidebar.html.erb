@@ -5,8 +5,9 @@
   <div id="sidebar_content">
     <%= image_tag("#{@character.avatar_image_path}", :class => "avatar_icon_large", :id => "sidebar_avatar")%>
       <div id="right_hand_wrapper">
-        <b>Welcome, <%= @character.name %></b>
-        <br>
+        <h4>Welcome, <%= @character.name %></h4>
+      </div>
+      <div id="main_stats_display">
         <%= render 'characters/characterstats' %>
       </div>
   </div>

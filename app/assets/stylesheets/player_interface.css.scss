@@ -180,6 +180,11 @@
   background:rgba(255,255,255,0.4);
 }
 
+#main_stats_display{
+  padding: 3%;
+  clear:both;
+}
+
 #main_content{
   border: 1px solid black;
   display:inline-block;
@@ -255,6 +260,10 @@
     margin-top: 0;
     display:inline-block;
   }
+}
+
+.eligibility_false{
+  background:rgba(0,0,0,.5) !important;
 }
 
 .requirement_description{

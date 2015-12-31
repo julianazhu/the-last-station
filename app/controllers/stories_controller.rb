@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
-before_action :find_story, only: [:edit, :update, :destroy, :destroy_requirement]
+before_action :find_story, only: [:show, :edit, :update, :destroy, :destroy_requirement]
 before_action :find_character, only: [:show, :play_branch]
+
 
   def find_story
     @story = Story.find(params[:story_id])
@@ -23,8 +24,6 @@ before_action :find_character, only: [:show, :play_branch]
   end
 
   def show
-    @story = Story.find(params[:story_id])
-    @branches = FindEligible.new(@character, @story.branches).story_paths
   end
 
   def new
