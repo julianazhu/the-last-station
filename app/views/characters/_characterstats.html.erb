@@ -1,10 +1,12 @@
-<u>Your Stats:</u>
 <% if @character.stats.count > 0 %>
-  <ul>
   <% @character.stats.each do |stat| %>
-    <li><%= stat.get_description %>.</li>
+    <div class="character_stat">
+      <%= image_tag(stat.quality.image_path, class:"small_icon") unless stat.quality.image_path.blank? %>
+      <div class="character_stat_description">
+        <%= stat.get_description %>.
+      </div>
+    </div>
   <% end %>
-  </ul>
 <% else %>
   <p>YOU HAVE NOTHING.</p>
 <% end %>

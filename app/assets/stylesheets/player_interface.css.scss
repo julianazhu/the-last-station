@@ -125,7 +125,8 @@
   display:block;
   float: left;
 }
-/* :::::::::::::::::::::::: Main Game :::::::::::::::::::::::: */
+
+/* ::::::::::::::::::::::::::::::::::::::: Main Game ::::::::::::::::::::::::::::::::::::::::::::::: */
 
 #player_interface_wrapper{
   @extend .wrapper;
@@ -149,11 +150,11 @@
 
 #main_header{
   position: relative;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   height: 0;
   padding-bottom: 34.8%;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-color: black;
   width: 100%;
   height: 100%;
@@ -164,6 +165,8 @@
   overflow: auto;
   margin-bottom: 2%
 }
+
+/* :::::::::::::::::::::::: Sidebar :::::::::::::::::::::::: */
 
 #main_sidebar{
   display:inline-block;
@@ -184,6 +187,17 @@
   padding: 3%;
   clear:both;
 }
+
+.character_stat{
+  padding: 1%;
+}
+
+.character_stat_description{
+  float: right;
+  width:80%;
+}
+
+/* :::::::::::::::::::::::: Main Content :::::::::::::::::::::::: */
 
 #main_content{
   border: 1px solid black;
@@ -278,4 +292,12 @@
 .outcomes_list{
   list-style-type: disc;
   padding: 0% 0% 0% 5%;
+}
+
+/* :::::::::::::::::::::::: Icons :::::::::::::::::::::::: */
+
+.small_icon{
+  max-width: 40px;
+  max-height: 40px;
+  display: inline-block;
 }

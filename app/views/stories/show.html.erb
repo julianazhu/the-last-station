@@ -7,4 +7,5 @@
   <% unless @story.branches.nil?%>
       <%= render 'play_branch_card' %>
   <% end %>
+  <%= button_to "Return...", character_path, :method => :get %>
 <% end %>
