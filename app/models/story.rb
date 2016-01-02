@@ -18,6 +18,8 @@ class Story < ActiveRecord::Base
   validates :image_path, 
             allow_blank: true,
             length: { minimum: 3}
+  validates :location, 
+            length: { minimum: 3}
 
   def eligible?(character)
     Eligible.new(character, self).eligibility

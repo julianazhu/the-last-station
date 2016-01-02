@@ -4,7 +4,9 @@
   <tr>
     <th>Key</th>
     <th>Title</th>
+    <th>Hook</th>
     <th>Text</th>
+    <th>Location</th>
     <th>Actions</th>
   </tr>
  
@@ -12,7 +14,9 @@
     <tr>
       <td><%= story.id %></td>
       <td><%= story.title %></td>
-      <td><%= truncate(story.body, :length => 100) %></td>
+      <td><%= truncate(story.hook, :length => 30) %></td>
+      <td><%= truncate(story.body, :length => 60) %></td>
+      <td><%= story.location %></td>
       <td><%= link_to 'Edit Story', edit_story_path(:story_id => story.id) %>,
           <%= link_to 'Delete Story', story_path(:id => story.id, :story_id => story.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>

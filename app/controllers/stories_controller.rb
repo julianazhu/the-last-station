@@ -34,6 +34,11 @@ before_action :find_character, only: [:show, :play_branch]
   end
   
   def edit
+  @locations = ["Fate Card"]
+    Quality.find_by(:name => "Location").levels.each do |k|
+      @locations.push(k.description)
+    end
+  @locations
   end
   
   def create
@@ -60,7 +65,7 @@ before_action :find_character, only: [:show, :play_branch]
   
   private
   def story_params
-    params.require(:story).permit(:title, :body, :image_path, :hook,
+    params.require(:story).permit(:title, :body, :image_path, :hook, :location,
                                   requirements_attributes:[ :id, :quality_id, :points , :operation, :_destroy ],
                                   branches_attributes:[ :id, :title, :description, :outcome, :_destroy,  
                                     branch_requirements_attributes:[ :id, :branch_id, :quality_id, :points, :operation, :_destroy ],

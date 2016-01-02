@@ -296,7 +296,13 @@
 
 /* :::::::::::::::::::::::: Icons :::::::::::::::::::::::: */
 
-.small_icon{
+.large_icon{
+  max-width: 80px;
+  max-height: 80px;
+  display: inline-block;
+}
+
+.medium_icon{
   max-width: 40px;
   max-height: 40px;
   display: inline-block;

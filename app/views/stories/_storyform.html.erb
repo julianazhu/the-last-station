@@ -18,6 +18,8 @@
         <%= story.label :body %>
         <%= story.text_area :body %>
       </p>
+        <%= story.label :story_location %>
+        <%= story.select :location, options_for_select(@locations, @story.location) %>
     </div>
     <%= render 'requirementform', :f => story %>
     <div id="submit_button"><%= story.button :submit, name: "story_id", value: @story.id %></div>
