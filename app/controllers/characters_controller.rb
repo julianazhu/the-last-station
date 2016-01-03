@@ -4,7 +4,7 @@ class CharactersController < ApplicationController
   def eligible_stories
     @stories = []
     Story.all.each do |story|
-      if story.eligible?(@character)
+      if story.eligible?(@character) && story.character_in_story_location?(@character)
         @stories.push(story)
       end
     end

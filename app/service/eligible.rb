@@ -18,22 +18,30 @@ class Eligible
       return true
     else
       requirements.each do |requirement| 
-        @character_stat_points = @character.stats.find_by(quality_id: requirement.quality_id).points.presence || 0
-        return false unless requirement_eligibility_calculator(requirement, @character_stat_points)
+        @character_stat = @character.stats.find_by(quality_id: requirement.quality_id) || 0
+        return evaluate_by_levels_versus_points(requirement)
       end
     return true
     end
   end
+
+  def evaluate_by_levels_versus_points(requirement)
+    if @character_stat.get_level.blank?
+      requirement_eligibility_calculator(requirement, requirement.points, @character_stat.points)
+    else
+      requirement_eligibility_calculator(requirement, requirement.get_level.minimum_points, @character_stat.get_level.minimum_points)
+    end
+  end
   
-  def requirement_eligibility_calculator(requirement, character_stat_points)
-    if requirement.operation == "greater than"
-      character_stat_points > requirement.points
+  def requirement_eligibility_calculator(requirement, requirement_minimum, character_stat)
+    if requirement.operation == "at least"
+      character_stat >= requirement.points
     elsif requirement.operation == "less than"
-      character_stat_points < requirement.points
+      character_stat < requirement.points
     elsif requirement.operation == "is"
-      character_stat_points == requirement.points
+      character_stat == requirement.points
     elsif requirement.operation == "is not"
-      character_stat_points != requirement.points
+      character_stat != requirement.points
     else
       raise "Error: Operation is not an accepted type. ABORT. FATAL. Ring the catastrophe bell."
     end

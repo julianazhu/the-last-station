@@ -24,4 +24,8 @@ class Story < ActiveRecord::Base
   def eligible?(character)
     Eligible.new(character, self).eligibility
   end
+
+  def character_in_story_location?(character)
+    character.location.description == self.location
+  end
 end

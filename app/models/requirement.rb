@@ -12,6 +12,10 @@ class Requirement < ActiveRecord::Base
           numericality: {only_integer: true}
 
   def get_level
+    Level.get_level(self.quality, self.points)
+  end
+
+  def get_level_description
     Level.get_level_description(self.quality, self.points)
   end
 end
