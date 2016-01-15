@@ -2,6 +2,7 @@
   <tr>
     <th>Key</th>
     <th>Name</th>
+    <th>Category</th>
     <th>Description</th>
     <th>Image Path</th>
     <th>Actions</th>
@@ -10,6 +11,7 @@
     <tr>
       <td><%= quality.id %></td>
       <td><%= quality.name %></td>
+      <td><%= quality.category %></td>
       <td><%= quality.description %>
         <% quality.levels.each do |level| %>
             <p><%= level.rank %>. <%= level.description %></p>

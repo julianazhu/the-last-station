@@ -18,7 +18,7 @@ class Eligible
       return true
     else
       requirements.each do |requirement| 
-        @character_stat = @character.stats.find_by(quality_id: requirement.quality_id) || 0
+        @character_stat = @character.stats.find_by(quality_id: requirement.quality_id) || Stat.new(quality_id: requirement.quality_id, :points => 0)
         return evaluate_by_levels_versus_points(requirement)
       end
     return true
@@ -26,7 +26,7 @@ class Eligible
   end
 
   def evaluate_by_levels_versus_points(requirement)
-    if @character_stat.get_level.blank?
+    if requirement.get_level.blank?
       requirement_eligibility_calculator(requirement, requirement.points, @character_stat.points)
     else
       requirement_eligibility_calculator(requirement, requirement.get_level.minimum_points, @character_stat.get_level.minimum_points)
@@ -35,13 +35,13 @@ class Eligible
   
   def requirement_eligibility_calculator(requirement, requirement_minimum, character_stat)
     if requirement.operation == "at least"
-      character_stat >= requirement.points
+      character_stat >= requirement_minimum
     elsif requirement.operation == "less than"
-      character_stat < requirement.points
+      character_stat < requirement_minimum
     elsif requirement.operation == "is"
-      character_stat == requirement.points
+      character_stat == requirement_minimum
     elsif requirement.operation == "is not"
-      character_stat != requirement.points
+      character_stat != requirement_minimum
     else
       raise "Error: Operation is not an accepted type. ABORT. FATAL. Ring the catastrophe bell."
     end

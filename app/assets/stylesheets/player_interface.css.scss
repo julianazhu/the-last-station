@@ -211,6 +211,8 @@
   min-height: 28px;
   background-image: url('backgrounds/content_frame_top.png');
   background-size:100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 #main_content_middle{
@@ -227,10 +229,11 @@
 }
 
 #main_content_bottom{
-  clear: both;
   min-height: 28px;
+  clear: both;
   background-image: url('backgrounds/content_frame_bottom.png');  
-  background-size:100%; 
+  background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .story_card{
@@ -248,14 +251,27 @@
   }
 }
 
-.story_card_left{
+.story_card_elements{
   float:left;
-  width:90%;
+  display:inline-block;
+  vertical-align: top;
+  min-height: 80px;
+}
+
+.story_card_left{
+  @extend .story_card_elements;
+  width: 14%;
+}
+
+.story_card_middle{
+  @extend .story_card_elements;
+  width: 76%;
 }
 
 .story_card_right{
-  float:right;
-  width:10%;
+  @extend .story_card_elements;
+  width: 10%;
+  bottom: 0;  
 }
 
 
@@ -267,6 +283,7 @@
   width: 100%;
   clear: both;
 }
+
 .play_branch_card_bottom{
   .go_button{
     float:right;
@@ -292,6 +309,27 @@
 .outcomes_list{
   list-style-type: disc;
   padding: 0% 0% 0% 5%;
+}
+/* :::::::::::::::::::::::: Fate Cards :::::::::::::::::::::::: */
+
+.fate_card_medium{
+  max-width:120px;
+  padding: 2%;
+}
+
+figure{
+  float:left;
+  width:150px;
+  height:230px;
+  display: inline-block !important;
+  padding: 1% !important;
+  img{
+    margin-left:8%;
+  }
+  figcaption{
+    text-align: center;
+    font-size: 12px;
+  }
 }
 
 /* :::::::::::::::::::::::: Icons :::::::::::::::::::::::: */

@@ -1,8 +1,6 @@
 <%= render layout: "/layouts/main_game" do %>
+  <%= image_tag "#{@story.image_path}", :class => "large_icon" %>
   <h2><%= @story.title %></h2>
-  <% if @story.image_path?%>
-    <%= image_tag "#{@story.image_path}" %>
-  <% end %>
   <p><%= @story.body %></p>
   <% unless @story.branches.nil?%>
       <%= render 'play_branch_card' %>

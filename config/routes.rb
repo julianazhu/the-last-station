@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   get 'characters/:character_id/:story_id' => 'stories#show', as: :play_story
   get 'characters/:character_id/:story_id/:branch_id' => 'stories#play_branch', as: :play_branch
 
-  #Qualities Routes
   resources :qualities
+  resources :fate_cards
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

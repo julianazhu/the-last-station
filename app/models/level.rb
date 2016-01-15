@@ -17,7 +17,7 @@
             presence: true
 
   def self.get_level(quality, points)
-    self.where(:quality_id => quality.id).where("minimum_points <= ?", points).order('rank desc').first
+    level = self.where(:quality_id => quality.id).where("minimum_points <= ?", points).order('rank desc').first
   end
 
   def self.get_level_description(quality, points)

@@ -13,8 +13,12 @@
       <%= quality.label :image_path %>
       <%= quality.text_field :image_path %>
     </p>
+    <p>    
+      <%= quality.label :category %>
+      <%= quality.select(:category, [["Primary", "Primary"], ["Secondary","Secondary"], ["Story","Story"], ["Item","Item"], ["Fate Deck","Fate Deck"]]) %>
+    </p>
     <p>
-      <%= quality.label :is_this_quality_ranked? %>
+      <%= quality.label :is_this_quality_have_a_level_progression? %>
       <%= quality.check_box :ranked %>
     <p>
     <p>

@@ -1,15 +1,5 @@
 class CharactersController < ApplicationController  
   before_action :find_character, only: [:show, :edit, :update, :destroy, :eligible_stories]
-  
-  def eligible_stories
-    @stories = []
-    Story.all.each do |story|
-      if story.eligible?(@character) && story.character_in_story_location?(@character)
-        @stories.push(story)
-      end
-    end
-    @stories
-  end
 
   def find_character
     @character = Character.find(params[:character_id])
@@ -20,14 +10,15 @@ class CharactersController < ApplicationController
   end
 
   def show
-    @stories = eligible_stories
+    @fate_stories = FateCard.new.get_hand(@character)
+    @stories = Story.new.eligible_stories(@character, Story.where.not(:location => "Fate Card"))
     @stats = @character.stats
   end
 
   def new
     session[:character_params] ||= {}
     @character = Character.new(session[:character_params])
-    @character.current_step = session[:character_step]
+    @character.current_step = session[:character_step]  
   end
   
   def edit

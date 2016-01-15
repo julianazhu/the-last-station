@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
 before_action :find_story, only: [:show, :edit, :update, :destroy, :destroy_requirement]
 before_action :find_character, only: [:show, :play_branch]
-
+before_action :locations, only: [:new, :edit, :update]
 
   def find_story
     @story = Story.find(params[:story_id])
@@ -14,8 +14,19 @@ before_action :find_character, only: [:show, :play_branch]
     end
   end
 
+  def locations
+    @locations = ["Fate Card"]
+      Quality.find_by(:name => "Location").levels.each do |k|
+        @locations.push(k.description)
+      end
+    @locations
+  end
+
   def play_branch
     @branch = Branch.find(params[:branch_id])
+    if @branch.story.location == "Fate Card"
+      @branch.story.fate_cards.where(:story_id => @branch.story.id, :character_id => @character.id).first.destroy
+    end
     @stat_outcomes = @branch.execute_branch_effects(@character) unless @character.nil?
   end
   
@@ -34,11 +45,6 @@ before_action :find_character, only: [:show, :play_branch]
   end
   
   def edit
-  @locations = ["Fate Card"]
-    Quality.find_by(:name => "Location").levels.each do |k|
-      @locations.push(k.description)
-    end
-  @locations
   end
   
   def create

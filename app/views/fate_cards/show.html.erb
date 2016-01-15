@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Character:</b>
+  <%= @fate_card.character_id %>
+</p>
+
+<p>
+  <b>Story:</b>
+  <%= @fate_card.story_id %>
+</p>
+
+<p>
+  <b>Deck position:</b>
+  <%= @fate_card.deck_position %>
+</p>
+
+<%= link_to 'Edit', edit_fate_card_path(@fate_card) %> |
+<%= link_to 'Back', fate_cards_path %>

@@ -1,6 +1,7 @@
 <tr class="level_fields">
   <td> 
     <%= @level.to_s %>
+    <%= @level = 1 if @level.blank? %>
     <%= f.hidden_field(:rank, :value => params[@level.to_s]) %>
   </td>
   <td>    

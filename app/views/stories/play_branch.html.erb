@@ -8,7 +8,7 @@
     <% end %>
     </ul>
   <% end %>
-  <p><%= link_to "Continue", character_path()%></p>
+  <p><%= button_to "Continue", character_path(), :method => 'get' %></p>
 
   <% if @character.nil? %>
     <p><%= link_to 'Show All Stories', stories_path %></p>
