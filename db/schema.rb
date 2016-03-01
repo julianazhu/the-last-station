@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112035732) do
+ActiveRecord::Schema.define(version: 20160123065821) do
 
   create_table "branch_requirements", force: true do |t|
     t.integer  "branch_id"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20160112035732) do
     t.string   "gender"
   end
 
+  create_table "decks", force: true do |t|
+    t.integer  "character_id"
+    t.text     "cards"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "decks", ["character_id"], name: "index_decks_on_character_id"
+
   create_table "effects", force: true do |t|
     t.integer  "branch_id"
     t.integer  "quality_id"
@@ -58,14 +67,11 @@ ActiveRecord::Schema.define(version: 20160112035732) do
   add_index "effects", ["quality_id"], name: "index_effects_on_quality_id"
 
   create_table "fate_cards", force: true do |t|
-    t.string   "character_id"
-    t.string   "story_id"
+    t.integer  "character_id"
+    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "fate_cards", ["character_id"], name: "index_fate_cards_on_character_id"
-  add_index "fate_cards", ["story_id"], name: "index_fate_cards_on_story_id"
 
   create_table "levels", force: true do |t|
     t.integer  "quality_id"

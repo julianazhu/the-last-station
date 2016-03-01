@@ -18,7 +18,7 @@ class FateCardsControllerTest < ActionController::TestCase
 
   test "should create fate_card" do
     assert_difference('FateCard.count') do
-      post :create, fate_card: { character_id: @fate_card.character_id, deck_position: @fate_card.deck_position, story_id: @fate_card.story_id }
+      post :create, fate_card: {  }
     end
 
     assert_redirected_to fate_card_path(assigns(:fate_card))
@@ -35,7 +35,7 @@ class FateCardsControllerTest < ActionController::TestCase
   end
 
   test "should update fate_card" do
-    patch :update, id: @fate_card, fate_card: { character_id: @fate_card.character_id, deck_position: @fate_card.deck_position, story_id: @fate_card.story_id }
+    patch :update, id: @fate_card, fate_card: {  }
     assert_redirected_to fate_card_path(assigns(:fate_card))
   end
 

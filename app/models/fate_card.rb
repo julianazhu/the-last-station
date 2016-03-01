@@ -1,6 +1,6 @@
 class FateCard < ActiveRecord::Base
-  belongs_to :character
-  belongs_to :story
+ belongs_to :character
+ belongs_to :story
   validates_presence_of :character_id
   validates_presence_of :story_id
 
@@ -41,7 +41,7 @@ class FateCard < ActiveRecord::Base
     if @character.fate_cards.where(:story_id => random_card.id).exists?
       random_card = all_eligible_fate_cards.sample
     else
-      return FateCard.create(:character_id => @character.id, :story_id => random_card.id)
+      @character.fate_cards.create(:story_id => random_card.id)
     end
   end
 
