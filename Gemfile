@@ -1,8 +1,14 @@
 source 'http://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.8'
+
+#Upgrade to Rails 4.2
+gem 'actionpack', '~> 4.2.8' 
+gem 'web-console', '~> 2.0'
+gem 'responders', '~> 2.0'
+gem 'rake', '~>12.0.0'
+gem 'concurrent-ruby', '~>1.0.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
