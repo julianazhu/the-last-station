@@ -33,5 +33,5 @@ This project is licensed under the [The Non-Profit Open Software License version
 
 ## Acknowledgments
 
-*Justin Lambert* - for the code reviews and the support.
-*StoryNexus* - for the inspiration.
+* *Justin Lambert* - for the code reviews and the support.
+* *StoryNexus* - for the inspiration.
