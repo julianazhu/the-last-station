@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160123065821) do
   create_table "branch_requirements", force: :cascade do |t|
     t.integer  "branch_id"
     t.integer  "quality_id"
-    t.string   "operation"
+    t.text     "operation"
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,22 +27,22 @@ ActiveRecord::Schema.define(version: 20160123065821) do
 
   create_table "branches", force: :cascade do |t|
     t.integer  "story_id"
-    t.string   "title"
+    t.text     "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "outcome"
-    t.string   "image_path"
+    t.text     "image_path"
   end
 
   add_index "branches", ["story_id"], name: "index_branches_on_story_id"
 
   create_table "characters", force: :cascade do |t|
-    t.string   "name"
+    t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_image_path"
-    t.string   "gender"
+    t.text     "avatar_image_path"
+    t.text     "gender"
   end
 
   create_table "decks", force: :cascade do |t|
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160123065821) do
   create_table "effects", force: :cascade do |t|
     t.integer  "branch_id"
     t.integer  "quality_id"
-    t.string   "operation"
+    t.text     "operation"
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 20160123065821) do
   create_table "levels", force: :cascade do |t|
     t.integer  "quality_id"
     t.integer  "rank"
-    t.string   "description"
-    t.string   "image_path"
+    t.text     "description"
+    t.text     "image_path"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "minimum_points"
@@ -85,14 +85,14 @@ ActiveRecord::Schema.define(version: 20160123065821) do
   end
 
   create_table "qualities", force: :cascade do |t|
-    t.string   "name"
+    t.text     "name"
     t.text     "description"
     t.text     "image_path"
     t.integer  "points"
     t.integer  "character_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category"
+    t.text     "category"
     t.boolean  "ranked"
   end
 
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20160123065821) do
   create_table "requirements", force: :cascade do |t|
     t.integer  "story_id"
     t.integer  "quality_id"
-    t.string   "operation"
+    t.text     "operation"
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -122,13 +122,13 @@ ActiveRecord::Schema.define(version: 20160123065821) do
   add_index "stats", ["quality_id"], name: "index_stats_on_quality_id"
 
   create_table "stories", force: :cascade do |t|
-    t.string   "title"
+    t.text     "title"
     t.text     "body"
-    t.string   "image_path"
+    t.text     "image_path"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "hook"
-    t.string   "location"
+    t.text     "location"
   end
 
 end
