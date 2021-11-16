@@ -27,3 +27,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore dev assets
+app/assets/images
+public/dev-assets

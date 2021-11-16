@@ -11,31 +11,31 @@ Currently in order to create your own story, you need to use the backend story a
 The intro sequence (character creation and beginning narrative steps) are hard-coded in various html views under "thelaststation\app\views\characters".
 
 ### Prerequisites
-* Ruby - 2.5.0
-* Bundler - 1.17.3
-* PostgreSQL - 14
-  * **Note to self**: If you're still using WSL on Windows, install/run/use postgres from the command line *for the love of god!!!*
+* Ruby: v2.5.0
+* Bundler: v1.17.3
+* PostgreSQL: v14
+  * **Note to self**: If you're still on a Windows machine, you are using your Windows installation of Postgresql, **not** your WSL1/2 installation.
 
 ### Local Development Setup
 Edit the `config/database.yml` to match your local Postgres connection details, then run:
 
 ```
  bundle install
- bin/rails db:environment:set RAILS_ENV=development
+ export RAILS_ENV=development
+ bin/rails db:environment:set
  rake db:schema:load
+ bin/rails assets:precompile
  bundle exec rails s
 ```
+
+You should now be able to navigate to the application at `localhost:3000`.
 
 ## Deployment
 
 I recommend [Heroku](https://www.heroku.com/) or AWS [EC2](https://aws.amazon.com/ec2) / [Lightsail](https://aws.amazon.com/lightsail/) for deployment and AWS s3 for asset hosting.
 
 ## Authors
-* [Juliana Zhu](https://github.com/riadre)
-
-## License
-
-This project is licensed under the [The Non-Profit Open Software License version 3.0 (NPOSL-3.0)](https://opensource.org/licenses/NPOSL-3.0)
+* [Juliana Zhu](https://github.com/julianazhu)
 
 ## Acknowledgments
 

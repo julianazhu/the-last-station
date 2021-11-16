@@ -1,4 +1,9 @@
 {
+  "name": "the-last-station",
+  "author": "Juliana Zhu",
+  "email": "julianazhu89@gmail.com",
+  "license": "MIT",
+  "version": "0.0.1",
   "dependencies": {
     "@rails/webpacker": "5.4.3",
     "webpack": "^4.46.0",

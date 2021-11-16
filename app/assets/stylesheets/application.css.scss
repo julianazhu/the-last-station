@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import 'resets';
+@import 'scaffolds';
 @import 'variables';
 
 /* :::::::::::::::::::::::::::::::::::::::::::::::: Basic Styles and Page Elements :::::::::::::::::::::::::::::::::::::::::::::::: */
@@ -179,3 +181,11 @@ text_area {
   width: 200px;
 }
 
+@import "components/characters.css.scss";
+@import "components/fate_cards.css.scss";
+@import "components/qualities.css.scss";
+@import "components/stories.css.scss";
+
+@import "interfaces/intro.css.scss";
+@import "interfaces/player_interface.css.scss";
+@import "interfaces/writer_interface.css.scss";
