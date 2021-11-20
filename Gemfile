@@ -1,10 +1,8 @@
 source 'http://rubygems.org'
-#Upgrade to Rails 5
 
-gem "cocoon"
-gem "webpacker"
 gem 'actionpack'
 gem 'activestorage'
+gem 'cocoon'
 gem 'coffee-rails'
 gem 'concurrent-ruby'
 gem 'execjs'
@@ -20,15 +18,25 @@ gem 'sass-rails'
 gem 'sdoc', group: :doc
 gem 'therubyracer'
 gem 'turbolinks'
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'tzinfo-data', platforms: %i[mingw mswin]
 gem 'uglifier', '>= 1.3.0'
-gem 'web-console'
+gem 'webpacker'
 
-group :development, :test do
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "pry"
-  gem "rubocop-rails"
-  gem "rubocop-rake"
+group :development do
+  gem 'debase' # VSCode debugging
+  gem 'ruby-debug-ide' # VSCode debugging
+  gem 'rufo' # Autoformatter
+  gem 'web-console'
 end
 
+group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry'
+  gem 'rspec'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rubocop-rails'
+  gem 'rubocop-rake'
+end
