@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'actionpack'
+gem 'actionpack', ">= 6.1.4.1"
 gem 'activestorage'
 gem 'cocoon'
 gem 'coffee-rails'
@@ -11,7 +11,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'listen', '~> 3.1.5'
 gem 'pg', '~> 1.0'
-gem 'rails', '6.1.3'
+gem 'rails', '6.1.4.1'
 gem 'rake'
 gem 'responders'
 gem 'sass-rails'
