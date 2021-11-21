@@ -4,15 +4,15 @@ This is a choose-your-own adventure game I began writing for [National Novel Wri
 
 ## Getting Started
 
-At the moment, this app is only able to run on your local machine but I will eventually get it to the point where it can be distributed and used (at your own risk!). 
+At the moment, this app is only able to run on your local machine but I will eventually get it to the point where it can be distributed and used (at your own risk!).
 
-Currently in order to create your own story, you need to use the backend story admin interface under localhost:3000/stories/ where you can add "stories" which link up to one another to create a narrative, and "qualities" which describe the character's progression, status, and inventory.  
+Currently in order to create your own story, you need to use the backend story admin interface under localhost:3000/stories/ where you can add "stories" which link up to one another to create a narrative, and "qualities" which describe the character's progression, status, and inventory.
 
 The intro sequence (character creation and beginning narrative steps) are hard-coded in various html views under "thelaststation\app\views\characters".
 
 ### Prerequisites
-- Ruby: v2.5.0
-- Bundler: v1.17.3
+- Ruby: v3.0.0
+- Bundler: v2.2.31
 - Yarn: v3.1.0
 - Node: v16.13.0
 - PostgreSQL: v14

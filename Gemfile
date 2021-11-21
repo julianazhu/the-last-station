@@ -1,16 +1,20 @@
 source 'http://rubygems.org'
 
-ruby '2.5.0'
+ruby '3.0.0'
 
-gem 'listen', '~> 3.1.5'
+gem 'listen', '~> 3.7.0'
 gem 'rails', '~> 6.1.4.1'
 gem 'rake', '~> 13.0.6'
 gem 'turbolinks', '~> 5.2.0'
 gem 'webpacker', '>= 5.4.3'
+gem 'webrick', '~> 1.7'
 
 # Javascript
 gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
+
+# Assets
+gem 'aws-sdk-s3', require: false
 
 # Database
 gem 'pg', '~> 1.0'
