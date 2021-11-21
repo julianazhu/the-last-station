@@ -4,6 +4,10 @@
   "email": "julianazhu89@gmail.com",
   "license": "MIT",
   "version": "0.0.1",
+  "workspaces": [
+    "client"
+  ],
+  "private": true,
   "engines": {
     "node": "16.x",
     "npm": "8.x",
