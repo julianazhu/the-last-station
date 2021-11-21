@@ -24,6 +24,9 @@
 /public/packs
 /public/packs-test
 
+# VSCode
+/.vscode
+
 # JS
 node_modules/
 
@@ -39,7 +42,6 @@ yarn-debug.log*
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
- 
 
 # Ignore dev assets
 app/assets/images
