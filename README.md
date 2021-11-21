@@ -16,7 +16,6 @@ The intro sequence (character creation and beginning narrative steps) are hard-c
 - Yarn: v3.1.0
 - Node: v16.13.0
 - PostgreSQL: v14
-  - **Note to self**: If you're still on a Windows machine, you are using your Windows installation of Postgresql, **not** your WSL1/2 installation.
 
 ### Local Development Setup
 Edit the `config/database.yml` to match your local Postgres connection details, then run:
@@ -43,4 +42,4 @@ I recommend [Heroku](https://www.heroku.com/) or AWS [EC2](https://aws.amazon.co
 
 * *Justin Lambert* - for the code reviews and the support.
 * *Jake Scott* - for enduring approximately one million NaNoWriMos together.
-* *StoryNexus* - for the inspiration.
+* *[StoryNexus](http://www.storynexus.com/) & [Failbetter Games](https://www.failbettergames.com/)* - for the inspiration.
