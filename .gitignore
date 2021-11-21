@@ -45,3 +45,10 @@ yarn-debug.log*
 app/assets/images/*
 !app/assets/images/.keep
 public/dev-assets
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
