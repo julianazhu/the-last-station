@@ -1,9 +1,13 @@
 class Character < ActiveRecord::Base
+  ### Attributes ###################################################################################
   attr_writer :current_step
   attr_reader :deck_size
 
+  ### Associations #################################################################################
   has_many :stats, dependent: :destroy
   has_many :fate_cards, dependent: :destroy
+
+  ### Validations ##################################################################################
   validates :name, presence: true
   validates :avatar_image_path,
             presence: { message: 'Your vision is blurry and your hand-eye coordination is terrible, but you know you can do this. At least...you hope you can.' },
@@ -11,7 +15,7 @@ class Character < ActiveRecord::Base
   validates_presence_of :gender, if: lambda { |f|
                                        f.current_step == 'gender'
                                      }, message: 'Clearly deeply confused on the issue of your own gender and carrot-hood, but you somehow feel sure that if you just pick something, you can change your mind later and nobody will ever know.'
-
+  ### Instance Methods #############################################################################
   def build_initial_character_stats
     character_location = Quality.find_by_name('Location')
     stats.create(quality_id: character_location.id, points: '1')

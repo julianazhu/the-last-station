@@ -1,16 +1,18 @@
 <h1>Existing Characters</h1>
- 
+
 <table>
   <tr>
-    <th>Key</th>  
+    <th>Key</th>
     <th>Name</th>
+    <th>Gender</th>
     <th>Actions</th>
   </tr>
- 
+
   <% @characters.each do |character| %>
     <tr>
       <td><%= character.id %></td>
       <td><%= character.name %></td>
+      <td><%= character.gender %></td>
       <td><%= link_to 'Edit', edit_character_path(character) %>,
           <%= link_to 'Destroy', character_path(character), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>

@@ -44,6 +44,7 @@ yarn-debug.log*
 # Ignore dev assets
 app/assets/images/*
 !app/assets/images/.keep
+public/assets
 public/dev-assets
 
 /public/packs
@@ -52,3 +53,5 @@ public/dev-assets
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+/config/master.key
