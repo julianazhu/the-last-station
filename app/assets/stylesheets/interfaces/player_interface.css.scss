@@ -13,7 +13,7 @@
 }
 
 #footer_center_div{
-  margin: 0 auto;  
+  margin: 0 auto;
   width:80%;
   height: 8px;
   p{
@@ -101,7 +101,7 @@
 }
 
 #intro_radio_buttons{
-  margin-left: 2%;  
+  margin-left: 2%;
 }
 
 /* :::::::::::::::::::::::: Avatars :::::::::::::::::::::::: */
@@ -144,7 +144,7 @@
   border-right: solid 5px;
   -webkit-border-image: url(copper_tube.png) 10 stretch; /* Safari 3.1-5 */
   -o-border-image: url(copper_tube.png) 10 stretch; /* Opera 11-12.1 */
-  border-image: url(copper_tube.png) 30 stretch;  
+  border-image: url(copper_tube.png) 30 stretch;
 }
 
 #main_header{
@@ -159,7 +159,7 @@
   height: 100%;
 }
 
-#main_content_and_sidebar_wrapper{  
+#main_content_and_sidebar_wrapper{
   width: 100%;
   overflow: auto;
   margin-bottom: 2%
@@ -216,7 +216,7 @@
 
 #main_content_middle{
   float:right;
-  background-image: url('backgrounds/content_frame_middle.png');  
+  background-image: url('backgrounds/content_frame_middle.png');
   background-size:100%;
   padding: 2% 0 0 4%;
   clear:both;
@@ -230,7 +230,7 @@
 #main_content_bottom{
   min-height: 28px;
   clear: both;
-  background-image: url('backgrounds/content_frame_bottom.png');  
+  background-image: url('backgrounds/content_frame_bottom.png');
   background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -270,7 +270,7 @@
 .story_card_right{
   @extend .story_card_elements;
   width: 10%;
-  bottom: 0;  
+  bottom: 0;
 }
 
 
