@@ -46,6 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-runtime", "virtual:aa74ba136ae34d8256f9c44887f392abd9a7e30c65e2cdd1da3c02724f356bcd39b2c48c1a86cf1a3bfac943f5a9f98bd4130b0f62369e0c3911a4f762077090#npm:7.16.4"],
             ["@babel/preset-env", "virtual:aa74ba136ae34d8256f9c44887f392abd9a7e30c65e2cdd1da3c02724f356bcd39b2c48c1a86cf1a3bfac943f5a9f98bd4130b0f62369e0c3911a4f762077090#npm:7.16.4"],
             ["@rails/webpacker", "npm:5.4.3"],
+            ["activestorage", "npm:5.2.6"],
             ["babel-plugin-macros", "npm:3.1.0"],
             ["uuid", "npm:8.3.2"],
             ["webpack", "virtual:04af23de07deb116198da0256c0fae6801c0418c119a518f2d10fd9359f028fb634d13e7c94e276997c9f9795b8531129ad097551c2eda7543bf7afd581d646b#npm:4.46.0"],
@@ -2557,6 +2558,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/acorn-npm-6.4.2-94943eb66c-44b0705372.zip/node_modules/acorn/",
           "packageDependencies": [
             ["acorn", "npm:6.4.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["activestorage", [
+        ["npm:5.2.6", {
+          "packageLocation": "./.yarn/cache/activestorage-npm-5.2.6-06391c9a25-e1f3660201.zip/node_modules/activestorage/",
+          "packageDependencies": [
+            ["activestorage", "npm:5.2.6"],
+            ["spark-md5", "npm:3.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -10297,6 +10308,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["spark-md5", [
+        ["npm:3.0.2", {
+          "packageLocation": "./.yarn/cache/spark-md5-npm-3.0.2-1983a5b179-5feebff0bf.zip/node_modules/spark-md5/",
+          "packageDependencies": [
+            ["spark-md5", "npm:3.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["spdy", [
         ["npm:4.0.2", {
           "packageLocation": "./.yarn/cache/spdy-npm-4.0.2-7e5782a993-2c739d0ff6.zip/node_modules/spdy/",
@@ -10794,6 +10814,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-runtime", "virtual:aa74ba136ae34d8256f9c44887f392abd9a7e30c65e2cdd1da3c02724f356bcd39b2c48c1a86cf1a3bfac943f5a9f98bd4130b0f62369e0c3911a4f762077090#npm:7.16.4"],
             ["@babel/preset-env", "virtual:aa74ba136ae34d8256f9c44887f392abd9a7e30c65e2cdd1da3c02724f356bcd39b2c48c1a86cf1a3bfac943f5a9f98bd4130b0f62369e0c3911a4f762077090#npm:7.16.4"],
             ["@rails/webpacker", "npm:5.4.3"],
+            ["activestorage", "npm:5.2.6"],
             ["babel-plugin-macros", "npm:3.1.0"],
             ["uuid", "npm:8.3.2"],
             ["webpack", "virtual:04af23de07deb116198da0256c0fae6801c0418c119a518f2d10fd9359f028fb634d13e7c94e276997c9f9795b8531129ad097551c2eda7543bf7afd581d646b#npm:4.46.0"],

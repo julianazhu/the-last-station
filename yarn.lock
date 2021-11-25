@@ -1586,6 +1586,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"activestorage@npm:^5.2.6":
+  version: 5.2.6
+  resolution: "activestorage@npm:5.2.6"
+  dependencies:
+    spark-md5: ^3.0.0
+  checksum: e1f3660201288870f766213c654b35116b53452ccf3d536ec9cf5b4c9a42558cad6b4cb2a340ed2c7c18b8f7eea6df8d99ea5e04f63d98fd813edcc3c6b1d03a
+  languageName: node
+  linkType: hard
+
 "agent-base@npm:6, agent-base@npm:^6.0.2":
   version: 6.0.2
   resolution: "agent-base@npm:6.0.2"
@@ -8388,6 +8397,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"spark-md5@npm:^3.0.0":
+  version: 3.0.2
+  resolution: "spark-md5@npm:3.0.2"
+  checksum: 5feebff0bfabcecf56ba03af3e38fdb068272ed41fbf0a94ff9ef65b9bb9cb1dd69be3684db6542e62497b1eac3ae324c07ac4dcb606465dc36ca048177077bf
+  languageName: node
+  linkType: hard
+
 "spdy-transport@npm:^3.0.0":
   version: 3.0.0
   resolution: "spdy-transport@npm:3.0.0"
@@ -8803,6 +8819,7 @@ __metadata:
     "@babel/plugin-transform-runtime": ^7.16.4
     "@babel/preset-env": ^7.16.4
     "@rails/webpacker": 5.4.3
+    activestorage: ^5.2.6
     babel-plugin-macros: ^3.1.0
     uuid: ^8.3.2
     webpack: ^4.46.0

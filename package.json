@@ -25,6 +25,7 @@
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.4",
     "@rails/webpacker": "5.4.3",
+    "activestorage": "^5.2.6",
     "babel-plugin-macros": "^3.1.0",
     "uuid": "^8.3.2",
     "webpack": "^4.46.0",

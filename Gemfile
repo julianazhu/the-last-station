@@ -13,13 +13,13 @@ gem 'webrick', '~> 1.7'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 
-# Assets
-gem 'aws-sdk-s3', require: false
+# Images default to AWS s3 hosting
+gem 'aws-sdk-s3', '~> 1.106.0', require: false
 
 # Database
 gem 'pg', '~> 1.0'
 
-# TODO: update and remove these gems
+# TODO: update and remove these gems maybe
 gem 'cocoon', '~> 1.2.15'
 gem 'coffee-rails', '~> 5.0.0'
 gem 'responders', '~> 3.0.1'
