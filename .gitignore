@@ -21,8 +21,6 @@
 
 # Rubymine
 /.idea
-/public/packs
-/public/packs-test
 
 # VSCode
 /.vscode
@@ -46,8 +44,7 @@ app/assets/images/*
 !app/assets/images/.keep
 public/assets
 public/dev-assets
-
-/public/packs
+/public/packs/js
 /public/packs-test
 /node_modules
 /yarn-error.log
@@ -59,3 +56,10 @@ yarn-debug.log*
 /config/credentials/development.key
 
 /config/credentials/production.key
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
