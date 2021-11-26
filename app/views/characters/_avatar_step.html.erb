@@ -5,7 +5,7 @@
     <p class="error_message"><%= msg %></p>
   <% end %>
   <% (1..12).each do |image| %>
-    <%= image_tag "avatar#{image}.png", :class => "avatar_icon_medium_selectable", :id => "avatar#{image}" %>
+    <%= image_pack_tag "avatar#{image}.png", :class => "avatar_icon_medium_selectable", :id => "avatar#{image}" %>
     <% end %>
   <%= f.hidden_field :avatar_image_path, :value => ""%>
 </div>

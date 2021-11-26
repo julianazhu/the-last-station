@@ -17,7 +17,7 @@
             <p><%= level.rank %>. <%= level.description %></p>
         <% end%>
       </td>
-      <td><%= image_tag "icons/#{quality.image_path}", :class => "large_icon" %></td>
+      <td><%= image_pack_tag "icons/#{quality.image_path}", :class => "large_icon" %></td>
       <td>
         <%= link_to 'Edit', edit_quality_path(quality) %>,
         <%= link_to 'Destroy', quality_path(quality), method: :delete, data: { confirm: 'Are you sure?' } %>

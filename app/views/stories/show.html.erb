@@ -1,5 +1,5 @@
 <%= render layout: "/layouts/main_game" do %>
-  <%= image_tag "#{@story.image_path}", :class => "large_icon" %>
+  <%= image_pack_tag "#{@story.image_path}", :class => "large_icon" %>
   <h2><%= @story.title %></h2>
   <p><%= @story.body %></p>
   <% unless @story.branches.nil?%>

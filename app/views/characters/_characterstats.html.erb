@@ -1,7 +1,7 @@
 <% if @character.stats.count > 0 %>
   <% @character.stats.each do |stat| %>
     <div class="character_stat">
-      <%= image_tag("icons/#{stat.quality.image_path}", class:"medium_icon") unless stat.quality.image_path.blank? %>
+      <%= image_pack_tag("icons/#{stat.quality.image_path}", class:"medium_icon") unless stat.quality.image_path.blank? %>
       <div class="character_stat_description">
         <%= stat.get_description %>.
       </div>

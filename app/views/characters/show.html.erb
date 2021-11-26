@@ -7,7 +7,7 @@
     <h3>The Hand of Fate...</h3>
     <p>Click on a fate card to play it.</p>
     <figure>
-      <%= image_tag "story_card_back.png", :class => "fate_card_medium"%>
+      <%= image_pack_tag "story_card_back.png", :class => "fate_card_medium"%>
       <figcaption>
         <b><%= @character.deck_size %> Cards Available</b><br>
         Additional Card in X mins.
@@ -15,7 +15,7 @@
     </figure>
     <% @fate_stories.each do |fate_story| %>
       <figure>
-        <%= link_to image_tag("#{fate_story.image_path}", :class => "fate_card_medium", :title => "#{fate_story.body}"), play_story_path(:story_id => fate_story.id), :method => :get %>
+        <%= link_to image_pack_tag("#{fate_story.image_path}", :class => "fate_card_medium", :title => "#{fate_story.body}"), play_story_path(:story_id => fate_story.id), :method => :get %>
         <figcaption>
           <b><%= fate_story.title %></b>
         </figcaption>
@@ -27,7 +27,7 @@
   <% @stories.each do |story| %>
     <div class="story_card">
       <div class="story_card_left">
-        <%= image_tag "icons/#{story.image_path}", :class => "large_icon" %>
+        <%= image_pack_tag "icons/#{story.image_path}", :class => "large_icon" %>
       </div>
       <div class="story_card_middle">
         <h4><%= story.title %></h4>

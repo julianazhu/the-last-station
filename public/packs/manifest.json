@@ -1,14 +1,61 @@
 {
-  "application.js": "/packs/js/application-9228ebf778774b481a64.js",
-  "application.js.map": "/packs/js/application-9228ebf778774b481a64.js.map",
+  "application.js": "/packs/js/application-110527800d2511324e83.js",
+  "application.js.map": "/packs/js/application-110527800d2511324e83.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-9228ebf778774b481a64.js"
+        "/packs/js/application-110527800d2511324e83.js"
       ],
       "js.map": [
-        "/packs/js/application-9228ebf778774b481a64.js.map"
+        "/packs/js/application-110527800d2511324e83.js.map"
       ]
     }
-  }
+  },
+  "media/avatars/avatar1.png": "/packs/media/avatars/avatar1-e0e331e1.png",
+  "media/avatars/avatar10.png": "/packs/media/avatars/avatar10-057ed1bb.png",
+  "media/avatars/avatar10_shadow.png": "/packs/media/avatars/avatar10_shadow-7d8c19be.png",
+  "media/avatars/avatar11.png": "/packs/media/avatars/avatar11-b2fa9e1d.png",
+  "media/avatars/avatar11_shadow.png": "/packs/media/avatars/avatar11_shadow-9a8fa26c.png",
+  "media/avatars/avatar12.png": "/packs/media/avatars/avatar12-def65104.png",
+  "media/avatars/avatar12_shadow.png": "/packs/media/avatars/avatar12_shadow-5fd33b1b.png",
+  "media/avatars/avatar1_shadow.png": "/packs/media/avatars/avatar1_shadow-b74062c4.png",
+  "media/avatars/avatar2.png": "/packs/media/avatars/avatar2-eb625df3.png",
+  "media/avatars/avatar2_shadow.png": "/packs/media/avatars/avatar2_shadow-f43105b3.png",
+  "media/avatars/avatar3.png": "/packs/media/avatars/avatar3-a3d28847.png",
+  "media/avatars/avatar3_shadow.png": "/packs/media/avatars/avatar3_shadow-66d68c1d.png",
+  "media/avatars/avatar4.png": "/packs/media/avatars/avatar4-c6bb6dc2.png",
+  "media/avatars/avatar4_shadow.png": "/packs/media/avatars/avatar4_shadow-605a8d0f.png",
+  "media/avatars/avatar5.png": "/packs/media/avatars/avatar5-5b7cd2d7.png",
+  "media/avatars/avatar5_shadow.png": "/packs/media/avatars/avatar5_shadow-7c5d2c5f.png",
+  "media/avatars/avatar6.png": "/packs/media/avatars/avatar6-7ab3d92a.png",
+  "media/avatars/avatar6_shadow.png": "/packs/media/avatars/avatar6_shadow-5d9e113c.png",
+  "media/avatars/avatar7.png": "/packs/media/avatars/avatar7-ba084da9.png",
+  "media/avatars/avatar7_shadow.png": "/packs/media/avatars/avatar7_shadow-40f19448.png",
+  "media/avatars/avatar8.png": "/packs/media/avatars/avatar8-67764531.png",
+  "media/avatars/avatar8_shadow.png": "/packs/media/avatars/avatar8_shadow-05e9bc8a.png",
+  "media/avatars/avatar9.png": "/packs/media/avatars/avatar9-55247892.png",
+  "media/avatars/avatar9_shadow.png": "/packs/media/avatars/avatar9_shadow-869c6bb1.png",
+  "media/backgrounds/content_frame_bottom.png": "/packs/media/backgrounds/content_frame_bottom-f53ad7ed.png",
+  "media/backgrounds/content_frame_middle.png": "/packs/media/backgrounds/content_frame_middle-b822189d.png",
+  "media/backgrounds/content_frame_top.png": "/packs/media/backgrounds/content_frame_top-ef09d1ca.png",
+  "media/backgrounds/exchange.png": "/packs/media/backgrounds/exchange-e750b773.png",
+  "media/backgrounds/floral_wallpaper.png": "/packs/media/backgrounds/floral_wallpaper-08ac4280.png",
+  "media/backgrounds/grey_antique_wallpaper.png": "/packs/media/backgrounds/grey_antique_wallpaper-d459be21.png",
+  "media/backgrounds/page_background.png": "/packs/media/backgrounds/page_background-29353f5a.png",
+  "media/backgrounds/platform.png": "/packs/media/backgrounds/platform-9cd37b82.png",
+  "media/backgrounds/sandstone_leaves_background.png": "/packs/media/backgrounds/sandstone_leaves_background-2cb41ca2.png",
+  "media/backgrounds/star.png": "/packs/media/backgrounds/star-72829a49.png",
+  "media/backgrounds/train-lights.png": "/packs/media/backgrounds/train-lights-14477b11.png",
+  "media/backgrounds/wood_grain.png": "/packs/media/backgrounds/wood_grain-fab1d4f7.png",
+  "media/icons/compass.png": "/packs/media/icons/compass-cc3eed7e.png",
+  "media/icons/door.png": "/packs/media/icons/door-1e295e5d.png",
+  "media/icons/question_mark.png": "/packs/media/icons/question_mark-5d86c0ec.png",
+  "media/images/copper_tube.png": "/packs/media/images/copper_tube-3eda8b09.png",
+  "media/images/copper_tube_horizontal.png": "/packs/media/images/copper_tube_horizontal-9c2f27f1.png",
+  "media/images/divider.png": "/packs/media/images/divider-85b55184.png",
+  "media/images/exchange.png": "/packs/media/images/exchange-9f856a47.png",
+  "media/images/exchange_bland.png": "/packs/media/images/exchange_bland-3a2e5c4a.png",
+  "media/images/first.jpg": "/packs/media/images/first-52dcbaf0.jpg",
+  "media/images/platform.png": "/packs/media/images/platform-9cd37b82.png",
+  "media/images/story_card_back.png": "/packs/media/images/story_card_back-9befc0bb.png"
 }

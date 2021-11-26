@@ -1,9 +1,9 @@
 <div id="main_sidebar">
   <div id="sidebar_top_divider">
-    <%= image_tag("divider.png", :class => "divider") %>
+    <%= image_pack_tag("divider.png", :class => "divider") %>
   </div>
   <div id="sidebar_content">
-    <%= image_tag("#{@character.avatar_image_path}", :class => "avatar_icon_large", :id => "sidebar_avatar")%>
+    <%= image_pack_tag("#{@character.avatar_image_path}", :class => "avatar_icon_large", :id => "sidebar_avatar")%>
       <div id="right_hand_wrapper">
         <h4>Welcome, <%= @character.name %></h4>
       </div>
@@ -12,6 +12,6 @@
       </div>
   </div>
   <div id="sidebar_bottom_divider">
-    <%= image_tag("divider.png", :class => "bottom_divider") %>
+    <%= image_pack_tag("divider.png", :class => "bottom_divider") %>
   </div>
 </div>
