@@ -63,7 +63,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # Make sure precompiled assets don't clash with prod
-  # config.assets.prefix = '/dev-assets'
+  config.assets.prefix = '/dev-assets'
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

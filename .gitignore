@@ -42,7 +42,8 @@ yarn-debug.log*
 # Ignore dev assets
 app/assets/images/*
 !app/assets/images/.keep
-public/assets
+public/assets/*
+!public/assets/manifest*
 public/dev-assets
 /public/packs/js
 /public/packs-test
