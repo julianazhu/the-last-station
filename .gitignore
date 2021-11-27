@@ -45,8 +45,6 @@ app/assets/images/*
 public/assets/*
 !public/assets/manifest*
 public/dev-assets
-/public/packs/js
-/public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*
