@@ -1,0 +1,37 @@
+%h1 Edit Character Info
+%p Henceforth, you shall be known as:
+= form_for :character, url: character_path, method: :patch do |f|
+  - render 'characterformerrors'
+  %p
+    = f.text_field :name
+  .error_messages
+    - @character.errors[:name].each do | msg |
+      %p.error_message= msg
+  %div
+    = f.radio_button :gender, "female"
+    = f.label :gender_female, "A woman. "
+    %br/
+    %br/
+    = f.radio_button :gender, "male"
+    = f.label :gender_male, "A man."
+    %br/
+    %br/
+    = f.radio_button :gender, "neither"
+    = f.label :gender_neither, "Exceptionally good-looking. The rest remains a mystery."
+    %br/
+    %br/
+    = f.radio_button :gender, "carrot"
+    = f.label :gender_carrot, "A sentient carrot."
+  .error_messages
+    - @character.errors[:gender].each do | msg |
+      %p.error_message= msg
+  %p
+    You look like:
+    %i (Select one)
+  - @character.errors[:avatar_image_path].each do | msg |
+    %p.error_message= msg
+  - (1..12).each do |image|
+    = image_pack_tag "avatar#{image}.png", :class => "avatar_icon_medium_selectable", :id => "avatar#{image}"
+  = f.hidden_field :avatar_image_path, :value => ""
+  %p
+    = f.submit

@@ -1,0 +1,11 @@
+#wrapper
+  = render partial: "header"
+  #intro_body
+    = render layout: "/layouts/flashcard" do
+      = form_for @character do |f|
+        = render "#{@character.current_step}_step", :f => f
+        #flashcard_buttons
+          = f.submit "Go back", :name => "back_button" unless @character.first_step?
+          = "|" unless @character.first_step?
+          = f.submit "Continue", :id => "continue_button"
+  = render partial: "layouts/footer"

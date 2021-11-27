@@ -1,0 +1,19 @@
+- @branches.each do |branch|
+  %div{:class => "play_branch_card eligibility_#{branch.eligible?(@character)}"}
+    .play_branch_card_top
+      %h4= branch.title
+      = branch.image_path
+      %p= branch.description
+    .play_branch_card_bottom
+      - if branch.eligible?(@character)
+        = button_to "Go", play_branch_path(:branch_id => branch.id), :class => "go_button", :method => "get"
+      - unless branch.branch_requirements.empty?
+        .requirement_description
+          %p
+            %i
+              Requires
+              - branch.branch_requirements.each_with_index do |requirement, index|
+                - if index != 0
+                  and
+                = requirement.quality.name
+                = requirement.get_level.rank if requirement.get_level.present?

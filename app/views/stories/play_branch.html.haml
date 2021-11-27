@@ -1,0 +1,11 @@
+= render layout: "/layouts/main_game" do
+  %h1= @branch.title
+  %p= @branch.outcome
+  - unless @stat_outcomes.nil?
+    %ul.outcomes_list
+      - @stat_outcomes.each do |outcome|
+        %li= outcome
+  %p= button_to "Continue", character_path(), :method => 'get'
+  - if @character.nil?
+    %p= link_to 'Show All Stories', stories_path
+    %p= link_to 'Show all Branches for All Stories', branches_path

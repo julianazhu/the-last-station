@@ -1,0 +1,6 @@
+= render "/layouts/backend_navigation"
+- if flash[:notice]
+  %p.notice= flash[:notice]
+%h1 Existing Qualities
+%p= link_to 'Create New Quality', new_quality_path
+= render 'qualitytable'

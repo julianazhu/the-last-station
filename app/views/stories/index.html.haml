@@ -1,0 +1,22 @@
+= render "/layouts/backend_navigation"
+%h1 Existing Stories
+%table
+  %tr
+    %th Key
+    %th Title
+    %th Hook
+    %th Text
+    %th Location
+    %th Actions
+  - @stories.each do |story|
+    %tr
+      %td= story.id
+      %td= story.title
+      %td= truncate(story.hook, :length => 30)
+      %td= truncate(story.body, :length => 60)
+      %td= story.location
+      %td
+        = link_to 'Edit Story', edit_story_path(:story_id => story.id)
+        ,
+        \#{link_to 'Delete Story', story_path(:id => story.id, :story_id => story.id), method: :delete, data: { confirm: 'Are you sure?' }}
+  %p= link_to 'Add a Story', new_story_path

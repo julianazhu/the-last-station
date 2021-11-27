@@ -1,0 +1,9 @@
+%tr.nested-fields
+  %td
+    = f.select(:quality_id, Quality.all.collect {|q| [ q.name, q.id ] }, { include_blank: true })
+  %td
+    = f.select(:operation, [['at least','at least'], ['less than','less than'],['is','is'], ['is not','is not']], { include_blank: true })
+  %td
+    = f.text_field :points
+  %td
+    = link_to_remove_association "Delete", f

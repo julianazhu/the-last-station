@@ -1,0 +1,16 @@
+%tr.level_fields
+  %td
+    = @level.to_s
+    = @level = 1 if @level.blank?
+    = f.hidden_field(:rank, :value => params[@level.to_s])
+  %td
+    = f.text_field :description
+  %td
+    = f.text_field :image_path
+  %td
+    = f.text_area :flavor_text
+  %td
+    = f.text_field :minimum_points
+  %td
+    = link_to_remove_association('Delete Level', f, {wrapper_class: 'level_fields'})
+- @level = @level.next

@@ -1,0 +1,33 @@
+= form_for @quality do |quality|
+  #quality_form_wrapper
+    = render 'qualityformerrors'
+    %p
+      = quality.label :name
+      = quality.text_field :name
+    %p
+      = quality.label :description
+      = quality.text_area :description
+    %p
+      = quality.label :image_path
+      = quality.text_field :image_path
+    %p
+      = quality.label :category
+      = quality.select(:category, [["Primary", "Primary"], ["Secondary","Secondary"], ["Story","Story"], ["Item","Item"], ["Fate Deck","Fate Deck"]])
+    %p
+      = quality.label :is_this_quality_have_a_level_progression?
+      = quality.check_box :ranked
+    %p
+    %p
+      = quality.submit "Update", :id => "quality_submit_button"
+  #level_form_wrapper
+    %table.levels_table
+      %tr
+        %th#level Level
+        %th#description Description
+        %th#image_path Image Path
+        %th#flavor_text Flavor Text
+        %th#minimum_points Minimum Points
+        %th#action Action
+      = quality.fields_for :levels do |f|
+        = render 'level_fields', :f => f
+    = link_to_add_association "+ Add Level", quality, :levels, 'data-association-insertion-node' => ".levels_table", 'data-association-insertion-method' => "append"

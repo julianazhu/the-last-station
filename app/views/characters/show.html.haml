@@ -1,0 +1,31 @@
+= render layout: "/layouts/main_game" do
+  %h2= @character.location.description
+  %p= @character.location.flavor_text
+  - if @character.location.description == "The Station Exchange"
+    %h3 The Hand of Fate...
+    %p Click on a fate card to play it.
+    %figure
+      = image_pack_tag "story_card_back.png", :class => "fate_card_medium"
+      %figcaption
+        %b
+          = @character.deck_size
+          Cards Available
+        %br/
+        Additional Card in X mins.
+    - @fate_stories.each do |fate_story|
+      %figure
+        = link_to image_pack_tag("#{fate_story.image_path}", :class => "fate_card_medium", :title => "#{fate_story.body}"), play_story_path(:story_id => fate_story.id), :method => :get
+        %figcaption
+          %b= fate_story.title
+  %h3
+    Play stories from #{@character.location.description}...
+  %br/
+  - @stories.each do |story|
+    .story_card
+      .story_card_left
+        = image_pack_tag "icons/#{story.image_path}", :class => "large_icon"
+      .story_card_middle
+        %h4= story.title
+        = story.hook
+      .story_card_right
+        = button_to 'Go', play_story_path(:story_id => story.id), class: "go_button", :method => :get

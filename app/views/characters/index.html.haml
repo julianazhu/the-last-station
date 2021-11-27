@@ -1,0 +1,16 @@
+%h1 Existing Characters
+%table
+  %tr
+    %th Key
+    %th Name
+    %th Gender
+    %th Actions
+  - @characters.each do |character|
+    %tr
+      %td= character.id
+      %td= character.name
+      %td= character.gender
+      %td
+        = link_to 'Edit', edit_character_path(character)
+        ,
+        \#{link_to 'Destroy', character_path(character), method: :delete, data: { confirm: 'Are you sure?' }}

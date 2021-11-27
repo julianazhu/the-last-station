@@ -1,0 +1,6 @@
+= render "/layouts/backend_navigation"
+%p
+  You have successfully created the quality: #{@quality.name}
+= render 'qualitytable'
+%p= link_to 'Show All Qualities', qualities_path
+%p= link_to 'Go to Stories', stories_path

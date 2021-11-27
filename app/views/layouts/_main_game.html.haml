@@ -1,0 +1,11 @@
+#player_interface_wrapper
+  #main_game_wrapper
+    = render partial: "layouts/header"
+    #main_content_and_sidebar_wrapper
+      = render partial: "layouts/sidebar"
+      #main_content
+        #main_content_top
+        #main_content_middle
+          #content_wrapper
+            = yield
+        #main_content_bottom

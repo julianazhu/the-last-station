@@ -1,0 +1,9 @@
+#intro2
+  %p The ache in your head begins to recede, but your memories are as shadowy as the world outside this train carriage.
+  %p
+    %b Your name is:
+  = f.text_field :name
+  .error_messages
+    - @character.errors[:name].each do | msg |
+      %p.error_message= msg
+  %br/

@@ -1,0 +1,9 @@
+- if @character.stats.count > 0
+  - @character.stats.each do |stat|
+    .character_stat
+      = image_pack_tag("icons/#{stat.quality.image_path}", class:"medium_icon") unless stat.quality.image_path.blank?
+      .character_stat_description
+        = stat.get_description
+        \.
+- else
+  %p YOU HAVE NOTHING.

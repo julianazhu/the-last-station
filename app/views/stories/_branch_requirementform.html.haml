@@ -1,0 +1,11 @@
+.branch-requirementform
+  %h3 Requirements
+  %table{:id => "branch-requirements-table-#{"#{f.object.id}"}"}
+    %tr
+      %th Quality Required
+      %th Operation
+      %th Points
+      %th Actions
+    = f.fields_for :branch_requirements do |branch_requirement|
+      = render 'requirement_fields', :f => branch_requirement
+  = link_to_add_association 'Add Requirement', f, :branch_requirements, 'data-association-insertion-node' => "#branch-requirements-table-#{f.object.id}",'data-association-insertion-method' => "append"

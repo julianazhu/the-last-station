@@ -1,9 +1,0 @@
-<%= render layout: "/layouts/main_game" do %>
-  <%= image_pack_tag "#{@story.image_path}", :class => "large_icon" %>
-  <h2><%= @story.title %></h2>
-  <p><%= @story.body %></p>
-  <% unless @story.branches.nil?%>
-      <%= render 'play_branch_card' %>
-  <% end %>
-  <%= button_to "Return...", character_path, :method => :get %>
-<% end %>

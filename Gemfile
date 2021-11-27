@@ -10,6 +10,7 @@ gem 'webpacker', '>= 5.4.3'
 gem 'webrick', '~> 1.7'
 
 # Javascript
+gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 

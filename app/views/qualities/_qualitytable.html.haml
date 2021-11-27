@@ -1,0 +1,24 @@
+%table
+  %tr
+    %th Key
+    %th Name
+    %th Category
+    %th Description
+    %th Image Path
+    %th Actions
+  - @qualities.each do |quality|
+    %tr
+      %td= quality.id
+      %td= quality.name
+      %td= quality.category
+      %td
+        = quality.description
+        - quality.levels.each do |level|
+          %p
+            = level.rank
+            \. #{level.description}
+      %td= image_pack_tag "icons/#{quality.image_path}", :class => "large_icon"
+      %td
+        = link_to 'Edit', edit_quality_path(quality)
+        ,
+        \#{link_to 'Destroy', quality_path(quality), method: :delete, data: { confirm: 'Are you sure?' }}

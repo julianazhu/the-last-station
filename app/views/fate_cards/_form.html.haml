@@ -1,0 +1,11 @@
+= form_for(@fate_card) do |f|
+  - if @fate_card.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@fate_card.errors.count, "error")
+        prohibited this fate_card from being saved:
+      %ul
+        - @fate_card.errors.full_messages.each do |message|
+          %li= message
+  .actions
+    = f.submit
