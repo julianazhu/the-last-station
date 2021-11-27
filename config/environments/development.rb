@@ -63,7 +63,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # Make sure precompiled assets don't clash with prod
-  config.assets.prefix = '/dev-assets'
+  # config.assets.prefix = '/dev-assets'
 
   # Fallback to assets pipeline if a precompiled asset is missed.
   # Set this to 'false' if you want to force your development env

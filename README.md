@@ -44,9 +44,9 @@ config.assets.compile = true
 #### 4. Run the following shell commands:
 ```
  $ export RAILS_ENV=development
- $ bin/rails db:environment:set
+ $ rails db:environment:set
  $ rake db:schema:load
- $ bin/rails assets:precompile
+ $ rails assets:precompile
  $ bundle exec rails s
 ```
 You should now be able to navigate to the application at `localhost:3000` :tada:
@@ -80,6 +80,8 @@ heroku config:set RAILS_MASTER_KEY=<your-master-key>
 
 The current configuration expects you to host your assets on AWS S3 using a Cloudfront CDN, precompile assets locally and upload them directly using the AWS CLI.
 
+> :warning: By default in this appliction, precompilation is disabled in production and local precompilation compiles assets in PRODUCTION mode. If you want to change this behaviour to match Rails defaults, delete or modify the `lib/tasks/asset.rake` file.
+
 To follow suit, include the following block in your development/staging/production credentials:
 ```
 aws:
@@ -95,10 +97,11 @@ config.assets.compile = false
 ```
 When your local assets are ready to be compiled to your staging/production s3 bucket/s, authenticate to the AWS CLI then run:
 ```
-$ RAILS_ENV=production rails assets:precompile
+$ export RAILS_ENV=production
+$ rails assets:precompile LOCAL_PRECOMPILE=true
 $ rake sync_assets
 ```
-You will need to ensure that the asset precompilation task is disabled in your deployment tool.
+
 
 # Author
 * [Juliana Zhu](https://github.com/julianazhu)
@@ -108,5 +111,5 @@ You will need to ensure that the asset precompilation task is disabled in your d
 - *Justin Lambert* - for the code reviews and the support.
 - *Jake Scott* - for enduring approximately one million NaNoWriMos together.
 - [*Stephen Sherratt*](https://www.gridbugs.org/) - Tried to run this in pre-alpha....:scream: :pray:
-- *Kurtis Crisafulli* - :baby_chick: acting as a rubber duck.
+- *Kurtis Crisafulli* - for being an excellent rubber duck :baby_chick:
 - *[StoryNexus](http://www.storynexus.com/) & [Failbetter Games](https://www.failbettergames.com/)* - for the inspiration.
