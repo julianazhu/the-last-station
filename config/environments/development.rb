@@ -65,6 +65,11 @@ Rails.application.configure do
   # Make sure precompiled assets don't clash with prod
   config.assets.prefix = '/dev-assets'
 
+  # Fallback to assets pipeline if a precompiled asset is missed.
+  # Set this to 'false' if you want to force your development env
+  # to show errors if your precompiled assets are missing in your Active Storage Service.
+  config.assets.compile = false
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
