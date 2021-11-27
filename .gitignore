@@ -39,28 +39,19 @@ yarn-debug.log*
 !.yarn/sdks
 !.yarn/versions
 
-# Ignore dev assets
+
+# Ignore assets
 app/assets/images/*
 !app/assets/images/.keep
 public/assets/*
-!public/assets/manifest*
+!public/assets/*manifest*
 public/dev-assets
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-
-/config/master.key
-
-/config/credentials/development.key
-
-/config/credentials/production.key
-
 /public/packs
 /public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
 
-/config/credentials/test.key
+# credentials
+/config/*.key
+/config/*/*.key
+
+
+
