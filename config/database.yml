@@ -84,3 +84,6 @@ test:
 #
 production:
   <<: *default
+  database: <%= Rails.application.credentials.postgres[:db_name] %>
+  username: <%= Rails.application.credentials.postgres[:username] %>
+  password: <%= Rails.application.credentials.postgres[:password] %>
